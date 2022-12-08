@@ -1,21 +1,37 @@
-.rotating-container {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  // animation-name: rotate;
-  animation-duration: 10s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-  width: 500px;
-  height: 500px;
-}
+@import './../../../App.scss';
+.menu-container {
+  position: absolute;
+  top: -230px;
+  left: -230px;
+  width: 560px;
+  height: 560px;
 
-@keyframes rotate {
-  from {
-    transform: rotateZ(0deg);
+  .rotating-container {
+    position: absolute;
+    animation-name: rotate;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    top: 0;
+    left: 0;
+    width: 560px;
+    height: 560px;
+    border-radius: 50%;
+    background-color: $palette-main-color;
+    &.close {
+      top: 230px;
+      left: 230px;
+      width: 100px;
+      height: 100px;
+    }
   }
-  to {
-    transform: rotateZ(360deg);
+
+  @keyframes rotate {
+    from {
+      transform: rotateZ(0deg);
+    }
+    to {
+      transform: rotateZ(360deg);
+    }
   }
 }

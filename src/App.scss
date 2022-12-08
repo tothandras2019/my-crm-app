@@ -1,0 +1,10 @@
+$palette-main-color: rgb(1, 45, 81);
+$palette-primary-color: rgb(196, 240, 238);
+$palette-secondary-color: rgb(53, 198, 193);
+$palette-additional-color: rgb(12, 65, 99);
+
+#root {
+  background-color: $palette-primary-color;
+  color: $palette-primary-color;
+  min-height: 100vh;
+}

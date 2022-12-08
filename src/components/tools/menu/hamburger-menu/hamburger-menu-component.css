@@ -1,0 +1,71 @@
+#root {
+  background-color: rgb(196, 240, 238);
+  color: rgb(196, 240, 238);
+  min-height: 100vh;
+}
+
+.menu-button {
+  position: relative;
+  top: 250px;
+  left: 245px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  z-index: 100;
+}
+.menu-button span {
+  position: relative;
+  width: 30px;
+  height: 2px;
+  background-color: rgb(196, 240, 238);
+  transition: 0.5s;
+  z-index: 50;
+}
+.menu-button span::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  border-radius: 10px;
+  background-color: rgb(196, 240, 238);
+  transition: 0.5s;
+}
+.menu-button span::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  border-radius: 10px;
+  background-color: rgb(196, 240, 238);
+  transition: 0.5s;
+}
+.menu-button.close {
+  transition: 0.5s;
+  top: 250px;
+  left: 245px;
+}
+.menu-button.close span {
+  background-color: transparent;
+  transition: 0.5s;
+}
+.menu-button.close span::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotateZ(45deg);
+}
+.menu-button.close span::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotateZ(-45deg);
+}/*# sourceMappingURL=hamburger-menu-component.css.map */

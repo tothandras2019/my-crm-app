@@ -1,3 +1,9 @@
+#root {
+  background-color: rgb(196, 240, 238);
+  color: rgb(196, 240, 238);
+  min-height: 100vh;
+}
+
 .menu-link {
   position: absolute;
   display: flex;
@@ -5,11 +11,14 @@
   align-items: center;
   height: 120px;
   width: 120px;
+  top: 40%;
+  left: 40%;
   font-size: larger;
-  background-color: yellow;
-  border: 5px solid rgb(114, 114, 7);
+  background-color: rgb(12, 65, 99);
   border-radius: 50%;
 }
 .menu-link p {
   text-align: center;
+  font-weight: 500;
+  letter-spacing: 1.1px;
 }/*# sourceMappingURL=link-button-component.css.map */

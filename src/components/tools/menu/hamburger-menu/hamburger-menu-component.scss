@@ -1,0 +1,71 @@
+@import './../../../../App.scss';
+
+$size: 30px;
+.menu-button {
+  position: relative;
+  top: 250px;
+  left: 245px;
+  width: $size;
+  height: $size;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  z-index: 100;
+
+  span {
+    position: relative;
+    width: $size;
+    height: 2px;
+    background-color: $palette-primary-color;
+    transition: 0.5s;
+    z-index: 50;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: 0;
+      width: $size;
+      height: 2px;
+      border-radius: 10px;
+      background-color: $palette-primary-color;
+      transition: 0.5s;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 0;
+      width: $size;
+      height: 2px;
+      border-radius: 10px;
+      background-color: $palette-primary-color;
+      transition: 0.5s;
+    }
+  }
+
+  &.close {
+    transition: 0.5s;
+    top: 250px;
+    left: 245px;
+    span {
+      background-color: transparent;
+      transition: 0.5s;
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: rotateZ(45deg);
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: rotateZ(-45deg);
+      }
+    }
+  }
+}

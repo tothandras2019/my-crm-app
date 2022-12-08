@@ -1,0 +1,20 @@
+.rotating-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  width: 500px;
+  height: 500px;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+}/*# sourceMappingURL=rotating-menu-component.css.map */

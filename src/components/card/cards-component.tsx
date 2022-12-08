@@ -1,13 +1,13 @@
 import './cards-component.css'
 
-import { InfoPannel } from '../info-panel/info-panel-component'
-import { InitCustomersType } from './../../DATASTORE/contacts-reducer'
+import { MainInfoPannel } from '../info-panel/main-info-panel-component'
+import { InitCustomersType } from './../../DATASTORE/data-types/data-types'
 
 export const Cards = ({ customers }: { customers: InitCustomersType[] }): JSX.Element => {
   return (
     <div className='card-container'>
       {customers.map((customer, i) => {
-        return <InfoPannel key={`${customer}-${i}`} customer={customer} />
+        return <MainInfoPannel key={`${customer}-${i}`} customer={customer} />
       })}
     </div>
   )

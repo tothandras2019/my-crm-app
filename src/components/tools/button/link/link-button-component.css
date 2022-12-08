@@ -1,0 +1,15 @@
+.menu-link {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
+  width: 120px;
+  font-size: larger;
+  background-color: yellow;
+  border: 5px solid rgb(114, 114, 7);
+  border-radius: 50%;
+}
+.menu-link p {
+  text-align: center;
+}/*# sourceMappingURL=link-button-component.css.map */

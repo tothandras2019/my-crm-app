@@ -1,0 +1,17 @@
+.info-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: medium;
+  width: 100%;
+  height: fit-content;
+  .status {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    gap: 10px;
+    margin: 0 5px;
+  }
+}

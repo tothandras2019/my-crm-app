@@ -1,7 +1,10 @@
 import { CustomerContext } from './DATASTORE/contacts-reducer'
 import { useContext, useEffect } from 'react'
-import { InfoPannel } from './components/info-panel/info-panel-component'
+import { MainInfoPannel } from './components/info-panel/main-info-panel-component'
 import { Cards } from './components/card/cards-component'
+import { Input } from './components/input/input-component'
+import { LinkButton } from './components/tools/button/link/link-button-component'
+import { RotatingMenu } from './components/menu/rotating-menu/rotating-menu-component'
 
 function App() {
   const { customer, dispatch } = useContext(CustomerContext)
@@ -32,6 +35,8 @@ function App() {
   return (
     <div className='App'>
       <Cards customers={customer} />
+      <Input label='input' />
+      <RotatingMenu />
     </div>
   )
 }

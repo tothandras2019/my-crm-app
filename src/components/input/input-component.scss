@@ -1,0 +1,16 @@
+.input-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  background-color: transparent;
+  padding: 10px;
+  label {
+    text-transform: capitalize;
+    font-weight: 500;
+  }
+  input[type='text'] {
+    background-color: rgb(210, 205, 205);
+  }
+}

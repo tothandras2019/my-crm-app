@@ -1,0 +1,28 @@
+.info-panel {
+  .info-panel-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .info-panel {
+    height: 0;
+    transition: 1s;
+    p {
+      font-size: 0;
+      height: 0;
+      padding-left: 10px;
+      // transition: 0.2s;
+    }
+    &.show {
+      height: fit-content;
+      transition: 1s;
+
+      p {
+        font-size: 18px;
+        height: fit-content;
+        transition: 0.5s;
+      }
+    }
+  }
+}

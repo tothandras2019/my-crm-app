@@ -1,46 +1,57 @@
-# Getting Started with Create React App
+# CRM System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Sales statuses
 
-## Available Scripts
+#### New opportunity:
 
-In the project directory, you can run:
+- You identify a new lead and his or her contact information is recorded. How do you get these new leads? Through a variety of different lead generation activities, like webinars, ads, or content marketing.
 
-### `npm start`
+#### Contacting:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- It’s time for one of the most challenging parts of the sales process: actually getting in touch with the lead. The prospect remains in this stage until you make contact.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+#### Engaging:
 
-### `npm test`
+- By this stage, you have talked to the prospect to determine whether he or she is qualified to make a purchase.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Qualified:
 
-### `npm run build`
+- This is the point where you need to decide whether the lead is qualified, meaning that he or she has the need, budget, and authority to make a purchase.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Custom stages:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Somes businesses have unique sales stages, like scheduling in-person meetings or offering a free trial. Regardless of the tactic, this stage is designed to move the prospect closer to making a purchase.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Closing:
 
-### `npm run eject`
+- As the sales process comes to an end, you ask the prospect to finalize the deal.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### Won/Lost:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- All the stages come down to this final moment: whether the deal was a win or loss. Both results can prompt a set of subsequent actions, like a series of onboarding emails for new customers or a six-month check-in email for leads who didn’t end up buying.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+---
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Sales Pipeline Metrics
 
-## Learn More
+How do you know if your sales pipeline is healthy? Here are five metrics to track:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### Win rate
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- is the percentage of leads that convert to actual sales. By monitoring win rate at each stage of your pipeline, you’ll understand where you excel and where prospect most often drop off.
+
+#### Sales cycle
+
+- length is the amount of time it takes for a lead to move from initial contact to a sale. If your team takes too long to move leads through the pipeline, you risk losing opportunities.
+
+#### Deal fallout by phase
+
+- refers to the predictable percentage of deals that drops off at every step of the pipeline. It’s important to understand why these deals fall through and to monitor this number — a big spike will impact your numbers for the following two or three quarters.
+
+#### Lead response time
+
+- is the amount of time it takes to contact or act on a new lead. This number is also a good indication of the health of your sales team. Are lead response times getting longer? Perhaps you need to grow your sales team.
+
+#### Close ratio:
+
+- is the number of closed sales as a percentage of total sales presentations made. You can use this to evaluate sales performance, industry trends, pricing, and your value proposition. For example, if leads fall off in the final stages of the pipeline, this could point to some problems with the product or pricing structure.

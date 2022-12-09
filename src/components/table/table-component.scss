@@ -1,0 +1,18 @@
+@import './../../App.scss';
+
+.table-container {
+  color: $palette-main-color;
+  div {
+    border-bottom: 1px dotted $palette-main-color;
+  }
+  p {
+    min-width: 150px;
+    text-align: start;
+  }
+  .table-container-header {
+    display: flex;
+  }
+  .customer {
+    display: flex;
+  }
+}

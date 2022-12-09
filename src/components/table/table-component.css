@@ -1,0 +1,22 @@
+#root {
+  background-color: rgb(196, 240, 238);
+  color: rgb(196, 240, 238);
+  min-height: 100vh;
+}
+
+.table-container {
+  color: rgb(1, 45, 81);
+}
+.table-container div {
+  border-bottom: 1px dotted rgb(1, 45, 81);
+}
+.table-container p {
+  min-width: 150px;
+  text-align: start;
+}
+.table-container .table-container-header {
+  display: flex;
+}
+.table-container .customer {
+  display: flex;
+}/*# sourceMappingURL=table-component.css.map */

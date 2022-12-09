@@ -5,16 +5,19 @@
 }
 
 .menu-button {
-  position: relative;
-  top: 250px;
-  left: 245px;
-  width: 30px;
-  height: 30px;
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100px;
+  min-height: 100px;
+  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: 0.5s;
   z-index: 100;
+  background-color: rgb(1, 45, 81);
 }
 .menu-button span {
   position: relative;
@@ -48,8 +51,8 @@
 }
 .menu-button.close {
   transition: 0.5s;
-  top: 250px;
-  left: 245px;
+  width: 100px;
+  height: 100px;
 }
 .menu-button.close span {
   background-color: transparent;

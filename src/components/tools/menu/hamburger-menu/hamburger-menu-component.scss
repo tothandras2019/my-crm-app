@@ -1,21 +1,25 @@
 @import './../../../../App.scss';
 
-$size: 30px;
+$size: 100px;
 .menu-button {
-  position: relative;
-  top: 250px;
-  left: 245px;
-  width: $size;
-  height: $size;
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: $size;
+  min-height: $size;
+  border-radius: 50%;
+
   display: flex;
   justify-content: center;
   align-items: center;
   transition: 0.5s;
   z-index: 100;
+  background-color: $palette-main-color;
 
   span {
     position: relative;
-    width: $size;
+    width: 30px;
     height: 2px;
     background-color: $palette-primary-color;
     transition: 0.5s;
@@ -26,7 +30,7 @@ $size: 30px;
       position: absolute;
       top: -10px;
       left: 0;
-      width: $size;
+      width: 30px;
       height: 2px;
       border-radius: 10px;
       background-color: $palette-primary-color;
@@ -37,7 +41,7 @@ $size: 30px;
       position: absolute;
       top: 10px;
       left: 0;
-      width: $size;
+      width: 30px;
       height: 2px;
       border-radius: 10px;
       background-color: $palette-primary-color;
@@ -47,8 +51,10 @@ $size: 30px;
 
   &.close {
     transition: 0.5s;
-    top: 250px;
-    left: 245px;
+    // background-color: $palette-main-color;
+    // border-radius: 50%;
+    width: $size;
+    height: $size;
     span {
       background-color: transparent;
       transition: 0.5s;

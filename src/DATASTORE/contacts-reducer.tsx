@@ -3,7 +3,7 @@ import { InitCustomers } from './data/contract-data'
 
 //REDUCER
 export type CustomersArrayType = typeof InitCustomers[]
-export const InitCustomersArray: CustomersArrayType = [InitCustomers]
+export const InitCustomersArray: CustomersArrayType = [InitCustomers, InitCustomers]
 
 enum ACTION_TYPE {
   ADDCUSTOMER = 'ADD/CUSTOMER',
@@ -43,13 +43,13 @@ const ContactReducer = (state = InitCustomersArray, action: ActionType) => {
 
 type DispatchType = Dispatch<ActionType>
 
-export const CustomerContext = createContext<{ customer: typeof InitCustomers[]; dispatch: DispatchType }>({
-  customer: InitCustomersArray,
+export const CustomerContext = createContext<{ customers: typeof InitCustomers[]; dispatch: DispatchType }>({
+  customers: InitCustomersArray,
   dispatch: ({ type, payload }) => InitCustomers,
 })
 
 export const CustomerContextProvider = ({ children }: { children: any }): JSX.Element => {
-  const [customer, dispatch] = useReducer(ContactReducer, InitCustomersArray)
+  const [customers, dispatch] = useReducer(ContactReducer, InitCustomersArray)
 
-  return <CustomerContext.Provider value={{ customer, dispatch }}>{children}</CustomerContext.Provider>
+  return <CustomerContext.Provider value={{ customers, dispatch }}>{children}</CustomerContext.Provider>
 }

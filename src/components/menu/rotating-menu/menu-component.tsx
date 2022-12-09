@@ -1,9 +1,9 @@
-import './rotating-menu-component.css'
+import './menu-component.css'
 import { LinkButton } from '../../tools/button/link/link-button-component'
 import { useEffect, useState } from 'react'
 import { HamburgerMenu } from '../../tools/menu/hamburger-menu/hamburger-menu-component'
 
-export const RotatingMenu = (): JSX.Element => {
+export const Menu = (): JSX.Element => {
   const [closeMenu, setCloseMenu] = useState(false)
 
   const menItems = [
@@ -25,12 +25,12 @@ export const RotatingMenu = (): JSX.Element => {
 
   useEffect(() => {}, [menItems])
   return (
-    <div className='menu-container'>
-      <div className={`rotating-container ${closeMenu ? 'close' : ''}`}>
-        {menItems.map((item, i) => (
-          <LinkButton key={`item--${i}`} value={item} rotating={positionDegree * i} />
-        ))}
-      </div>
+    <div className={`menu-container ${closeMenu ? 'close' : ''}`}>
+      {menItems.map((item, i) => (
+        <LinkButton key={`item--${i}`} value={item} rotating={positionDegree * i} hide={closeMenu} />
+      ))}
+      {/* <div className={`menu-link-container ${closeMenu ? 'close' : ''}`}>
+      </div> */}
       <HamburgerMenu handler={handleCloseMenu} />
     </div>
   )

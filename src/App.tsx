@@ -4,11 +4,11 @@ import { MainInfoPannel } from './components/info-panel/main-info-panel-componen
 import { Cards } from './components/card/cards-component'
 import { Input } from './components/input/input-component'
 import { LinkButton } from './components/tools/button/link/link-button-component'
-import { RotatingMenu } from './components/menu/rotating-menu/rotating-menu-component'
+import { Menu } from './components/menu/rotating-menu/menu-component'
 import { Section } from './components/section/section-component'
 
 function App() {
-  const { customer, dispatch } = useContext(CustomerContext)
+  const { customers, dispatch } = useContext(CustomerContext)
 
   const NewInitCustomers = {
     id: 1,
@@ -30,8 +30,8 @@ function App() {
   // }, [])
 
   useEffect(() => {
-    console.log(customer)
-  }, [customer])
+    console.log(customers)
+  }, [customers])
 
   return (
     <div className='App'>

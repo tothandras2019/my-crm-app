@@ -27,7 +27,8 @@ export const InitCustomers: InitCustomersType = {
   subscribed: {
     products: [
       { category: ProductCategoryEnum.service, name: 'transport', quantity: 34, price: 2000 },
-      { category: ProductCategoryEnum.product, name: 'charger', quantity: 20, price: 2000 },
+      { category: ProductCategoryEnum.product, name: 'charger', quantity: 23, price: 2700 },
+      { category: ProductCategoryEnum.service, name: 'transport', quantity: 21, price: 1500 },
     ],
   },
   period: { from: 2021, to: 2025 },

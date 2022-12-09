@@ -1,9 +1,11 @@
 import './link-button-component.css'
 
-export const LinkButton = ({ value = 'empty', rotating }: { value?: string | undefined; rotating: number }) => {
+export const LinkButton = ({ value = 'empty', rotating, hide }: { value?: string | undefined; rotating: number; hide: boolean }) => {
   return (
-    <div className='menu-link' style={{ transform: `rotateZ(${rotating}deg) translateY(210px)` }}>
+    <div className={`menu-link ${hide ? 'hide' : ''}`}>
       <p>{value}</p>
     </div>
   )
 }
+
+// style={{ transform: `rotateZ(${rotating}deg) translateY(210px)` }}

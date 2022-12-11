@@ -22,7 +22,7 @@ export const InitCustomers: InitCustomersType = {
   },
   contract: {
     total: 23425,
-    achieved: 12000,
+    achieved: 10000,
   },
   subscribed: {
     products: [

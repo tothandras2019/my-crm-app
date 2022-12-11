@@ -6,17 +6,58 @@
 
 .table-container {
   color: rgb(1, 45, 81);
+  width: 80%;
+  box-shadow: 10px 10px 15px rgb(1, 45, 81);
+  padding: 3px;
+  background-color: rgb(1, 45, 81);
+  cursor: pointer;
 }
 .table-container div {
   border-bottom: 1px dotted rgb(1, 45, 81);
+  padding: 5px 5px;
+  box-sizing: border-box;
+}
+.table-container div:nth-child(1) {
+  background: rgb(1, 45, 81);
+}
+.table-container .customer:not(.odd) {
+  background: linear-gradient(to top, rgb(196, 240, 238) 60%, rgb(53, 198, 193) 98%);
+}
+.table-container .odd {
+  background: linear-gradient(to top, rgb(196, 240, 238) 60%, rgb(53, 198, 193) 98%);
 }
 .table-container p {
   min-width: 150px;
   text-align: start;
+  transition: 0.5s;
+}
+.table-container .table-container-header {
+  color: rgb(196, 240, 238);
+  background-color: rgb(1, 45, 81);
+}
+.table-container .customer {
+  opacity: 0;
+  display: flex;
+  background-color: grey;
+  animation-name: showtabe;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
+.table-container .customer p {
+  background: transparent;
+}
+.table-container .customer p:hover {
+  letter-spacing: 1.2px;
+  text-rendering: geometricPrecision;
+  text-shadow: 1px 1px 2px rgb(1, 45, 81);
 }
 .table-container .table-container-header {
   display: flex;
 }
-.table-container .customer {
-  display: flex;
+@keyframes showtabe {
+  to {
+    opacity: 1;
+  }
 }/*# sourceMappingURL=table-component.css.map */

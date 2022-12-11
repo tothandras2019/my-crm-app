@@ -2,17 +2,68 @@
 
 .table-container {
   color: $palette-main-color;
+  width: 80%;
+  box-shadow: 10px 10px 15px $palette-main-color;
+  padding: 3px;
+  background-color: $palette-main-color;
+  cursor: pointer;
   div {
     border-bottom: 1px dotted $palette-main-color;
+    padding: 5px 5px;
+    box-sizing: border-box;
   }
+
+  div:nth-child(1) {
+    background: $palette-main-color;
+  }
+
+  .customer:not(.odd) {
+    background: linear-gradient(to top, $palette-primary-color 60%, $palette-secondary-color 98%);
+  }
+
+  .odd {
+    background: linear-gradient(to top, $palette-primary-color 60%, $palette-secondary-color 98%);
+  }
+
   p {
     min-width: 150px;
     text-align: start;
+    transition: 0.5s;
   }
+  .table-container-header {
+    color: $palette-primary-color;
+    background-color: $palette-main-color;
+  }
+
+  .customer {
+    // max-height: 0;
+    opacity: 0;
+    display: flex;
+    background-color: grey;
+
+    animation-name: showtabe;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+
+    p {
+      background: transparent;
+      &:hover {
+        letter-spacing: 1.2px;
+        text-rendering: geometricPrecision;
+        text-shadow: 1px 1px 2px $palette-main-color;
+      }
+    }
+  }
+
   .table-container-header {
     display: flex;
   }
-  .customer {
-    display: flex;
+
+  @keyframes showtabe {
+    to {
+      opacity: 1;
+    }
   }
 }

@@ -13,7 +13,6 @@
   cursor: pointer;
 }
 .table-container div {
-  border-bottom: 1px dotted rgb(1, 45, 81);
   padding: 5px 5px;
   box-sizing: border-box;
 }
@@ -44,6 +43,9 @@
   animation-timing-function: linear;
   animation-fill-mode: forwards;
   animation-iteration-count: 1;
+}
+.table-container .customer .contract-amount {
+  position: relative;
 }
 .table-container .customer p {
   background: transparent;

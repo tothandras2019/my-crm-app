@@ -3,7 +3,7 @@ import { InitCustomers } from './data/contract-data'
 
 //REDUCER
 export type CustomersArrayType = typeof InitCustomers[]
-export const InitCustomersArray: CustomersArrayType = [InitCustomers, InitCustomers]
+export const InitCustomersArray: CustomersArrayType = [InitCustomers]
 
 enum ACTION_TYPE {
   ADDCUSTOMER = 'ADD/CUSTOMER',

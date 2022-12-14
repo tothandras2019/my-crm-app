@@ -13,11 +13,14 @@
   stroke: rgb(53, 198, 193);
 }
 .indicator-container .indicator-percentage {
-  position: absolute;
+  position: fixed;
   width: fit-content;
   color: rgb(1, 45, 81);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding-bottom: 15px;
+}
+.indicator-container.tooltip {
+  position: absolute;
 }/*# sourceMappingURL=indicator-component.css.map */

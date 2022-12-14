@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["../../App.scss","indicator-component.scss"],"names":[],"mappings":"AAMA;EACE,kBANsB;EAOtB,OAPsB;EAQtB;;;ACPF;EACE;EACA;EACA;;AAEE;EACE,QDNoB;;ACUxB;EACE;EACA;EACA,ODfiB;ECgBjB;EACA;EACA;EACA","file":"indicator-component.css"}
+{"version":3,"sourceRoot":"","sources":["../../App.scss","indicator-component.scss"],"names":[],"mappings":"AAMA;EACE,kBANsB;EAOtB,OAPsB;EAQtB;;;ACPF;EACE;EACA;EACA;;AAEE;EACE,QDNoB;;ACUxB;EACE;EACA;EACA,ODfiB;ECgBjB;EACA;EACA;EACA;;AAGF;EACE","file":"indicator-component.css"}

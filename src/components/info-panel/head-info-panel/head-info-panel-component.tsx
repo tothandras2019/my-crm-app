@@ -10,8 +10,8 @@ export const HeadInfoPanel = ({
   period,
 }: {
   id: number
-  lifecycleState: LifecicyleEnum
-  leadState: LeadEnum
+  lifecycleState: string
+  leadState: string
   period: GeneralType
 }) => {
   return (

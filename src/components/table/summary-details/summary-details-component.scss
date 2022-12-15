@@ -1,0 +1,26 @@
+@import './../../../App.scss';
+
+$mod-color: rgb($palette-secondary-color, 0.8);
+
+.summary-details-component {
+  position: fixed;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  background-color: $mod-color;
+  opacity: 0;
+  min-width: 300px;
+  border-radius: 5px;
+  backdrop-filter: blur(10px);
+  box-shadow: 5px 5px 10px $palette-additional-color;
+  animation-name: appearSummary;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in;
+}
+
+@keyframes appearSummary {
+  to {
+    opacity: 1;
+  }
+}

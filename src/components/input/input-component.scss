@@ -1,16 +1,22 @@
+@import './../../App.scss';
+
 .input-container {
   display: flex;
   gap: 10px;
   align-items: center;
   justify-content: center;
   width: fit-content;
+  height: 20px;
   background-color: transparent;
   padding: 10px;
   label {
     text-transform: capitalize;
     font-weight: 500;
+    min-width: 110px;
   }
   input[type='text'] {
-    background-color: rgb(210, 205, 205);
+    border-bottom: 1px solid $palette-additional-color;
+    padding: 1px;
+    box-sizing: border-box;
   }
 }

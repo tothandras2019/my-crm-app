@@ -11,7 +11,7 @@
   }
 
   .indicator-percentage {
-    position: fixed;
+    position: absolute;
     width: fit-content;
     color: $palette-main-color;
     top: 50%;

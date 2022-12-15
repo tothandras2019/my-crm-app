@@ -11,13 +11,13 @@ import { ProductContextProvider } from './DATASTORE/products-reducer'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
-  <React.StrictMode>
-    <ProductContextProvider>
-      <CustomerContextProvider>
-        <App />
-      </CustomerContextProvider>
-    </ProductContextProvider>
-  </React.StrictMode>,
+  // <React.StrictMode>
+  <ProductContextProvider>
+    <CustomerContextProvider>
+      <App />
+    </CustomerContextProvider>
+  </ProductContextProvider>,
+  // </React.StrictMode>,
 )
 
 // If you want to start measuring performance in your app, pass a function

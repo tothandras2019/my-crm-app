@@ -1,0 +1,12 @@
+@import './../../../../App.scss';
+
+.product-items {
+  color: $palette-main-color;
+  tab-size: 2;
+  text-align: center;
+  width: fit-content;
+  strong {
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+}

@@ -1,9 +1,11 @@
-import { createContext, Dispatch, SetStateAction, useReducer } from 'react'
+import { createContext, Dispatch, SetStateAction, useReducer, useState } from 'react'
 import { InitCustomers } from './data/contract-data'
+import CONTRACTS from './../DATASTORE/data/contracts.json'
+import { InitCustomersType } from './data-types/data-types'
 
 //REDUCER
 export type CustomersArrayType = typeof InitCustomers[]
-export const InitCustomersArray: CustomersArrayType = [InitCustomers]
+const CustomersArray: CustomersArrayType = [...CONTRACTS]
 
 enum ACTION_TYPE {
   ADDCUSTOMER = 'ADD/CUSTOMER',
@@ -16,7 +18,7 @@ type ActionType = {
   payload: typeof InitCustomers
 }
 
-const ContactReducer = (state = InitCustomersArray, action: ActionType) => {
+const ContactReducer = (state = CustomersArray, action: ActionType) => {
   const { type, payload } = action
 
   switch (type) {
@@ -35,6 +37,7 @@ const ContactReducer = (state = InitCustomersArray, action: ActionType) => {
       const removedCustomer = state.filter((customer) => customer.id !== payload.id)
       return removedCustomer
     }
+
     default: {
       return state
     }
@@ -43,13 +46,22 @@ const ContactReducer = (state = InitCustomersArray, action: ActionType) => {
 
 type DispatchType = Dispatch<ActionType>
 
-export const CustomerContext = createContext<{ customers: typeof InitCustomers[]; dispatch: DispatchType }>({
-  customers: InitCustomersArray,
+export const CustomerContext = createContext<{
+  customers: InitCustomersType[]
+  dispatch: DispatchType
+  active: InitCustomersType | null
+  setActive: Dispatch<InitCustomersType | null>
+}>({
+  customers: CustomersArray,
   dispatch: ({ type, payload }) => InitCustomers,
+  active: InitCustomers,
+  setActive: () => InitCustomers,
 })
 
+// export const ActiveContext = createContext<{ customer: InitCustomersType | null }>({ customer: null })
 export const CustomerContextProvider = ({ children }: { children: any }): JSX.Element => {
-  const [customers, dispatch] = useReducer(ContactReducer, InitCustomersArray)
+  const [customers, dispatch] = useReducer(ContactReducer, CustomersArray)
+  const [active, setActive] = useState<InitCustomersType | null>(null)
 
-  return <CustomerContext.Provider value={{ customers, dispatch }}>{children}</CustomerContext.Provider>
+  return <CustomerContext.Provider value={{ customers, dispatch, active, setActive }}>{children}</CustomerContext.Provider>
 }

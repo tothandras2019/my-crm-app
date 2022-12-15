@@ -6,11 +6,12 @@ import { useCallback, useEffect, useState } from 'react'
  * @param value 'example: 0.15'
  * @returns nothing
  */
-export const Indicator = ({ value, color = 'blue', coords }: { value: number; color?: string; coords: { X: number; Y: number } }): JSX.Element => {
+export const Indicator = ({ value, color = 'blue', coords }: { value: number; color?: string; coords?: { X: number; Y: number } }): JSX.Element => {
   const [percet, setPercent] = useState(0)
   const [max, setMax] = useState(0)
   const [id, setId] = useState<NodeJS.Timer | number | undefined>(undefined)
   const FULLPERCENT = 250
+  const extraTranslations = 30
   let intervalID: NodeJS.Timer | number | undefined = undefined
   const timerCallback = useCallback(() => {
     if (intervalID) return
@@ -19,9 +20,10 @@ export const Indicator = ({ value, color = 'blue', coords }: { value: number; co
   }, [value])
 
   useEffect(() => {
+    console.log(value)
     setMax(FULLPERCENT * value)
     timerCallback()
-  }, [])
+  }, [value])
 
   useEffect(() => {
     if (percet <= max) return
@@ -30,7 +32,10 @@ export const Indicator = ({ value, color = 'blue', coords }: { value: number; co
   }, [percet])
 
   return (
-    <div className={`indicator-container tooltip`} style={{ transform: `translate(${coords.X}px, ${coords.Y}px)` }}>
+    <div
+      className={`indicator-container tooltip`}
+      style={coords ? { transform: `translate(${coords.X}px, ${coords.Y + extraTranslations}px)` } : { position: 'relative' }}
+    >
       <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' width='140' height='140'>
         <circle
           strokeDasharray={FULLPERCENT}

@@ -1,6 +1,6 @@
 #root {
   background-color: rgb(196, 240, 238);
-  color: rgb(196, 240, 238);
+  color: rgb(1, 45, 81);
   min-height: 100vh;
 }
 
@@ -13,7 +13,7 @@
   stroke: rgb(53, 198, 193);
 }
 .indicator-container .indicator-percentage {
-  position: fixed;
+  position: absolute;
   width: fit-content;
   color: rgb(1, 45, 81);
   top: 50%;

@@ -1,6 +1,6 @@
 export type GeneralType = { [key: string]: string | number | null | undefined }
 export type SocialType = { media: string; link: string }
-export type ContractType = { total: number; achieved: number }
+export type ContractType = { total: number }
 export type ContactsType = { name: string; position: string; email: string }
 
 export type StatusType = { lifecycleState: string; leadState: string }

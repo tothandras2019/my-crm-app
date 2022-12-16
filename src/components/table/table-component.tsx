@@ -116,8 +116,8 @@ export const Table = ({ customers }: { customers: InitCustomersType[] }): JSX.El
               onMouseLeave={handleMouseLeaveToContract}
             >
               <p>{formatter.format(contract.total)}</p>
-              <p>{formatter.format(contract.achieved)}</p>
-              {showContract && showContractTooltip && <Indicator value={contract.achieved / contract.total} coords={toolTipPosition} />}
+              <p>{formatter.format(summOrders)}</p>
+              {/* {showContract && showContractTooltip && <Indicator value={contract.achieved / contract.total} coords={toolTipPosition} />} */}
             </div>
             <p>{subscribed.products.length}</p>
             <div
@@ -128,7 +128,7 @@ export const Table = ({ customers }: { customers: InitCustomersType[] }): JSX.El
               onMouseLeave={handleMouseLeaveToSummary}
             >
               <p>{formatter.format(summOrders)}</p>
-              {showAmount && showSummaryTooltip && <SummaryDetails coords={toolTipPosition} items={subscribed.products} />}
+              {/* {showAmount && showSummaryTooltip && <SummaryDetails coords={toolTipPosition} items={subscribed.products} />} */}
             </div>
           </div>
         )

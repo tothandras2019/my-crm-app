@@ -2,8 +2,10 @@
 
 .table-container {
   color: $palette-main-color;
-  width: 80%;
-  box-shadow: 10px 10px 15px $palette-main-color;
+  width: 100%;
+  box-shadow: 5px 5px 5px $palette-main-color;
+  border: 2px solid $palette-main-color;
+  border-radius: 10px;
   padding: 3px;
   background-color: $palette-main-color;
   cursor: pointer;
@@ -26,7 +28,7 @@
 
   p {
     min-width: 150px;
-    text-align: start;
+    text-align: flex-start;
     transition: 0.5s;
   }
   .table-container-header {

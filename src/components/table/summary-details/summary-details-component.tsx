@@ -9,6 +9,7 @@ export const SummaryDetails = ({ coords, items }: { coords?: { X: number; Y: num
   const { active } = useContext(CustomerContext)
   const [productItems, setProductItems] = useState<ProductType[]>([])
   useEffect(() => {
+    setProductItems([])
     if (!active) return
     const productArray = Object.values(active.subscribed.products)
     setProductItems(productArray)
@@ -25,7 +26,7 @@ export const SummaryDetails = ({ coords, items }: { coords?: { X: number; Y: num
           : { position: 'relative' }
       }
     >
-      {productItems.length !== 0 ? <ProductsMapping products={productItems} /> : <ProductsMapping products={items} />}
+      {<ProductsMapping products={productItems} />}
     </div>
   )
 }

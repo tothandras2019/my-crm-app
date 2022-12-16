@@ -1,3 +1,6 @@
 .indicator-detailed {
   display: flex;
+  width: 80%;
+  justify-content: flex-start;
+  gap: 20px;
 }/*# sourceMappingURL=indicator-detailerd-component.css.map */

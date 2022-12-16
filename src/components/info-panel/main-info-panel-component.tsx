@@ -11,7 +11,7 @@ import { HeadInfoPanel } from './head-info-panel/head-info-panel-component'
 export const MainInfoPannel = ({ customer }: { customer: InitCustomersType }) => {
   const { id, companyName, access, address, status, contract, social, contacts, subscribed, period } = customer
   const { lifecycleState, leadState } = status
-  const { total, achieved } = contract
+  const { total } = contract
 
   return (
     <div className='info-panel-card'>

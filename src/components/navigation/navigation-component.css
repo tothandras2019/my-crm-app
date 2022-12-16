@@ -1,0 +1,18 @@
+#root {
+  background-color: rgb(196, 240, 238);
+  color: rgb(1, 45, 81);
+  min-height: 100vh;
+}
+
+nav {
+  position: fixed;
+  min-width: 100px;
+  height: 100vh;
+  background-color: rgb(1, 45, 81);
+  color: rgb(196, 240, 238);
+  z-index: 1000;
+  transition: 0.5s;
+}
+nav.hide {
+  background-color: transparent;
+}/*# sourceMappingURL=navigation-component.css.map */

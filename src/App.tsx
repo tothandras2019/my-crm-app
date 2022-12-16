@@ -6,6 +6,7 @@ import { Input } from './components/input/input-component'
 import { LinkButton } from './components/tools/button/link/link-button-component'
 import { Menu } from './components/menu/rotating-menu/menu-component'
 import { Section } from './components/section/section-component'
+import { Navigation } from './components/navigation/navigation-component'
 
 function App() {
   const { customers, dispatch } = useContext(CustomerContext)
@@ -35,6 +36,7 @@ function App() {
 
   return (
     <div className='App'>
+      <Navigation />
       <Section />
       {/* <Cards customers={customer} />
       <Input label='input' />

@@ -1,0 +1,16 @@
+.dashboard-container {
+  height: 50%;
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  .actual-content-container {
+    width: 100%;
+  }
+
+  .table-content-container {
+    width: 100%;
+  }
+}

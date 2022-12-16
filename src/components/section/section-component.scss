@@ -3,7 +3,9 @@
 section {
   color: $palette-main-color;
   position: relative;
-  width: 100%;
+  width: 90%;
   height: 100vh;
+  padding-left: 100px;
   background-color: transparent;
+  z-index: 0;
 }

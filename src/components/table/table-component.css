@@ -1,13 +1,15 @@
 #root {
   background-color: rgb(196, 240, 238);
-  color: rgb(196, 240, 238);
+  color: rgb(1, 45, 81);
   min-height: 100vh;
 }
 
 .table-container {
   color: rgb(1, 45, 81);
-  width: 80%;
-  box-shadow: 10px 10px 15px rgb(1, 45, 81);
+  width: 100%;
+  box-shadow: 5px 5px 5px rgb(1, 45, 81);
+  border: 2px solid rgb(1, 45, 81);
+  border-radius: 10px;
   padding: 3px;
   background-color: rgb(1, 45, 81);
   cursor: pointer;
@@ -27,7 +29,7 @@
 }
 .table-container p {
   min-width: 150px;
-  text-align: start;
+  text-align: flex-start;
   transition: 0.5s;
 }
 .table-container .table-container-header {

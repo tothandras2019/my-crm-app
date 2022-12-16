@@ -1,6 +1,6 @@
 #root {
   background-color: rgb(196, 240, 238);
-  color: rgb(196, 240, 238);
+  color: rgb(1, 45, 81);
   min-height: 100vh;
 }
 
@@ -11,13 +11,14 @@
   min-height: 100px;
   min-width: 100px;
   font-size: larger;
-  background-color: rgb(12, 65, 99);
   border-radius: 50%;
   transition: 0.8s;
+  cursor: pointer;
 }
 .menu-link p {
   font-size: small;
   text-align: center;
+  width: 70px;
   font-weight: 500;
   letter-spacing: 1.1px;
   transition: 0.8s;

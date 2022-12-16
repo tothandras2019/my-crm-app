@@ -1,6 +1,6 @@
 #root {
   background-color: rgb(196, 240, 238);
-  color: rgb(196, 240, 238);
+  color: rgb(1, 45, 81);
   min-height: 100vh;
 }
 
@@ -19,7 +19,6 @@
 }
 .menu-container .menu-link-container {
   border-radius: 50%;
-  background-color: rgb(1, 45, 81);
   transition: 0.8s;
 }
 .menu-container .menu-link-container.close {

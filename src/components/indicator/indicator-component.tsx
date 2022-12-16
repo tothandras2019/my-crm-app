@@ -8,27 +8,38 @@ import { useCallback, useEffect, useState } from 'react'
  */
 export const Indicator = ({ value, color = 'blue', coords }: { value: number; color?: string; coords?: { X: number; Y: number } }): JSX.Element => {
   const [percet, setPercent] = useState(0)
-  const [max, setMax] = useState(0)
+  const [stopValue, setStopValue] = useState(0)
   const [id, setId] = useState<NodeJS.Timer | number | undefined>(undefined)
   const FULLPERCENT = 250
   const extraTranslations = 30
   let intervalID: NodeJS.Timer | number | undefined = undefined
   const timerCallback = useCallback(() => {
     if (intervalID) return
-    intervalID = setInterval(() => setPercent((prev) => prev + 1), 5)
+    intervalID = setInterval(() => {
+      setPercent((prev) => prev + 1)
+    }, 5)
     setId(intervalID)
   }, [value])
 
   useEffect(() => {
-    console.log(value)
-    setMax(FULLPERCENT * value)
+    setStopValue(FULLPERCENT * value)
     timerCallback()
+    return () => {
+      console.log('return')
+      setPercent(0)
+    }
   }, [value])
 
   useEffect(() => {
-    if (percet <= max) return
-    if (!id) return
-    clearInterval(id)
+    return () => {
+      if (percet >= stopValue) {
+        if (!id) return
+        for (let i = 0; i <= id; i++) {
+          console.log('clear', percet <= stopValue, i, id)
+          clearInterval(id)
+        }
+      }
+    }
   }, [percet])
 
   return (

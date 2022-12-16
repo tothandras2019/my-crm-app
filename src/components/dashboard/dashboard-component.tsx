@@ -1,6 +1,6 @@
+import './dashboard-component.css'
 import { Fragment, useContext } from 'react'
 import { Table } from '../table/table-component'
-import './dashboard-component.css'
 import { CustomerContext } from '../../DATASTORE/contacts-reducer'
 import { Indicator } from '../indicator/indicator-component'
 import { IndicatorDetailed } from '../indicator-detailed/indicator-detailerd-component'
@@ -8,7 +8,7 @@ import { IndicatorDetailed } from '../indicator-detailed/indicator-detailerd-com
 export const Dashboard = () => {
   const { customers } = useContext(CustomerContext)
   return (
-    <Fragment>
+    <div className='dashboard-container'>
       <h1>Company Name</h1>
       <div className='actual-content-container'>
         <IndicatorDetailed />
@@ -16,6 +16,6 @@ export const Dashboard = () => {
       <div className='table-content-container'>
         <Table customers={customers} />
       </div>
-    </Fragment>
+    </div>
   )
 }

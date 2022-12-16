@@ -1,6 +1,6 @@
 #root {
   background-color: rgb(196, 240, 238);
-  color: rgb(196, 240, 238);
+  color: rgb(1, 45, 81);
   min-height: 100vh;
 }
 
@@ -11,7 +11,7 @@
   transform: translate(-50%, -50%);
   min-width: 100px;
   min-height: 100px;
-  border-radius: 50%;
+  border-bottom-right-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;

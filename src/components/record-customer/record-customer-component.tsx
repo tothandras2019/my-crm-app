@@ -37,7 +37,6 @@ export const RecordCustomers = () => {
       },
       contract: {
         total: 0,
-        achieved: 0,
       },
       subscribed: {
         products: [],

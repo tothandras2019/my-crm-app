@@ -10,7 +10,6 @@ export const IndicatorDetailed = () => {
     if (!active) return
     const summary = active.subscribed.products.reduce((acc, value) => (acc += value.quantity * value.price), 0)
     const percent = summary / active.contract.total
-    console.log(percent)
     setValue(percent)
   }, [active])
   return (

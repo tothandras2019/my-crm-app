@@ -1,0 +1,14 @@
+@import './../../App.scss';
+
+nav {
+  position: fixed;
+  min-width: 100px;
+  height: 100vh;
+  background-color: $palette-main-color;
+  color: $palette-primary-color;
+  z-index: 1000;
+  transition: 0.5s;
+  &.hide {
+    background-color: transparent;
+  }
+}

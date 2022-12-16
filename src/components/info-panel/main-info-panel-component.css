@@ -1,3 +1,15 @@
+#root {
+  background-color: rgb(196, 240, 238);
+  color: rgb(1, 45, 81);
+  min-height: 100vh;
+}
+
 .info-panel-card {
   position: relative;
+  max-width: 300px;
+  margin: 20px;
+  padding: 20px;
+  height: fit-content;
+  background-color: rgb(1, 45, 81);
+  color: rgb(196, 240, 238);
 }/*# sourceMappingURL=main-info-panel-component.css.map */

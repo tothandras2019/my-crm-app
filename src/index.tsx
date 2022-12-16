@@ -8,15 +8,18 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { CustomerContextProvider } from './DATASTORE/contacts-reducer'
 import { ProductContextProvider } from './DATASTORE/products-reducer'
+import { BrowserRouter } from 'react-router-dom'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   // <React.StrictMode>
-  <ProductContextProvider>
-    <CustomerContextProvider>
-      <App />
-    </CustomerContextProvider>
-  </ProductContextProvider>,
+  <BrowserRouter>
+    <ProductContextProvider>
+      <CustomerContextProvider>
+        <App />
+      </CustomerContextProvider>
+    </ProductContextProvider>
+  </BrowserRouter>,
   // </React.StrictMode>,
 )
 

@@ -1,3 +1,11 @@
+@import './../../App.scss';
+
 .info-panel-card {
   position: relative;
+  max-width: 300px;
+  margin: 20px;
+  padding: 20px;
+  height: fit-content;
+  background-color: $palette-main-color;
+  color: $palette-primary-color;
 }

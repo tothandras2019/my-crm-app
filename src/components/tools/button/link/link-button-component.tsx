@@ -1,4 +1,5 @@
 import './link-button-component.css'
+import { useNavigate } from 'react-router-dom'
 
 export const LinkButton = ({
   value = 'empty',
@@ -9,11 +10,13 @@ export const LinkButton = ({
   rotating?: number
   hide?: boolean
 }): JSX.Element => {
+  const navigateTo = useNavigate()
+  const handleNavigation = () => {
+    navigateTo(value)
+  }
   return (
-    <div className={`menu-link ${hide ? 'hide' : ''}`}>
+    <div className={`menu-link ${hide ? 'hide' : ''}`} onClick={handleNavigation}>
       <p>{value}</p>
     </div>
   )
 }
-
-// style={{ transform: `rotateZ(${rotating}deg) translateY(210px)` }}

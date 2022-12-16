@@ -18,7 +18,7 @@ export const InfoPanel = ({ title, address }: { title: string; address: AddressT
         <OpenCloseButton changeValue={isShowDetails ? 'hide' : 'show'} handler={handlerShow} />
       </div>
       {address.map((value, i) => (
-        <div key={`info-${value}--${i}`} className={`info-panel ${isShowDetails ? 'show' : ''}`}>
+        <div key={`info-${value}--${i}`} className={`info-panel-details ${isShowDetails ? 'show' : ''}`}>
           {Object.entries(value).map(([key, element]) => {
             return <p key={`${key}--${i}`}>{`${key}: ${element}`}</p>
           })}

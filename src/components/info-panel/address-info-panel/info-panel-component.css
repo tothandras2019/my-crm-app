@@ -3,20 +3,20 @@
   justify-content: space-between;
   align-items: center;
 }
-.info-panel .info-panel {
+.info-panel .info-panel-details {
   height: 0;
   transition: 1s;
 }
-.info-panel .info-panel p {
+.info-panel .info-panel-details p {
   font-size: 0;
   height: 0;
   padding-left: 10px;
 }
-.info-panel .info-panel.show {
+.info-panel .info-panel-details.show {
   height: fit-content;
   transition: 1s;
 }
-.info-panel .info-panel.show p {
+.info-panel .info-panel-details.show p {
   font-size: 18px;
   height: fit-content;
   transition: 0.5s;

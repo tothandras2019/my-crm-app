@@ -9,7 +9,7 @@ export const Dashboard = () => {
   const { customers } = useContext(CustomerContext)
   return (
     <div className='dashboard-container'>
-      <h1>Company Name</h1>
+      <h1>Dashboard</h1>
       <div className='actual-content-container'>
         <IndicatorDetailed />
       </div>

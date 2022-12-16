@@ -7,6 +7,9 @@ import { LinkButton } from './components/tools/button/link/link-button-component
 import { Menu } from './components/menu/rotating-menu/menu-component'
 import { Section } from './components/section/section-component'
 import { Navigation } from './components/navigation/navigation-component'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Dashboard } from './components/dashboard/dashboard-component'
+import { RecordCustomers } from './components/record-customer/record-customer-component'
 
 function App() {
   const { customers, dispatch } = useContext(CustomerContext)
@@ -37,10 +40,13 @@ function App() {
   return (
     <div className='App'>
       <Navigation />
-      <Section />
-      {/* <Cards customers={customer} />
-      <Input label='input' />
-      <RotatingMenu /> */}
+      <Routes>
+        <Route path={`/home`} element={<Section Element={<Cards customers={customers} />} />} />
+        <Route path={`/dashboard`} element={<Section Element={<Dashboard />} />} />
+        <Route path={`/new customer`} element={<Section Element={<RecordCustomers />} />} />
+      </Routes>
+      {/* <Input label='input' />
+      <RotatingMenu />  */}
     </div>
   )
 }

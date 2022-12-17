@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Outlet } from 'react-router-dom'
 import { Menu } from '../menu/rotating-menu/menu-component'
 import { LinkButton } from '../tools/button/link/link-button-component'
 import './navigation-component.css'
@@ -9,8 +10,13 @@ export const Navigation = (): JSX.Element => {
   const handleHideNavigation = () => setHide((state) => !state)
 
   return (
-    <nav className={`${hide ? 'hide' : ''}`}>
-      <Menu items={navigationItems} hideElement={{ value: hide, setter: setHide }} />
-    </nav>
+    <>
+      <nav className={`${hide ? 'hide' : ''}`}>
+        <Menu items={navigationItems} hideElement={{ value: hide, setter: setHide }} />
+      </nav>
+      <section>
+        <Outlet />
+      </section>
+    </>
   )
 }

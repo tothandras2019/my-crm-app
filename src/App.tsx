@@ -39,14 +39,13 @@ function App() {
 
   return (
     <div className='App'>
-      <Navigation />
       <Routes>
-        <Route path={`/home`} element={<Section Element={<Cards customers={customers} />} />} />
-        <Route path={`/dashboard`} element={<Section Element={<Dashboard />} />} />
-        <Route path={`/new customer`} element={<Section Element={<RecordCustomers />} />} />
+        <Route path={`/`} element={<Navigation />}>
+          <Route path={`/`} element={<Cards customers={customers} />} />
+          <Route path={`/dashboard`} element={<Section Element={<Dashboard />} />} />
+          <Route path={`/new customer`} element={<Section Element={<RecordCustomers />} />} />
+        </Route>
       </Routes>
-      {/* <Input label='input' />
-      <RotatingMenu />  */}
     </div>
   )
 }

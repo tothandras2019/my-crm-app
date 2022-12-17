@@ -1,5 +1,6 @@
 import './indicator-component.css'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState, useContext } from 'react'
+import { CustomerContext } from './../../DATASTORE/contacts-reducer'
 
 /**
  *
@@ -7,40 +8,39 @@ import { useCallback, useEffect, useState } from 'react'
  * @returns nothing
  */
 export const Indicator = ({ value, color = 'blue', coords }: { value: number; color?: string; coords?: { X: number; Y: number } }): JSX.Element => {
-  const [percet, setPercent] = useState(0)
   const [stopValue, setStopValue] = useState(0)
   const [id, setId] = useState<NodeJS.Timer | number | undefined>(undefined)
+  const { percent, setPercent } = useContext(CustomerContext)
   const FULLPERCENT = 250
   const extraTranslations = 30
   let intervalID: NodeJS.Timer | number | undefined = undefined
+
+  const ResetPercent = () => setPercent(0)
   const timerCallback = useCallback(() => {
     if (intervalID) return
-    intervalID = setInterval(() => {
-      setPercent((prev) => prev + 1)
-    }, 5)
+    intervalID = setInterval(() => setPercent((prevState) => prevState + 1), 5)
     setId(intervalID)
   }, [value])
 
+  const ClearAllInterval = () => {
+    if (!id) return
+    for (let i = 0; i <= id; i++) {
+      clearInterval(id)
+    }
+  }
+
   useEffect(() => {
+    ClearAllInterval()
     setStopValue(FULLPERCENT * value)
     timerCallback()
-    return () => {
-      console.log('return')
-      setPercent(0)
-    }
+    return ResetPercent()
   }, [value])
 
   useEffect(() => {
     return () => {
-      if (percet >= stopValue) {
-        if (!id) return
-        for (let i = 0; i <= id; i++) {
-          console.log('clear', percet <= stopValue, i, id)
-          clearInterval(id)
-        }
-      }
+      if (percent >= stopValue) ClearAllInterval()
     }
-  }, [percet])
+  }, [percent])
 
   return (
     <div
@@ -51,7 +51,7 @@ export const Indicator = ({ value, color = 'blue', coords }: { value: number; co
         <circle
           strokeDasharray={FULLPERCENT}
           fill='transparent'
-          strokeDashoffset={FULLPERCENT - percet}
+          strokeDashoffset={FULLPERCENT - percent}
           strokeLinecap='round'
           strokeWidth='5'
           cx='50'
@@ -60,7 +60,7 @@ export const Indicator = ({ value, color = 'blue', coords }: { value: number; co
           id='circle'
         />
       </svg>
-      <h3 className='indicator-percentage'>{Math.trunc((percet / FULLPERCENT) * 100)}%</h3>
+      <h3 className='indicator-percentage'>{Math.trunc((percent / FULLPERCENT) * 100)}%</h3>
     </div>
   )
 }

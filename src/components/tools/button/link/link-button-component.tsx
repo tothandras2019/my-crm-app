@@ -12,7 +12,8 @@ export const LinkButton = ({
 }): JSX.Element => {
   const navigateTo = useNavigate()
   const handleNavigation = () => {
-    navigateTo(value)
+    const navTo = value === 'home' ? '/' : value
+    navigateTo(navTo)
   }
   return (
     <div className={`menu-link ${hide ? 'hide' : ''}`} onClick={handleNavigation}>

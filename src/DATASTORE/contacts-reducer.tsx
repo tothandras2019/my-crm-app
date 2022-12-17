@@ -51,17 +51,22 @@ export const CustomerContext = createContext<{
   dispatch: DispatchType
   active: InitCustomersType | null
   setActive: Dispatch<InitCustomersType | null>
+  percent: number
+  setPercent: Dispatch<SetStateAction<number>>
 }>({
   customers: CustomersArray,
   dispatch: ({ type, payload }) => InitCustomers,
   active: InitCustomers,
   setActive: () => InitCustomers,
+  percent: 0,
+  setPercent: () => 0,
 })
 
 // export const ActiveContext = createContext<{ customer: InitCustomersType | null }>({ customer: null })
 export const CustomerContextProvider = ({ children }: { children: any }): JSX.Element => {
   const [customers, dispatch] = useReducer(ContactReducer, CustomersArray)
   const [active, setActive] = useState<InitCustomersType | null>(null)
+  const [percent, setPercent] = useState<number>(0)
 
-  return <CustomerContext.Provider value={{ customers, dispatch, active, setActive }}>{children}</CustomerContext.Provider>
+  return <CustomerContext.Provider value={{ customers, dispatch, active, setActive, percent, setPercent }}>{children}</CustomerContext.Provider>
 }

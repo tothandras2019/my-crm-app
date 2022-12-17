@@ -1,0 +1,23 @@
+@import './../../../../App.scss';
+
+input[type='submit'],
+input[type='button'] {
+  padding: 15px;
+  min-width: 150px;
+  border: 2px solid $palette-main-color;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px $palette-main-color;
+
+  background-color: $palette-main-color;
+  color: $palette-primary-color;
+  text-transform: capitalize;
+
+  transition: 0.5s;
+  &:hover {
+    letter-spacing: 1.2px;
+  }
+  &:active {
+    color: $palette-main-color;
+    background-color: $palette-primary-color;
+  }
+}

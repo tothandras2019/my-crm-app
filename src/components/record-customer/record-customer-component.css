@@ -8,24 +8,36 @@ main {
   color: rgb(1, 45, 81);
 }
 main form {
-  width: fit-content;
   padding: 5px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: 800px;
+  max-width: 850px;
   height: 600px;
+  gap: 15px;
 }
 main form div {
   height: fit-content;
+  width: 400px;
 }
 main form div fieldset {
   margin: 10px 5px;
-  border: 1px solid rgb(1, 45, 81);
+  border: 2px solid rgb(1, 45, 81);
+  border-radius: 10px;
+  padding: 15px 5px;
+  box-shadow: 3px 3px 5px rgb(1, 45, 81);
 }
 main form div fieldset legend {
   margin: 0 10px;
   padding: 0 5px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 1.2px;
+  color: rgb(1, 45, 81);
+  text-shadow: 2px 2px 3px rgb(1, 45, 81);
+}
+main form .button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }/*# sourceMappingURL=record-customer-component.css.map */

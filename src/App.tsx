@@ -42,8 +42,8 @@ function App() {
       <Routes>
         <Route path={`/`} element={<Navigation />}>
           <Route path={`/`} element={<Cards customers={customers} />} />
-          <Route path={`/dashboard`} element={<Section Element={<Dashboard />} />} />
-          <Route path={`/new customer`} element={<Section Element={<RecordCustomers />} />} />
+          <Route path={`/dashboard`} element={<Dashboard />} />
+          <Route path={`/new customer`} element={<RecordCustomers />} />
         </Route>
       </Routes>
     </div>

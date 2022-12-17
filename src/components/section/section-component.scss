@@ -8,4 +8,10 @@ section {
   padding-left: 100px;
   background-color: transparent;
   z-index: 0;
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }

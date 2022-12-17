@@ -12,4 +12,10 @@ section {
   padding-left: 100px;
   background-color: transparent;
   z-index: 0;
+}
+section main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }/*# sourceMappingURL=section-component.css.map */

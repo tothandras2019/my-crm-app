@@ -1,11 +1,12 @@
 .dashboard-container {
-  height: 50%;
-  width: 80%;
+  height: 80%;
+  width: 95%;
   margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 20px;
   .actual-content-container {
     width: 100%;
   }

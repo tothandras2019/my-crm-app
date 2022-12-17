@@ -3,6 +3,7 @@ import { Input } from '../input/input-component'
 import { SyntheticEvent, useContext } from 'react'
 import { InitCustomersType, LeadEnum, LifecicyleEnum, ProductCategoryEnum } from '../../DATASTORE/data-types/data-types'
 import { CustomerContext } from './../../DATASTORE/contacts-reducer'
+import { CustomButton } from '../tools/button/submit/custom-button-component'
 
 export const RecordCustomers = () => {
   const { dispatch } = useContext(CustomerContext)
@@ -87,7 +88,11 @@ export const RecordCustomers = () => {
             <Input label='link' />
           </fieldset>
         </div>
-        <input type='submit' value='press send' />
+        <div className='button-container'>
+          <CustomButton />
+          <CustomButton type={'button'} value={'delete'} />
+          <CustomButton type={'button'} value={'cancel'} />
+        </div>
       </form>
     </main>
   )

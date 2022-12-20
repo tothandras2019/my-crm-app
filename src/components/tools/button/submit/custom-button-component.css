@@ -6,8 +6,9 @@
 
 input[type=submit],
 input[type=button] {
-  padding: 15px;
-  min-width: 150px;
+  padding: 10px;
+  min-width: 100px;
+  margin: 5px;
   border: 2px solid rgb(1, 45, 81);
   border-radius: 5px;
   box-shadow: 5px 5px 5px rgb(1, 45, 81);

@@ -1,7 +1,9 @@
 import { useState } from 'react'
 
+const pathColor: string = '#317d65'
+
 export const Lifecycle = () => {
-  const [fill, setFill] = useState({ color: 'yellow' })
+  const [fill, setFill] = useState({ color: pathColor })
   return (
     <svg xmlns='http://www.w3.org/2000/svg' height='24' width='24'>
       <path
@@ -13,7 +15,7 @@ export const Lifecycle = () => {
 }
 
 export const Status = () => {
-  const [fill, setFill] = useState({ color: 'yellow' })
+  const [fill, setFill] = useState({ color: pathColor })
 
   return (
     <svg xmlns='http://www.w3.org/2000/svg' height='24' width='24'>
@@ -26,7 +28,7 @@ export const Status = () => {
 }
 
 export const IdNo = () => {
-  const [fill, setFill] = useState({ color: 'yellow' })
+  const [fill, setFill] = useState({ color: pathColor })
 
   return (
     <svg xmlns='http://www.w3.org/2000/svg' height='24' width='24'>
@@ -39,7 +41,7 @@ export const IdNo = () => {
 }
 
 export const ContractIcon = () => {
-  const [fill, setFill] = useState({ color: 'yellow' })
+  const [fill, setFill] = useState({ color: pathColor })
 
   return (
     <svg xmlns='http://www.w3.org/2000/svg' height='24' width='24'>

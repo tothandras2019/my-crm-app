@@ -47,20 +47,23 @@ export const Indicator = ({ value, color = 'blue', coords }: { value: number; co
       className={`indicator-container tooltip`}
       style={coords ? { transform: `translate(${coords.X}px, ${coords.Y + extraTranslations}px)` } : { position: 'relative' }}
     >
-      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' width='140' height='140'>
-        <circle
-          strokeDasharray={FULLPERCENT}
-          fill='transparent'
-          strokeDashoffset={FULLPERCENT - percent}
-          strokeLinecap='round'
-          strokeWidth='5'
-          cx='50'
-          cy='50'
-          r='40'
-          id='circle'
-        />
-      </svg>
-      <h3 className='indicator-percentage'>{Math.trunc((percent / FULLPERCENT) * 100)}%</h3>
+      <div className='indicator-container-details'>
+        <p>Achievements</p>
+        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' width='140' height='140'>
+          <circle
+            strokeDasharray={FULLPERCENT}
+            fill='transparent'
+            strokeDashoffset={FULLPERCENT - percent}
+            strokeLinecap='round'
+            strokeWidth='5'
+            cx='50'
+            cy='50'
+            r='40'
+            id='circle'
+          />
+        </svg>
+        <h3 className='indicator-percentage'>{Math.trunc((percent / FULLPERCENT) * 100)}%</h3>
+      </div>
     </div>
   )
 }

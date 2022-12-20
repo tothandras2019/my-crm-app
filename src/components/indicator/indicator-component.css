@@ -5,9 +5,8 @@
 }
 
 .indicator-container {
-  position: relative;
-  width: fit-content;
-  height: fit-content;
+  min-width: 170px;
+  min-height: 170px;
   border: 2px solid rgb(1, 45, 81);
   border-radius: 10px;
   padding: 15px;
@@ -16,15 +15,18 @@
 .indicator-container svg circle {
   stroke: rgb(53, 198, 193);
 }
-.indicator-container .indicator-percentage {
+.indicator-container .indicator-container-details {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.indicator-container .indicator-container-details .indicator-percentage {
   position: absolute;
   width: fit-content;
   color: rgb(1, 45, 81);
-  top: 50%;
+  top: 45%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 0);
   padding-bottom: 15px;
-}
-.indicator-container.tooltip {
-  position: absolute;
 }/*# sourceMappingURL=indicator-component.css.map */

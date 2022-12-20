@@ -3,16 +3,15 @@
 // $mod-color: rgb($palette-secondary-color, 0.4);
 
 .summary-details-component {
-  position: fixed;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  background-color: $palette-primary-color;
-  opacity: 0;
   min-width: 300px;
+  background-color: $palette-primary-color;
   border: 2px solid $palette-main-color;
   border-radius: 10px;
   box-shadow: 5px 5px 5px $palette-additional-color;
+  opacity: 0;
   animation-name: appearSummary;
   animation-duration: 0.3s;
   animation-fill-mode: forwards;

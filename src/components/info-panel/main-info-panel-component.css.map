@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["../../App.scss","main-info-panel-component.scss"],"names":[],"mappings":"AAMA;EACE,kBANsB;EAOtB,OARmB;EASnB;;;ACPF;EACE;EACA;EACA;EACA;EACA;EACA,kBDRmB;ECSnB,ODRsB","file":"main-info-panel-component.css"}
+{"version":3,"sourceRoot":"","sources":["../../App.scss","main-info-panel-component.scss"],"names":[],"mappings":"AAMA;EACE,kBANsB;EAOtB,OARmB;EASnB;;;ACPF;EACE;EACA;EACA;EACA;EACA;EACA,kBDPsB;ECQtB,ODTmB;ECUnB;EACA;EACA","file":"main-info-panel-component.css"}

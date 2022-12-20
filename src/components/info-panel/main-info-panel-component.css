@@ -7,9 +7,12 @@
 .info-panel-card {
   position: relative;
   max-width: 300px;
-  margin: 20px;
-  padding: 20px;
+  margin: 5px;
+  padding: 15px;
   height: fit-content;
-  background-color: rgb(1, 45, 81);
-  color: rgb(196, 240, 238);
+  background-color: rgb(196, 240, 238);
+  color: rgb(1, 45, 81);
+  border-radius: 10px;
+  border: 2px solid rgb(1, 45, 81);
+  box-shadow: 3px 3px 5px rgb(1, 45, 81);
 }/*# sourceMappingURL=main-info-panel-component.css.map */

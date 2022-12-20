@@ -16,16 +16,8 @@ export const SummaryDetails = ({ coords, items }: { coords?: { X: number; Y: num
   }, [active])
 
   return (
-    <div
-      className='summary-details-component'
-      style={
-        coords
-          ? {
-              transform: `translate(${coords.X}px, ${coords.Y + extraTranslations}px)`,
-            }
-          : { position: 'relative' }
-      }
-    >
+    <div className='summary-details-component'>
+      <p>Order details</p>
       {<ProductsMapping products={productItems} />}
     </div>
   )

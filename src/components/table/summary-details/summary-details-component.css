@@ -5,16 +5,15 @@
 }
 
 .summary-details-component {
-  position: fixed;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  background-color: rgb(196, 240, 238);
-  opacity: 0;
   min-width: 300px;
+  background-color: rgb(196, 240, 238);
   border: 2px solid rgb(1, 45, 81);
   border-radius: 10px;
   box-shadow: 5px 5px 5px rgb(12, 65, 99);
+  opacity: 0;
   animation-name: appearSummary;
   animation-duration: 0.3s;
   animation-fill-mode: forwards;

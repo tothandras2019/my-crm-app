@@ -3,9 +3,12 @@
 .info-panel-card {
   position: relative;
   max-width: 300px;
-  margin: 20px;
-  padding: 20px;
+  margin: 5px;
+  padding: 15px;
   height: fit-content;
-  background-color: $palette-main-color;
-  color: $palette-primary-color;
+  background-color: $palette-primary-color;
+  color: $palette-main-color;
+  border-radius: 10px;
+  border: 2px solid $palette-main-color;
+  box-shadow: 3px 3px 5px $palette-main-color;
 }

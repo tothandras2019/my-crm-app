@@ -7,9 +7,10 @@ export const ProductsMapping = ({ products }: { products: ProductType[] }) => {
     <Fragment>
       {products.map(({ name, quantity, price }, i) => (
         <p key={i} style={{ fontSize: '13px' }} className='product-items'>
-          <strong>{name}</strong>
-          <br />
-          qty: {quantity} - price: {formatter.format(price)}
+          <h4>{name}: </h4>
+          <p>
+            qty: {quantity} : price: {formatter.format(price)}
+          </p>
         </p>
       ))}
     </Fragment>

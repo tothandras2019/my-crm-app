@@ -1,37 +1,30 @@
 import { Dispatch, createContext, useReducer } from 'react'
-import { ProductsName, GeneralType } from './data-types/data-types'
+import { ProductsName, GeneralType, ProductType } from './data-types/data-types'
+import { ProductActions } from './products-reducer-actions-types'
 
-const Product: ProductsName = { name: 'transport' }
-const InitaialAvailableProducts: ProductsName[] = [Product]
+export const InitaialAvailableProducts: ProductType[] = []
 
-type ActionType = {
+export type ProductActionType = {
   type: string
-  payload: ProductsName
+  payload: ProductType
 }
-const ProductsReducer = (state = InitaialAvailableProducts, action: ActionType) => {
+export const ProductsReducer = (state = InitaialAvailableProducts, action: ProductActionType) => {
   const { type, payload } = action
 
   switch (type) {
-    case 'ADD/PRODUCT': {
+    case ProductActions.ADD_PRODUCT: {
       return [...state, payload]
     }
+    case ProductActions.MODIFY_PRODUCT: {
+      const productToBeModified = state.find((product) => product.id === payload.id)
+      if (!productToBeModified) return state
 
-    case 'REMOVE/PRODUCT': {
-      const filtered = state.filter((product) => product.name === payload.name)
+      const modifiedProduct = { ...payload, id: productToBeModified.id }
+      const filetereState = state.filter((product) => product.id !== payload.id)
+      return [...filetereState, modifiedProduct]
+    }
+    case ProductActions.DELETE_PRODUCT: {
       return []
     }
   }
-}
-
-type DispatchType = Dispatch<ActionType>
-
-export const ProductContext = createContext<{ product: ProductsName[] | undefined; dispatch: DispatchType }>({
-  product: InitaialAvailableProducts,
-  dispatch: ({ type, payload }) => Product,
-})
-
-export const ProductContextProvider = ({ children }: { children: any }): JSX.Element => {
-  const [product, dispatch] = useReducer(ProductsReducer, InitaialAvailableProducts)
-
-  return <ProductContext.Provider value={{ product, dispatch }}>{children}</ProductContext.Provider>
 }

@@ -13,12 +13,12 @@ enum ACTION_TYPE {
   DELETE = 'DELETE',
 }
 
-type ActionType = {
+export type CustomerActionType = {
   type: string
   payload: typeof InitCustomers
 }
 
-const ContactReducer = (state = CustomersArray, action: ActionType) => {
+export const ContactReducer = (state = CustomersArray, action: CustomerActionType) => {
   const { type, payload } = action
 
   switch (type) {
@@ -44,7 +44,7 @@ const ContactReducer = (state = CustomersArray, action: ActionType) => {
   }
 }
 
-type DispatchType = Dispatch<ActionType>
+type DispatchType = Dispatch<CustomerActionType>
 
 export const CustomerContext = createContext<{
   customers: InitCustomersType[]

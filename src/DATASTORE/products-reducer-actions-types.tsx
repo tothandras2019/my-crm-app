@@ -1,0 +1,5 @@
+export enum ProductActions {
+  ADD_PRODUCT = 'ADD_PRODUCT',
+  MODIFY_PRODUCT = 'MODIFY_PRODUCT',
+  DELETE_PRODUCT = 'DELETE_PRODUCT',
+}

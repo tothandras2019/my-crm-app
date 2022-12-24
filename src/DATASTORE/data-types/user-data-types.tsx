@@ -16,4 +16,4 @@ export const User: UserType = {
 
 export type UsersArray = UserType[]
 
-export const UserInitArray: UsersArray = [User]
+export const UserInitArray: UserType[] = [User]

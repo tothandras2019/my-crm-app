@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 import { ProductType } from '../../../../DATASTORE/data-types/data-types'
-import { formatter } from '../../../../utility/utility'
+import { formatter } from '../../../../utility/number.formatter'
 import './products-mapping-component.css'
 export const ProductsMapping = ({ products }: { products: ProductType[] }) => {
   return (

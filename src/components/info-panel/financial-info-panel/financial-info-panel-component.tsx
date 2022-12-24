@@ -1,5 +1,5 @@
 import { ContractType } from '../../../DATASTORE/data-types/data-types'
-import { formatter } from '../../../utility/utility'
+import { formatter } from '../../../utility/number.formatter'
 
 export const FinancialInfoPanel = ({ contract }: { contract: ContractType }) => {
   return (

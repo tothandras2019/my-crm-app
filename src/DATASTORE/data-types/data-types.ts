@@ -4,7 +4,7 @@ export type ContractType = { total: number }
 export type ContactsType = { name: string; position: string; email: string }
 
 export type StatusType = { lifecycleState: string; leadState: string }
-export type ProductType = { category: string; name: string; quantity: number; price: number }
+export type ProductType = { id: number; category: string; name: string; quantity: number; price: number }
 
 export type AddressType = {
   country: string

@@ -2,7 +2,7 @@ import { InitCustomersType, LifecicyleEnum, LeadEnum, ProductCategoryEnum } from
 
 export const InitCustomers: InitCustomersType = {
   id: 0,
-  companyName: 'Chep',
+  companyName: 'Videoton',
   contacts: [{ name: 'John Markers', position: 'general manager', email: 'jmarkers@gmail.com' }],
   address: [
     {
@@ -25,9 +25,9 @@ export const InitCustomers: InitCustomersType = {
   },
   subscribed: {
     products: [
-      { category: ProductCategoryEnum.service, name: 'transport', quantity: 34, price: 2000 },
-      { category: ProductCategoryEnum.product, name: 'charger', quantity: 23, price: 2700 },
-      { category: ProductCategoryEnum.service, name: 'transport', quantity: 21, price: 1500 },
+      { id: 0, category: ProductCategoryEnum.service, name: 'transport', quantity: 34, price: 2000 },
+      { id: 1, category: ProductCategoryEnum.product, name: 'charger', quantity: 23, price: 2700 },
+      { id: 2, category: ProductCategoryEnum.service, name: 'transport', quantity: 21, price: 1500 },
     ],
   },
   period: { from: 2021, to: 2025 },

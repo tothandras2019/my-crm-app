@@ -10,9 +10,18 @@ import { Navigation } from './components/navigation/navigation-component'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Dashboard } from './components/dashboard/dashboard-component'
 import { RecordCustomers } from './components/record-customer/record-customer-component'
+import { MainContext } from './utility/contexts/main.context'
+import CONTRACTS from './DATASTORE/data/contracts.json'
 
 function App() {
   const { customers, dispatch } = useContext(CustomerContext)
+
+  const { productReducer } = useContext(MainContext)
+  const { ProductDispatch } = productReducer
+
+  useEffect(() => {
+    return () => {}
+  })
 
   const NewInitCustomers = {
     id: 1,

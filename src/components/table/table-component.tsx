@@ -2,11 +2,9 @@
 import './table-component.css'
 
 import { InitCustomersType } from '../../DATASTORE/data-types/data-types'
-import { formatter } from '../../utility/utility'
-import { Indicator } from '../indicator/indicator-component'
-import { SyntheticEvent, useCallback, useEffect, useRef, useState, useContext } from 'react'
-import { usePosition } from '../../utility/useHooks'
-import { SummaryDetails } from './summary-details/summary-details-component'
+import { formatter } from '../../utility/number.formatter'
+import { SyntheticEvent, useEffect, useRef, useState, useContext, FormEvent, FC } from 'react'
+import { usePosition } from '../../utility/custom-hooks/usePosition'
 import { CustomerContext } from './../../DATASTORE/contacts-reducer'
 
 type ShowIdType = { id: number; isShowContract: boolean; isShowAmount: boolean }
@@ -21,7 +19,7 @@ export const Table = ({ customers }: { customers: InitCustomersType[] }): JSX.El
   const [position, setPosition] = usePosition()
   const [isShownIds, setIsShownIds] = useState<ShowIdType[]>([])
 
-  const { active, setActive } = useContext(CustomerContext)
+  const { setActive } = useContext(CustomerContext)
 
   const contractAmountRef = useRef<HTMLDivElement>(null)
   const productSummaryRef = useRef<HTMLDivElement>(null)
@@ -33,7 +31,7 @@ export const Table = ({ customers }: { customers: InitCustomersType[] }): JSX.El
   useEffect(() => {
     if (isShownIds.length !== 0) return
     const idsArray: ShowIdType[] = []
-    customers.forEach(({ id }, i) => idsArray.push({ id: id, isShowContract: false, isShowAmount: false }))
+    customers.forEach(({ id }) => idsArray.push({ id: id, isShowContract: false, isShowAmount: false }))
     setIsShownIds((prev) => [...prev, ...idsArray])
   }, [customers])
 
@@ -50,34 +48,34 @@ export const Table = ({ customers }: { customers: InitCustomersType[] }): JSX.El
   }
   //#endregion
   //#region CONTRACTS EVENTS:
-  const handleMouseMoveToContract = (event: SyntheticEvent<HTMLDivElement>) => {
+  const handleMouseMoveToContract = (event: FormEvent<HTMLDivElement>) => {
     const currentElement = contractAmountRef.current
     if (currentElement) ManageCurrentAndEvent(currentElement, event.nativeEvent as MouseEvent)
-    setToolTipPosition((prev) => ({ X: position.x, Y: position.y }))
+    setToolTipPosition(() => ({ X: position.x, Y: position.y }))
   }
 
-  const handleMouseEnterToContract = (event: SyntheticEvent<HTMLDivElement>) => {
+  const handleMouseEnterToContract = (event: FormEvent<HTMLDivElement>) => {
     const target = event.target as HTMLDivElement
     setIdVisibility(target, 'isShowContract', true)
     setShowContractTooltip(true)
   }
-  const handleMouseLeaveToContract = (event: SyntheticEvent<HTMLDivElement>) => {
+  const handleMouseLeaveToContract = () => {
     setIdVisibility(null, 'isShowContract', false)
     setShowContractTooltip(false)
   }
   //#endregion
   //#region SUMMARY EVENTS:----------------------------
-  const handleMouseMoveOnSummary = (event: SyntheticEvent<HTMLDivElement>) => {
+  const handleMouseMoveOnSummary = (event: FormEvent<HTMLDivElement>) => {
     const currentElement = productSummaryRef.current
     if (currentElement) ManageCurrentAndEvent(currentElement, event.nativeEvent as MouseEvent)
-    setToolTipPosition((prev) => ({ X: position.x, Y: position.y }))
+    setToolTipPosition(() => ({ X: position.x, Y: position.y }))
   }
-  const handleMouseEnterToSummary = (event: SyntheticEvent<HTMLDivElement>) => {
+  const handleMouseEnterToSummary = (event: FormEvent<HTMLDivElement>) => {
     const target = event.target as HTMLDivElement
     setIdVisibility(target, 'isShowAmount', true)
     setShowSummaryTooltip(true)
   }
-  const handleMouseLeaveToSummary = (event: SyntheticEvent<HTMLDivElement>) => {
+  const handleMouseLeaveToSummary = () => {
     setIdVisibility(null, 'isShowAmount', false)
     setShowSummaryTooltip(false)
   }
@@ -97,8 +95,6 @@ export const Table = ({ customers }: { customers: InitCustomersType[] }): JSX.El
       {customers.map((customer, index) => {
         const { id, companyName, status, contract, subscribed } = customer
         const summOrders = subscribed.products.reduce((reduce, prodItem) => (reduce += prodItem.quantity * prodItem.price), 0)
-        const showContract = isShownIds.find((elem) => elem.id === id)?.isShowContract
-        const showAmount = isShownIds.find((elem) => elem.id === id)?.isShowAmount
         return (
           <div key={`${index}--${id}`} className={`customer ${index % 2 === 0 ? '' : 'odd'}`} onClick={() => handleChooseCustomer(customer)}>
             <p>{id}</p>

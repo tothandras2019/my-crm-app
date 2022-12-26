@@ -1,14 +1,20 @@
-export type ProductType = {
+export type ServiceProductType = {
   id: number
-  category: Category
-  name: string
+  category: ServiceCategory
   unitPrice: number
-  unit: Unit
-  stock_qty: number | undefined
+  currency: string
   ordered_qty: number
+  unit_dimension: Unit
+  other_information: string
 }
 
-export enum Category {
+export type WarehouseingServiceType = {
+  id: number
+  total_capacity: number
+  unit_dimension: string
+}
+
+export enum ServiceCategory {
   WAREHOUSING = 'WAREHOUSING',
   TRANSPORT = 'TRANSPORT',
   CUSTOM = 'CUSTOM',

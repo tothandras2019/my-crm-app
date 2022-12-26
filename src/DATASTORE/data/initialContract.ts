@@ -1,19 +1,20 @@
 import { ContractType } from '../data-types/main.data.types/contract-data-types'
-import { Category, Unit } from '../data-types/main.data.types/product-data-types'
+import { ServiceCategory, Unit } from '../data-types/main.data.types/product-data-types'
 
 export const initContract: ContractType = {
   id: 0,
-  date: 1234,
+  date: '2022.12.10',
   customer: {
     id: 0,
     companyName: 'Best Ever Ltd',
     address: [
       {
+        primary: true,
         country: 'hungary',
         code: 'hu',
         city: 'budapest',
         building: 10,
-        street: 'Vezér street',
+        street: '7 Vezér street',
         zip: 1231,
       },
     ],
@@ -37,30 +38,30 @@ export const initContract: ContractType = {
           products: [
             {
               id: 0,
-              category: Category.TRANSPORT,
-              name: 'string',
-              unitPrice: 2000,
-              unit: Unit.DISTANCE_KM,
-              stock_qty: undefined,
-              ordered_qty: 1,
+              category: ServiceCategory.TRANSPORT,
+              unitPrice: 1,
+              currency: 'EUR',
+              ordered_qty: 600,
+              unit_dimension: Unit.DISTANCE_KM,
+              other_information: 'domestic',
             },
             {
               id: 2,
-              category: Category.WAREHOUSING,
-              name: 'string',
-              unitPrice: 2000,
-              unit: Unit.SQUARE_METER,
-              stock_qty: 10,
+              category: ServiceCategory.WAREHOUSING,
+              unitPrice: 1.6,
+              currency: 'EUR',
               ordered_qty: 3,
+              unit_dimension: Unit.SQUARE_METER,
+              other_information: 'main hq warehouseing service',
             },
             {
               id: 3,
-              category: Category.CUSTOM,
-              name: 'string',
+              category: ServiceCategory.CUSTOM,
               unitPrice: 2000,
-              unit: Unit.PIECE,
-              stock_qty: undefined,
+              currency: 'EUR',
               ordered_qty: 1,
+              unit_dimension: Unit.PIECE,
+              other_information: 'export custom procedure',
             },
           ],
         },
@@ -74,12 +75,12 @@ export const initContract: ContractType = {
           products: [
             {
               id: 0,
-              category: Category.TRANSPORT,
-              name: 'string',
-              unitPrice: 500,
-              unit: Unit.DISTANCE_KM,
-              stock_qty: undefined,
-              ordered_qty: 1,
+              category: ServiceCategory.TRANSPORT,
+              unitPrice: 1.3,
+              currency: 'EUR',
+              ordered_qty: 600,
+              unit_dimension: Unit.DISTANCE_KM,
+              other_information: 'hu-at lane',
             },
           ],
         },
@@ -88,7 +89,22 @@ export const initContract: ContractType = {
     },
     {
       order_id: 2,
-      ordered_products: [],
+      ordered_products: [
+        {
+          id: 0,
+          products: [
+            {
+              id: 0,
+              category: ServiceCategory.TRANSPORT,
+              unitPrice: 1.9,
+              currency: 'EUR',
+              ordered_qty: 2510,
+              unit_dimension: Unit.DISTANCE_KM,
+              other_information: 'hu-gb lane',
+            },
+          ],
+        },
+      ],
       order_date: '2022.12.20',
     },
   ],

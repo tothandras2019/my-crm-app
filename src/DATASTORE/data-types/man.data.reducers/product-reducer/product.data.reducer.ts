@@ -1,8 +1,8 @@
-import { ProductType } from './../../main.data.types/product-data-types'
+import { ServiceProductType } from './../../main.data.types/product-data-types'
 import { Dispatch } from 'react'
 import { PRODUCT_ACTION_TYPE } from './product.data.action.types'
-export type ProductDispatchType = { type: string; payload: ProductType | ProductType[] | number }
-export const ProductDataReducer = (state: ProductType[] | [], action: ProductDispatchType) => {
+export type ProductDispatchType = { type: string; payload: ServiceProductType | ServiceProductType[] | number }
+export const ProductDataReducer = (state: ServiceProductType[] | [], action: ProductDispatchType) => {
   const { type, payload } = action
 
   switch (type) {
@@ -13,7 +13,7 @@ export const ProductDataReducer = (state: ProductType[] | [], action: ProductDis
       return [...state, payload]
     }
     case PRODUCT_ACTION_TYPE.MODIFY_PRODUCT: {
-      const newModifiedProduct = payload as ProductType
+      const newModifiedProduct = payload as ServiceProductType
       const filteredProductsState = state.filter((product) => product.id !== newModifiedProduct.id)
       const newState = { ...filteredProductsState, newModifiedProduct }
 

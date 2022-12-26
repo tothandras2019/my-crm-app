@@ -1,4 +1,4 @@
-import { ProductType } from '../../main.data.types/product-data-types'
+import { ServiceProductType } from '../../main.data.types/product-data-types'
 import { Dispatch } from 'react'
 import { CUSTOMER_ACTION_TYPE } from './customer.data.action.types'
 import { CustomerDataType } from '../../main.data.types/customer-data-types'

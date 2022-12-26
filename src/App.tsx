@@ -12,6 +12,7 @@ import { Dashboard } from './components/dashboard/dashboard-component'
 import { RecordCustomers } from './components/record-customer/record-customer-component'
 import { MainContext } from './utility/contexts/main.context'
 import CONTRACTS from './DATASTORE/data/contracts.json'
+import { getAllCollections } from './utility/google-cloud-store/google-cloud-store'
 
 function App() {
   const { customers, dispatch } = useContext(CustomerContext)
@@ -20,6 +21,7 @@ function App() {
   const { ProductDispatch } = productReducer
 
   useEffect(() => {
+    getAllCollections()
     return () => {}
   })
 
@@ -42,9 +44,9 @@ function App() {
   //   setCustomer({ type: 'ADD', payload: NewInitCustomers })
   // }, [])
 
-  useEffect(() => {
-    console.log(customers)
-  }, [customers])
+  // useEffect(() => {
+  //   console.log(customers)
+  // }, [customers])
 
   return (
     <div className='App'>

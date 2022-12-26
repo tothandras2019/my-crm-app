@@ -10,6 +10,7 @@ export type CustomerDataType = {
 }
 
 export type AddressType = {
+  primary: boolean
   country: string
   code: string
   city: string

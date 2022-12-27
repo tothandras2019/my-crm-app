@@ -12,17 +12,17 @@ import { WarehouseingServiceType } from '../../DATASTORE/data-types/main.data.ty
 import { WarehouseDataReducer, WarehouseDispatchType } from '../../DATASTORE/data-types/man.data.reducers/warehouse-reducer/warehouse.data.reducer'
 
 export const MainContext = createContext<{
-  customerReducer: { customerState: CustomerDataType[] | [] | undefined; CustomerDispatch: Dispatch<CustomerDispatchType> }
-  productReducer: { productState: ProductType[] | [] | undefined; ProductDispatch: Dispatch<ProductActionType> }
-  userDataReducer: { userDataState: UserType[] | []; UserDataDispatch: Dispatch<UserDataActionTypes> }
-  contractsDataReducer: { contractDataState: ContractType[] | []; ContractsDataDispatch: Dispatch<ContractDispatchType> }
-  warehousseDataReducer: { warehouseDataState: WarehouseingServiceType[] | []; WarehouseDataDispatch: Dispatch<WarehouseDispatchType> }
+  customers: { customerState: CustomerDataType[] | [] | undefined; CustomerDispatch: Dispatch<CustomerDispatchType> }
+  products: { productState: ProductType[] | [] | undefined; ProductDispatch: Dispatch<ProductActionType> }
+  userAllData: { userDataState: UserType[] | []; UserDataDispatch: Dispatch<UserDataActionTypes> }
+  contracts: { contractDataState: ContractType[] | []; ContractsDataDispatch: Dispatch<ContractDispatchType> }
+  warehouse: { warehouseDataState: WarehouseingServiceType[] | []; WarehouseDataDispatch: Dispatch<WarehouseDispatchType> }
 }>({
-  customerReducer: { customerState: [], CustomerDispatch: () => {} },
-  productReducer: { productState: [], ProductDispatch: () => {} },
-  userDataReducer: { userDataState: [], UserDataDispatch: () => {} },
-  contractsDataReducer: { contractDataState: [], ContractsDataDispatch: () => {} },
-  warehousseDataReducer: { warehouseDataState: [], WarehouseDataDispatch: () => {} },
+  customers: { customerState: [], CustomerDispatch: () => {} },
+  products: { productState: [], ProductDispatch: () => {} },
+  userAllData: { userDataState: [], UserDataDispatch: () => {} },
+  contracts: { contractDataState: [], ContractsDataDispatch: () => {} },
+  warehouse: { warehouseDataState: [], WarehouseDataDispatch: () => {} },
 })
 
 export const MainContextProvider = ({ children }: { children: JSX.Element }): JSX.Element => {
@@ -35,11 +35,11 @@ export const MainContextProvider = ({ children }: { children: JSX.Element }): JS
   return (
     <MainContext.Provider
       value={{
-        customerReducer: { customerState, CustomerDispatch },
-        productReducer: { productState, ProductDispatch },
-        userDataReducer: { userDataState, UserDataDispatch },
-        contractsDataReducer: { contractDataState, ContractsDataDispatch },
-        warehousseDataReducer: { warehouseDataState, WarehouseDataDispatch },
+        customers: { customerState, CustomerDispatch },
+        products: { productState, ProductDispatch },
+        userAllData: { userDataState, UserDataDispatch },
+        contracts: { contractDataState, ContractsDataDispatch },
+        warehouse: { warehouseDataState, WarehouseDataDispatch },
       }}
     >
       {children}

@@ -14,7 +14,12 @@ import { fillUpWarehouse } from './DATASTORE/data-types/man.data.reducers/wareho
 function App() {
   const { customers, dispatch } = useContext(CustomerContext)
 
-  const { productReducer, customerReducer, contractsDataReducer, warehousseDataReducer } = useContext(MainContext)
+  const {
+    products: productReducer,
+    customers: customerReducer,
+    contracts: contractsDataReducer,
+    warehouse: warehousseDataReducer,
+  } = useContext(MainContext)
 
   const { ProductDispatch } = productReducer
   const { customerState, CustomerDispatch } = customerReducer

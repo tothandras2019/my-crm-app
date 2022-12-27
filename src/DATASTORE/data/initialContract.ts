@@ -2,10 +2,10 @@ import { ContractType } from '../data-types/main.data.types/contract-data-types'
 import { ServiceCategory, Unit } from '../data-types/main.data.types/product-data-types'
 
 export const initContract: ContractType = {
-  id: 0,
+  id: '0',
   date: '2022.12.10',
   customer: {
-    id: 0,
+    id: '0',
     companyName: 'Best Ever Ltd',
     address: [
       {

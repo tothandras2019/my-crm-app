@@ -9,7 +9,7 @@ export type ServiceProductType = {
 }
 
 export type WarehouseingServiceType = {
-  id: number
+  id: string
   total_capacity: number
   unit_dimension: string
 }

@@ -1,29 +1,59 @@
 import { CustomerContext } from './DATASTORE/contacts-reducer'
 import { useContext, useEffect } from 'react'
-import { MainInfoPannel } from './components/info-panel/main-info-panel-component'
 import { Cards } from './components/card/cards-component'
-import { Input } from './components/input/input-component'
-import { LinkButton } from './components/tools/button/link/link-button-component'
-import { Menu } from './components/menu/rotating-menu/menu-component'
-import { Section } from './components/section/section-component'
 import { Navigation } from './components/navigation/navigation-component'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import { Dashboard } from './components/dashboard/dashboard-component'
 import { RecordCustomers } from './components/record-customer/record-customer-component'
 import { MainContext } from './utility/contexts/main.context'
-import CONTRACTS from './DATASTORE/data/contracts.json'
-import { getAllCollections } from './utility/google-cloud-store/google-cloud-store'
+import { getContractCollection, getCustomerCollection, getWarehouseCollection } from './utility/google-cloud-store/google-cloud-store'
+import { fillUpCustomer } from './DATASTORE/data-types/man.data.reducers/customer-reducer/customer.data.actions'
+import { fillUpContracts } from './DATASTORE/data-types/man.data.reducers/contracts-reducer/contracts.data.actions'
+import { fillUpWarehouse } from './DATASTORE/data-types/man.data.reducers/warehouse-reducer/warehouse.data.actions'
 
 function App() {
   const { customers, dispatch } = useContext(CustomerContext)
 
-  const { productReducer } = useContext(MainContext)
+  const { productReducer, customerReducer, contractsDataReducer, warehousseDataReducer } = useContext(MainContext)
+
   const { ProductDispatch } = productReducer
+  const { customerState, CustomerDispatch } = customerReducer
+  const { contractDataState, ContractsDataDispatch } = contractsDataReducer
+  const { warehouseDataState, WarehouseDataDispatch } = warehousseDataReducer
+
+  const UploadCustomer = async () => {
+    if (customerState && customerState.length > 0) return
+    const customersStore = await getCustomerCollection('Customers')
+    if (customersStore) CustomerDispatch(fillUpCustomer(customersStore))
+  }
+
+  const UploadContracts = async () => {
+    if (contractDataState && contractDataState.length > 0) return
+    const contractsStore = await getContractCollection('Contracts')
+    if (contractsStore) ContractsDataDispatch(fillUpContracts(contractsStore))
+  }
+  const UploadWarehouse = async () => {
+    if (warehouseDataState && warehouseDataState.length > 0) return
+    const warehouseStore = await getWarehouseCollection('Warehouse')
+    if (warehouseStore) WarehouseDataDispatch(fillUpWarehouse(warehouseStore))
+  }
 
   useEffect(() => {
-    getAllCollections()
+    UploadCustomer()
+    UploadContracts()
+    UploadWarehouse()
+
+    // CustomerDispatch(fillUpCustomer([]))
+    // ContractsDataDispatch(fillUpContracts([]))
+    // WarehouseDataDispatch(fillUpWarehouse([]))
     return () => {}
-  })
+  }, [])
+
+  useEffect(() => {
+    console.log('contract', contractDataState)
+    console.log('cust:', customerState)
+    console.log('wh:', warehouseDataState)
+  }, [customerState, contractDataState, warehouseDataState])
 
   const NewInitCustomers = {
     id: 1,

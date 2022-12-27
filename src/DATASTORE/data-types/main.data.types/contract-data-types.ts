@@ -2,7 +2,7 @@ import { CustomerDataType } from './customer-data-types'
 import { Order } from './order-data-types'
 
 export type ContractType = {
-  id: number
+  id: string
   date: string
   customer: CustomerDataType
   orders: Order[]

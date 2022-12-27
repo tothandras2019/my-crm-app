@@ -1,7 +1,7 @@
 import { Order } from './order-data-types'
 
 export type CustomerDataType = {
-  id: number
+  id: string
   companyName: string
   address: AddressType[]
   access: AccessType[]

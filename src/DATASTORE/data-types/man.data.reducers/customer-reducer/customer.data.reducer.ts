@@ -2,13 +2,14 @@ import { ServiceProductType } from '../../main.data.types/product-data-types'
 import { Dispatch } from 'react'
 import { CUSTOMER_ACTION_TYPE } from './customer.data.action.types'
 import { CustomerDataType } from '../../main.data.types/customer-data-types'
-export type CustomerDispatchType = { type: string; payload: CustomerDataType | CustomerDataType[] | number }
+export type CustomerDispatchType = { type: string; payload: CustomerDataType | CustomerDataType[] | string }
 export const CustomersDataReducer = (state: CustomerDataType[] | [], action: CustomerDispatchType) => {
   const { type, payload } = action
 
   switch (type) {
     case CUSTOMER_ACTION_TYPE.FILL_DATA: {
-      return [payload]
+      const custmoersArray = payload as CustomerDataType[]
+      return custmoersArray
     }
     case CUSTOMER_ACTION_TYPE.ADD_CUSTOMER: {
       return [...state, payload]

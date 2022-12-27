@@ -7,6 +7,7 @@ import { ContractType } from '../../DATASTORE/data-types/main.data.types/contrac
 import { initContract } from './../../DATASTORE/data/initialContract'
 import { WarehouseingServiceType } from '../../DATASTORE/data-types/main.data.types/product-data-types'
 import { WarehouseCapacity } from '../../DATASTORE/data/initialWarehouseCapacity'
+import { CustomerDataType } from '../../DATASTORE/data-types/main.data.types/customer-data-types'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -17,9 +18,76 @@ const app = initializeApp(FIREBASECONFIG)
 //-------------------------
 const db = getFirestore(app)
 
-export const getAllCollections = async () => {
-  // const querySnapshot: QuerySnapshot<DocumentData> = await getDocs(collection(db, 'Contracts'))
-  // querySnapshot.forEach((snapshot) => console.log(snapshot.id, snapshot.data()))
+/**
+ * @param collectionObject collection name
+ */
+export const getCustomerCollection = async (collectionObject: string) =>
+  GenerateCustomerObject((await getDocs(collection(db, collectionObject))) as QuerySnapshot<DocumentData>)
+
+// const querySnapshot: QuerySnapshot<DocumentData> = await getDocs(collection(db, collectionObject))
+// return GenerateCustomerObject(querySnapshot)
+export const getContractCollection = async (collectionObject: string) =>
+  GenerateContractsObject((await getDocs(collection(db, collectionObject))) as QuerySnapshot<DocumentData>)
+
+// const querySnapshot: QuerySnapshot<DocumentData> = await getDocs(collection(db, collectionObject))
+// return GenerateContractsObject(querySnapshot)
+
+export const getWarehouseCollection = async (collectionObject: string) =>
+  GenerateWarehouseObject((await getDocs(collection(db, collectionObject))) as QuerySnapshot<DocumentData>)
+
+// const querySnapshot: QuerySnapshot<DocumentData> = await getDocs(collection(db, collectionObject))
+
+const GenerateCustomerObject = (querySnapshot: QuerySnapshot<DocumentData>): CustomerDataType[] => {
+  let customersDataArray: CustomerDataType[] = []
+  querySnapshot.forEach((querySnapshot) => {
+    const { companyName, address, access, social, status } = querySnapshot.data()
+    const id = querySnapshot.id
+
+    const dataExtracted = {
+      companyName: companyName,
+      address: address,
+      access: access,
+      social: social,
+      status: status,
+    }
+
+    const customerData = { ...dataExtracted, id: id }
+    customersDataArray.push(customerData)
+  })
+
+  return customersDataArray
+}
+
+const GenerateContractsObject = (querySnapshot: QuerySnapshot<DocumentData>): ContractType[] => {
+  const contractsDataArray: ContractType[] = []
+  querySnapshot.forEach((querySnapshot) => {
+    const { date, customer, orders } = querySnapshot.data()
+    const id = querySnapshot.id
+    const contract = {
+      id: id,
+      date: date,
+      customer: customer,
+      orders: orders,
+    }
+    contractsDataArray.push(contract)
+  })
+  return contractsDataArray
+}
+const GenerateWarehouseObject = (querySnapshot: QuerySnapshot<DocumentData>): WarehouseingServiceType[] => {
+  const warehouseArrayObject: WarehouseingServiceType[] = []
+  querySnapshot.forEach((querySnapshot) => {
+    const { total_capacity, unit_dimension } = querySnapshot.data()
+    const id = querySnapshot.id
+
+    const warehouseDataObject: WarehouseingServiceType = {
+      id: id,
+      total_capacity: total_capacity,
+      unit_dimension: unit_dimension,
+    }
+    warehouseArrayObject.push(warehouseDataObject)
+  })
+
+  return warehouseArrayObject
 }
 
 //----------------------------------------------------------------

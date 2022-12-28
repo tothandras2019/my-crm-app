@@ -1,12 +1,12 @@
 #root {
-  background-color: rgb(196, 240, 238);
+  background: linear-gradient(60deg, rgb(1, 45, 81) 15%, rgb(53, 198, 193) 70%);
   color: rgb(1, 45, 81);
   min-height: 100vh;
 }
 
 nav {
   position: fixed;
-  min-width: 100px;
+  min-width: 140px;
   height: 100vh;
   background-color: rgb(1, 45, 81);
   color: rgb(196, 240, 238);

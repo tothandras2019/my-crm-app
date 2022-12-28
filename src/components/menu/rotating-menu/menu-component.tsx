@@ -2,6 +2,7 @@ import './menu-component.css'
 import { LinkButton } from '../../tools/button/link/link-button-component'
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { HamburgerMenu } from '../../tools/menu/hamburger-menu/hamburger-menu-component'
+import { mainMenuItemsIcon } from './../../../DATASTORE/data/navigation-headers'
 
 export const Menu = ({
   items,
@@ -19,10 +20,14 @@ export const Menu = ({
   useEffect(() => {}, [menItems])
   return (
     <div className={`menu-container ${hideElement.value ? 'close' : ''}`}>
-      {items.map((item, i) => (
-        <LinkButton key={`item--${i}`} value={item} rotating={positionDegree * i} hide={hideElement.value} />
-      ))}
+      {Object.entries(mainMenuItemsIcon).map(([key, value], i) => {
+        return <LinkButton key={`item--${i}`} value={key} hide={hideElement.value} IconSVGComponent={value} />
+      })}
       <HamburgerMenu handler={handleCloseMenu} />
     </div>
   )
 }
+
+// {
+//   items.map((item, i) => <LinkButton key={`item--${i}`} value={item} rotating={positionDegree * i} hide={hideElement.value} />)
+// }

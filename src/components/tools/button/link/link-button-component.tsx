@@ -1,15 +1,9 @@
 import './link-button-component.css'
 import { useNavigate } from 'react-router-dom'
+import { ReactNode } from 'react'
 
-export const LinkButton = ({
-  value = 'empty',
-  rotating,
-  hide = false,
-}: {
-  value?: string | undefined
-  rotating?: number
-  hide?: boolean
-}): JSX.Element => {
+type LinkButtonType = { value: string | undefined; hide: boolean; IconSVGComponent: () => JSX.Element | undefined }
+export const LinkButton = ({ value = 'empty', hide = false, IconSVGComponent }: Partial<LinkButtonType>): JSX.Element => {
   const navigateTo = useNavigate()
   const handleNavigation = () => {
     const navTo = value === 'home' ? '/' : value
@@ -17,6 +11,7 @@ export const LinkButton = ({
   }
   return (
     <div className={`menu-link ${hide ? 'hide' : ''}`} onClick={handleNavigation}>
+      {IconSVGComponent && IconSVGComponent()}
       <p>{value}</p>
     </div>
   )

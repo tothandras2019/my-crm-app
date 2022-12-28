@@ -5,7 +5,7 @@ $palette-additional-color: rgb(12, 65, 99);
 $palette-alert-color: #317d65;
 
 #root {
-  background-color: $palette-primary-color;
+  background: linear-gradient(60deg, $palette-main-color 15%, $palette-secondary-color 70%);
   color: $palette-main-color;
   min-height: 100vh;
 }

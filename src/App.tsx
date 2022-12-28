@@ -10,6 +10,7 @@ import { getContractCollection, getCustomerCollection, getWarehouseCollection } 
 import { fillUpCustomer } from './DATASTORE/data-types/man.data.reducers/customer-reducer/customer.data.actions'
 import { fillUpContracts } from './DATASTORE/data-types/man.data.reducers/contracts-reducer/contracts.data.actions'
 import { fillUpWarehouse } from './DATASTORE/data-types/man.data.reducers/warehouse-reducer/warehouse.data.actions'
+import { CalendarSvg, ContactsSvg, DashboardSvg, HomeSvg, SettingsSvg } from './icons/main-menu/menu_svg_items'
 
 function App() {
   const { customers, dispatch } = useContext(CustomerContext)

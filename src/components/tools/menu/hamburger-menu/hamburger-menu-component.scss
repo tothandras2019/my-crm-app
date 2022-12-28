@@ -1,11 +1,10 @@
 @import './../../../../App.scss';
 
-$size: 100px;
+$size: 140px;
 .menu-button {
   position: absolute;
-  top: 50px;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
   min-width: $size;
   min-height: $size;
   border-bottom-right-radius: 10px;

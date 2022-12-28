@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["../../App.scss","section-component.scss"],"names":[],"mappings":"AAMA;EACE,kBANsB;EAOtB,OARmB;EASnB;;;ACPF;EACE,ODHmB;ECInB;EACA;EACA;EACA;EACA;EACA;;AACA;EACE;EACA;EACA;EACA","file":"section-component.css"}
+{"version":3,"sourceRoot":"","sources":["../../App.scss","section-component.scss"],"names":[],"mappings":"AAMA;EACE;EACA,OARmB;EASnB;;;ACPF;EACE,ODHmB;ECInB;EACA;EACA;EACA;EACA;EACA;;AACA;EACE;EACA;EACA;EACA","file":"section-component.css"}

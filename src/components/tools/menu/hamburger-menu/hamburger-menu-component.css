@@ -1,16 +1,15 @@
 #root {
-  background-color: rgb(196, 240, 238);
+  background: linear-gradient(60deg, rgb(1, 45, 81) 15%, rgb(53, 198, 193) 70%);
   color: rgb(1, 45, 81);
   min-height: 100vh;
 }
 
 .menu-button {
   position: absolute;
-  top: 50px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  min-width: 100px;
-  min-height: 100px;
+  top: 0;
+  left: 0;
+  min-width: 140px;
+  min-height: 140px;
   border-bottom-right-radius: 10px;
   display: flex;
   justify-content: center;
@@ -51,8 +50,8 @@
 }
 .menu-button.close {
   transition: 0.5s;
-  width: 100px;
-  height: 100px;
+  width: 140px;
+  height: 140px;
 }
 .menu-button.close span {
   background-color: transparent;

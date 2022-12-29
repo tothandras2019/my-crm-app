@@ -15,7 +15,7 @@ export const IndicatorDetailed = () => {
   return (
     <div className='indicator-detailed'>
       <Indicator value={value} />
-      <SummaryDetails items={['elso', 'masodi9k', 'harmadik']} />
+      {/* <SummaryDetails items={['elso', 'masodi9k', 'harmadik']} /> */}
     </div>
   )
 }

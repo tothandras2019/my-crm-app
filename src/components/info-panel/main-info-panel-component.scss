@@ -2,9 +2,11 @@
 
 .info-panel-card {
   position: relative;
-  max-width: 300px;
+  display: flex;
+  gap: 15px;
+  // max-width: 300px;
   margin: 5px;
-  padding: 15px;
+  padding: 10px;
   height: fit-content;
   background-color: $palette-primary-color;
   color: $palette-main-color;

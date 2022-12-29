@@ -88,7 +88,7 @@ function App() {
     <div className='App'>
       <Routes>
         <Route path={`/`} element={<Navigation />}>
-          <Route path={`/`} element={<Cards customers={customers} />} />
+          <Route path={`/`} element={<Cards />} />
           <Route path={`/dashboard`} element={<Dashboard />} />
           <Route path={`/new customer`} element={<RecordCustomers />} />
         </Route>

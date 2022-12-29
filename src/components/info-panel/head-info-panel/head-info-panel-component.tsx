@@ -1,19 +1,15 @@
 import './head-info-panel-component.css'
 
 import { GeneralType, LeadEnum, LifecicyleEnum } from '../../../DATASTORE/data-types/data-types'
-import { ContractIcon, IdNo, Lifecycle, Status } from '../../../icons/svg/svg-icons-components'
+import { ContractIcon, IdNo, Lifecycle, Status } from '../../../icons/sub-menu/svg-icons-components'
 
-export const HeadInfoPanel = ({
-  id,
-  lifecycleState,
-  leadState,
-  period,
-}: {
-  id: number
+type HeadInfoPanelType = {
+  id: number | string
   lifecycleState: string
   leadState: string
-  period: GeneralType
-}) => {
+  period: string
+}
+export const HeadInfoPanel = ({ id, lifecycleState, leadState, period }: Partial<HeadInfoPanelType>) => {
   return (
     <div className='info-panel-head'>
       <div className='status'>
@@ -30,9 +26,6 @@ export const HeadInfoPanel = ({
       </div>
       <div className='status'>
         <p> {ContractIcon()} </p>
-        <h4>
-          {period.from}-{period.to}{' '}
-        </h4>
       </div>
     </div>
   )

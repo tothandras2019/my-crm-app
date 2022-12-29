@@ -1,14 +1,15 @@
 #root {
-  background-color: linear-gradient(45deg, rgb(1, 45, 81) 10%, rgb(53, 198, 193) 70%);
+  background: linear-gradient(60deg, rgb(1, 45, 81) 15%, rgb(53, 198, 193) 70%);
   color: rgb(1, 45, 81);
   min-height: 100vh;
 }
 
 .info-panel-card {
   position: relative;
-  max-width: 300px;
+  display: flex;
+  gap: 15px;
   margin: 5px;
-  padding: 15px;
+  padding: 10px;
   height: fit-content;
   background-color: rgb(196, 240, 238);
   color: rgb(1, 45, 81);

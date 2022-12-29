@@ -1,11 +1,10 @@
 @import './../../App.scss';
 
 section {
-  color: $palette-main-color;
   position: relative;
-  width: 90%;
+  width: calc(100% - 140px);
   height: 100vh;
-  padding-left: 100px;
+  padding-left: 140px;
   background-color: transparent;
   z-index: 0;
   main {

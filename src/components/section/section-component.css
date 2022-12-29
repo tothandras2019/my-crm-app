@@ -1,15 +1,14 @@
 #root {
-  background-color: linear-gradient(45deg, rgb(1, 45, 81) 10%, rgb(53, 198, 193) 70%);
+  background: linear-gradient(60deg, rgb(1, 45, 81) 15%, rgb(53, 198, 193) 70%);
   color: rgb(1, 45, 81);
   min-height: 100vh;
 }
 
 section {
-  color: rgb(1, 45, 81);
   position: relative;
-  width: 90%;
+  width: calc(100% - 140px);
   height: 100vh;
-  padding-left: 100px;
+  padding-left: 140px;
   background-color: transparent;
   z-index: 0;
 }

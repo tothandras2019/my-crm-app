@@ -26,6 +26,7 @@ export const HeadInfoPanel = ({ id, lifecycleState, leadState, period }: Partial
       </div>
       <div className='status'>
         <p> {ContractIcon()} </p>
+        <h4>{period}</h4>
       </div>
     </div>
   )

@@ -5,19 +5,19 @@ import { Separator } from '../tools/separator/separator-component'
 import { InfoPanel } from './address-info-panel/info-panel-component'
 import { FinancialInfoPanel } from './financial-info-panel/financial-info-panel-component'
 import { HeadInfoPanel } from './head-info-panel/head-info-panel-component'
-import { CustomerDataType } from '../../DATASTORE/data-types/main.data.types/customer-data-types'
+import { CustomerDataType, SummaryCustomerOrdersAmountType } from '../../DATASTORE/data-types/main.data.types/customer-data-types'
 import { IndicatorDetailed } from '../indicator-detailed/indicator-detailerd-component'
 
-type MainInfoPanelType = { customer: CustomerDataType }
+type MainInfoPanelType = { customer: SummaryCustomerOrdersAmountType }
 export const MainInfoPannel = ({ customer }: MainInfoPanelType) => {
-  // const { id, companyName, access, address, status, contract, social, contacts, subscribed, period } = customer
-  const { id, companyName, access, address, status, social } = customer
+  const { id, date, companyName, access, address, status, social, summaryOrdersamount } = customer
+
   const { lifecycleState, leadState } = status
 
   return (
     <div className='info-panel-card' id={id}>
       <div className='info-panel-card-left'>
-        <HeadInfoPanel lifecycleState={lifecycleState} leadState={leadState} />
+        <HeadInfoPanel lifecycleState={lifecycleState} leadState={leadState} period={date} id={id} />
         <Separator />
         <h1 className='info-title'>{companyName}</h1>
         <Separator />
@@ -28,8 +28,7 @@ export const MainInfoPannel = ({ customer }: MainInfoPanelType) => {
           <InfoPanel title={'socials'} address={social} />
         </div>
       </div>
-      {/* <FinancialInfoPanel contract={contract} /> */}
-      <IndicatorDetailed />
+      <FinancialInfoPanel summary={summaryOrdersamount} />
     </div>
   )
 }

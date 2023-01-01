@@ -1,0 +1,12 @@
+.info-financial-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  min-width: 170px;
+}
+.info-financial-panel .info-financial-panel-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}/*# sourceMappingURL=financial-info-panel-component.css.map */

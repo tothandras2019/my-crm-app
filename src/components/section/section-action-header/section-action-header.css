@@ -1,0 +1,14 @@
+#root {
+  background: linear-gradient(60deg, rgb(1, 45, 81) 15%, rgb(53, 198, 193) 70%);
+  color: rgb(1, 45, 81);
+  min-height: 100vh;
+}
+
+header {
+  width: 100%;
+  min-height: 50px;
+  background-color: rgb(1, 45, 81);
+  color: rgb(196, 240, 238);
+  display: flex;
+  justify-content: flex-start;
+}/*# sourceMappingURL=section-action-header.css.map */

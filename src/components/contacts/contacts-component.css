@@ -1,0 +1,19 @@
+#root {
+  background: linear-gradient(60deg, rgb(1, 45, 81) 15%, rgb(53, 198, 193) 70%);
+  color: rgb(1, 45, 81);
+  min-height: 100vh;
+}
+
+.contacts-container {
+  margin-top: 10px;
+}
+.contacts-container .contact-details {
+  cursor: pointer;
+  background-color: rgb(53, 198, 193);
+  box-shadow: 5px 5px 5px rgb(1, 45, 81);
+  padding: 10px;
+  width: fit-content;
+  max-width: 350px;
+  border-radius: 10px;
+  gap: 10px;
+}/*# sourceMappingURL=contacts-component.css.map */

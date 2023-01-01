@@ -1,0 +1,10 @@
+@import './../../../App.scss';
+
+header {
+  width: 100%;
+  min-height: 50px;
+  background-color: $palette-main-color;
+  color: $palette-primary-color;
+  display: flex;
+  justify-content: flex-start;
+}

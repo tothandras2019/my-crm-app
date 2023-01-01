@@ -19,8 +19,8 @@ export const initContract: ContractType = {
       },
     ],
     access: [
-      { primary: true, email: 'Chep@chep.com', telephone: '+36 32 000 001' },
-      { primary: false, email: 'Chep@chep.com', telephone: '+36 32 323 234' },
+      { primary: true, person: 'central', email: 'Chep@chep.com', telephone: '+36 32 000 001' },
+      { primary: false, person: 'John Charter', email: 'Chep@chep.com', telephone: '+36 32 323 234' },
     ],
     social: [
       { media: 'facebook', link: 'https://www.facebook.com' },

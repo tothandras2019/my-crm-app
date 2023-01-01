@@ -1,0 +1,15 @@
+@import './../../App.scss';
+
+.contacts-container {
+  margin-top: 10px;
+  .contact-details {
+    cursor: pointer;
+    background-color: $palette-secondary-color;
+    box-shadow: 5px 5px 5px $palette-main-color;
+    padding: 10px;
+    width: fit-content;
+    max-width: 350px;
+    border-radius: 10px;
+    gap: 10px;
+  }
+}

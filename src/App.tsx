@@ -11,21 +11,17 @@ import { fillUpCustomer } from './DATASTORE/data-types/man.data.reducers/custome
 import { fillUpContracts } from './DATASTORE/data-types/man.data.reducers/contracts-reducer/contracts.data.actions'
 import { fillUpWarehouse } from './DATASTORE/data-types/man.data.reducers/warehouse-reducer/warehouse.data.actions'
 import { CalendarSvg, ContactsSvg, DashboardSvg, HomeSvg, SettingsSvg } from './icons/main-menu/menu_svg_items'
+import { Contacts } from './components/contacts/contacts-component'
 
 function App() {
-  const { customers, dispatch } = useContext(CustomerContext)
+  // const { customers, dispatch } = useContext(CustomerContext)
 
-  const {
-    products: productReducer,
-    customers: customerReducer,
-    contracts: contractsDataReducer,
-    warehouse: warehousseDataReducer,
-  } = useContext(MainContext)
+  const { products, customers, contracts, warehouse } = useContext(MainContext)
 
-  const { ProductDispatch } = productReducer
-  const { customerState, CustomerDispatch } = customerReducer
-  const { contractDataState, ContractsDataDispatch } = contractsDataReducer
-  const { warehouseDataState, WarehouseDataDispatch } = warehousseDataReducer
+  const { ProductDispatch } = products
+  const { customerState, CustomerDispatch } = customers
+  const { contractDataState, ContractsDataDispatch } = contracts
+  const { warehouseDataState, WarehouseDataDispatch } = warehouse
 
   const UploadCustomer = async () => {
     if (customerState && customerState.length > 0) return
@@ -91,8 +87,12 @@ function App() {
           <Route path={`/`} element={<Cards />} />
           <Route path={`/dashboard`} element={<Dashboard />} />
           <Route path={`/new customer`} element={<RecordCustomers />} />
+          <Route path={`/contacts`} element={customerState && <Contacts customers={customerState} />} />
+          <Route path={`/calendar`} element={<h1>calendar will be here</h1>} />
+          <Route path={`/settings`} element={<h1>settings will be here</h1>} />
         </Route>
       </Routes>
+      <RecordCustomers />
     </div>
   )
 }

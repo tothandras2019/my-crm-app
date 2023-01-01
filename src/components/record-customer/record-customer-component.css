@@ -1,19 +1,33 @@
 #root {
-  background-color: linear-gradient(45deg, rgb(1, 45, 81) 10%, rgb(53, 198, 193) 70%);
+  background: linear-gradient(60deg, rgb(1, 45, 81) 15%, rgb(53, 198, 193) 70%);
   color: rgb(1, 45, 81);
   min-height: 100vh;
 }
 
+.App {
+  position: relative;
+}
+
 main {
-  color: rgb(1, 45, 81);
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  color: rgb(196, 240, 238);
+  background-color: rgb(12, 65, 99);
+  border-radius: 10px;
+  width: 60%;
+}
+main h1 {
+  text-align: center;
 }
 main form {
   padding: 5px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: 850px;
-  height: 600px;
+  height: 100%;
+  width: 100%;
   gap: 15px;
 }
 main form div {
@@ -31,8 +45,9 @@ main form div fieldset legend {
   margin: 0 10px;
   padding: 0 5px;
   font-weight: 600;
+  font-size: small;
   letter-spacing: 1.2px;
-  color: rgb(1, 45, 81);
+  color: rgb(53, 198, 193);
   text-shadow: 2px 2px 3px rgb(1, 45, 81);
 }
 main form .button-container {

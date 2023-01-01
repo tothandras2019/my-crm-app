@@ -2,4 +2,8 @@
   background: linear-gradient(60deg, rgb(1, 45, 81) 15%, rgb(53, 198, 193) 70%);
   color: rgb(1, 45, 81);
   min-height: 100vh;
+}
+
+.App {
+  position: relative;
 }/*# sourceMappingURL=App.css.map */

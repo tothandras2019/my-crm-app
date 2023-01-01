@@ -9,15 +9,18 @@ import reportWebVitals from './reportWebVitals'
 import { CustomerContextProvider } from './DATASTORE/contacts-reducer'
 import { BrowserRouter } from 'react-router-dom'
 import { MainContextProvider } from './utility/contexts/main.context'
+import { PathContextProvider } from './utility/contexts/action.context'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <BrowserRouter>
-    <MainContextProvider>
-      <CustomerContextProvider>
-        <App />
-      </CustomerContextProvider>
-    </MainContextProvider>
+    <PathContextProvider>
+      <MainContextProvider>
+        <CustomerContextProvider>
+          <App />
+        </CustomerContextProvider>
+      </MainContextProvider>
+    </PathContextProvider>
   </BrowserRouter>,
 )
 

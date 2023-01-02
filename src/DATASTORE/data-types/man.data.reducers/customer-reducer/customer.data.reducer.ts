@@ -12,6 +12,7 @@ export const CustomersDataReducer = (state: CustomerDataType[] | [], action: Cus
       return custmoersArray
     }
     case CUSTOMER_ACTION_TYPE.ADD_CUSTOMER: {
+      console.log('ADD_CUSTOMER:', payload)
       return [...state, payload]
     }
     case CUSTOMER_ACTION_TYPE.MODIFY_CUSTOMER: {

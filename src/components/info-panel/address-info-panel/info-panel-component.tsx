@@ -1,7 +1,7 @@
 import './info-panel-component.css'
 import { useState } from 'react'
 
-import { AddressType, SocialType } from '../../../DATASTORE/data-types/data-types'
+import { AddressType, SocialType } from '../../../DATASTORE/data-types/main.data.types/customer-data-types'
 import { OpenCloseButton } from '../../tools/button/open-close/open-close-button-component'
 
 export const InfoPanel = ({ title, address }: { title: string; address: AddressType[] | SocialType[] }) => {

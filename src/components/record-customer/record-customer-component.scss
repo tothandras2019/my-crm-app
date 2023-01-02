@@ -1,52 +1,43 @@
 @import './../../App.scss';
-main {
-  position: absolute;
-  top: 50%;
-  left: 60%;
-  transform: translate(-50%, -50%);
-  color: $palette-primary-color;
-  background-color: $palette-additional-color;
-  border-radius: 10px;
-  width: 60%;
-  h1 {
-    text-align: center;
-  }
-  form {
-    padding: 5px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-    gap: 15px;
-    div {
-      height: fit-content;
-      width: 400px;
-      fieldset {
-        margin: 10px 5px;
-        border: 2px solid $palette-main-color;
-        border-radius: 10px;
-        padding: 15px 5px;
-        box-shadow: 3px 3px 5px $palette-main-color;
 
-        legend {
-          margin: 0 10px;
-          padding: 0 5px;
-          font-weight: 600;
-          font-size: small;
+h1 {
+  text-align: center;
+}
+form {
+  padding: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  gap: 15px;
+  div {
+    height: fit-content;
+    width: 400px;
+    fieldset {
+      margin: 10px 5px;
+      border: 2px solid $palette-main-color;
+      border-radius: 10px;
+      padding: 15px 5px;
+      box-shadow: 3px 3px 5px $palette-main-color;
 
-          letter-spacing: 1.2px;
-          color: $palette-secondary-color;
-          text-shadow: 2px 2px 3px $palette-main-color;
-        }
+      legend {
+        margin: 0 10px;
+        padding: 0 5px;
+        font-weight: 600;
+        font-size: small;
+
+        letter-spacing: 1.2px;
+        color: $palette-secondary-color;
+        text-shadow: 2px 2px 3px $palette-main-color;
       }
     }
+  }
 
-    .button-container {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-    }
+  .button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
   }
 }

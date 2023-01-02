@@ -3,6 +3,7 @@ $palette-primary-color: rgb(196, 240, 238);
 $palette-secondary-color: rgb(53, 198, 193);
 $palette-additional-color: rgb(12, 65, 99);
 $palette-alert-color: #317d65;
+$palette-transparent-primary-color: rgb($palette-primary-color, 0.5);
 
 #root {
   background: linear-gradient(60deg, $palette-main-color 15%, $palette-secondary-color 70%);
@@ -12,4 +13,24 @@ $palette-alert-color: #317d65;
 
 .App {
   position: relative;
+}
+
+.modal_window {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: transparent;
+  animation-name: appear_modal;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes appear_modal {
+  to {
+    background-color: $palette-transparent-primary-color;
+    backdrop-filter: blur(2px);
+  }
 }

@@ -12,10 +12,12 @@ import { fillUpContracts } from './DATASTORE/data-types/man.data.reducers/contra
 import { fillUpWarehouse } from './DATASTORE/data-types/man.data.reducers/warehouse-reducer/warehouse.data.actions'
 import { CalendarSvg, ContactsSvg, DashboardSvg, HomeSvg, SettingsSvg } from './icons/main-menu/menu_svg_items'
 import { Contacts } from './components/contacts/contacts-component'
+import { PathContext } from './utility/contexts/action.context'
 
 function App() {
   // const { customers, dispatch } = useContext(CustomerContext)
 
+  const { MenuManagerOpenOption } = useContext(PathContext)
   const { products, customers, contracts, warehouse } = useContext(MainContext)
 
   const { ProductDispatch } = products
@@ -72,14 +74,6 @@ function App() {
     opportunityAmount: 23425,
   }
 
-  // useEffect(() => {
-  //   setCustomer({ type: 'ADD', payload: NewInitCustomers })
-  // }, [])
-
-  // useEffect(() => {
-  //   console.log(customers)
-  // }, [customers])
-
   return (
     <div className='App'>
       <Routes>
@@ -92,7 +86,15 @@ function App() {
           <Route path={`/settings`} element={<h1>settings will be here</h1>} />
         </Route>
       </Routes>
-      <RecordCustomers />
+      {MenuManagerOpenOption.contacts && (
+        <div className='modal_window'>
+          <RecordCustomers />
+        </div>
+      )}
+
+      {/* {MenuManagerOpenOption.calendar && <></>}
+      {MenuManagerOpenOption.settings && <></>}
+      {MenuManagerOpenOption.dashboard && <></>} */}
     </div>
   )
 }

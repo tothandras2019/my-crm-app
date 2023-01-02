@@ -15,7 +15,7 @@ export const initContract: ContractType = {
         city: 'budapest',
         building: 10,
         street: '7 Vezér street',
-        zip: 1231,
+        zip: '1231',
       },
     ],
     access: [

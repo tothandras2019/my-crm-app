@@ -2,6 +2,8 @@ import './contacts-component.css'
 import { CustomerDataType } from '../../DATASTORE/data-types/main.data.types/customer-data-types'
 
 export const Contacts = ({ customers }: { customers: Required<CustomerDataType>[] }): JSX.Element => {
+  console.log(customers)
+
   return (
     <div className='contacts-container'>
       {customers.map((customer, i) => {
@@ -12,8 +14,8 @@ export const Contacts = ({ customers }: { customers: Required<CustomerDataType>[
             <h1>{companyName}</h1>
             <div>
               <ul>
-                {access.map(({ primary, person, email, telephone }) => (
-                  <li>
+                {access.map(({ primary, person, email, telephone }, access_index) => (
+                  <li key={`${access_index}`}>
                     <h4>{primary ? 'primary' : 'secondary'}</h4>
                     <p>{person}</p>
                     <p>{email}</p>

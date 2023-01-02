@@ -8,20 +8,30 @@
   position: relative;
 }
 
-main {
+.modal_window {
   position: absolute;
-  top: 50%;
-  left: 60%;
-  transform: translate(-50%, -50%);
-  color: rgb(196, 240, 238);
-  background-color: rgb(12, 65, 99);
-  border-radius: 10px;
-  width: 60%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: transparent;
+  animation-name: appear_modal;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
-main h1 {
+
+@keyframes appear_modal {
+  to {
+    background-color: rgba(196, 240, 238, 0.5);
+    backdrop-filter: blur(2px);
+  }
+}
+h1 {
   text-align: center;
 }
-main form {
+
+form {
   padding: 5px;
   display: flex;
   flex-wrap: wrap;
@@ -30,18 +40,18 @@ main form {
   width: 100%;
   gap: 15px;
 }
-main form div {
+form div {
   height: fit-content;
   width: 400px;
 }
-main form div fieldset {
+form div fieldset {
   margin: 10px 5px;
   border: 2px solid rgb(1, 45, 81);
   border-radius: 10px;
   padding: 15px 5px;
   box-shadow: 3px 3px 5px rgb(1, 45, 81);
 }
-main form div fieldset legend {
+form div fieldset legend {
   margin: 0 10px;
   padding: 0 5px;
   font-weight: 600;
@@ -50,7 +60,7 @@ main form div fieldset legend {
   color: rgb(53, 198, 193);
   text-shadow: 2px 2px 3px rgb(1, 45, 81);
 }
-main form .button-container {
+form .button-container {
   width: 100%;
   display: flex;
   justify-content: center;

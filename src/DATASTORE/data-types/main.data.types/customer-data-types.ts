@@ -16,7 +16,7 @@ export type AddressType = {
   city: string
   building: number
   street: string
-  zip: number
+  zip: string
 }
 
 export type AccessType = { primary: boolean; person: string; email: string; telephone: string }

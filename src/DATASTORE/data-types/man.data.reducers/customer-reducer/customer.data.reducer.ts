@@ -10,6 +10,7 @@ export const CustomersDataReducer = (state: CustomerDataType[], action: Customer
   switch (type) {
     case CUSTOMER_ACTION_TYPE.FILL_DATA: {
       const customersArray = payload as CustomerDataType[]
+
       return customersArray
     }
     case CUSTOMER_ACTION_TYPE.ADD_CUSTOMER: {
@@ -19,19 +20,19 @@ export const CustomersDataReducer = (state: CustomerDataType[], action: Customer
       return [...state, CustomerPayload]
     }
     case CUSTOMER_ACTION_TYPE.MODIFY_CUSTOMER: {
-      console.log(payload)
       const newModifiedCustomer = payload as CustomerDataType
-      const filteredCustomerState: CustomerDataType[] | [] = state.filter((product) => product.id !== newModifiedCustomer.id)
-      // updateCustomerFirestore(newModifiedCustomer)
-      return [...filteredCustomerState, newModifiedCustomer]
+
+      updateCustomerFirestore(newModifiedCustomer)
+      return [...state.filter((customer) => customer.id !== newModifiedCustomer.id), newModifiedCustomer]
     }
     case CUSTOMER_ACTION_TYPE.DELETE_CUSTOMER: {
       const customerId = payload as string
+
       deleteCustomerFirestore(customerId)
       return [...state.filter((customer) => customer.id !== customerId)]
     }
     default: {
-      return [...state]
+      return state
     }
   }
 }

@@ -39,7 +39,11 @@ export const PathContext = createContext<ContextType>({
 
 export const PathContextProvider = ({ children }: { children: any }) => {
   const [path, setPath] = useState(SectionActions)
-  const [MenuManagerOpenOption, SetMenuManagerOpenOption] = useState<InitManagerMenuOptionsType>(InitManagerMenuOptions)
+  const [menuManagerOpenOption, SetMenuManagerOpenOption] = useState<InitManagerMenuOptionsType>(InitManagerMenuOptions)
 
-  return <PathContext.Provider value={{ path, setPath, MenuManagerOpenOption, SetMenuManagerOpenOption }}> {children}</PathContext.Provider>
+  return (
+    <PathContext.Provider value={{ path, setPath, MenuManagerOpenOption: menuManagerOpenOption, SetMenuManagerOpenOption }}>
+      {children}
+    </PathContext.Provider>
+  )
 }

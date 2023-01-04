@@ -11,27 +11,22 @@ import { CustomerDataType } from '../../DATASTORE/data-types/main.data.types/cus
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Initialize Firebase
+//#region Initialize Firebase
 const app = initializeApp(FIREBASECONFIG)
 // const analytics = getAnalytics(app)
 
 //-------------------------
 const db = getFirestore(app)
+//#endregion
+//#region MANIPULATE CUSTOMER DATA ON FIRESTORE
+export const addCustomerToFirestore = async (newCustomer: CustomerDataType) => await setDoc(doc(db, 'Customers', newCustomer.id), newCustomer)
+export const updateCustomerFirestore = async (update_customer: CustomerDataType) =>
+  await updateDoc(doc(db, 'Customers', update_customer.id), { ...update_customer })
+export const deleteCustomerFirestore = async (del_customer: string) => await deleteDoc(doc(db, 'Customers', del_customer))
 
-//MANIPULATE CUSTOMER DATA
-export const addCustomerToFirestore = async (newCustomer: CustomerDataType) => {
-  const customerRef = doc(db, 'Customers', `${newCustomer.companyName.replaceAll(' ', '_')}_${newCustomer.id}`)
-  await setDoc(customerRef, newCustomer)
-}
-export const updateCustomerFirestore = async (update_customer: CustomerDataType) => {
-  const updateCustomer = doc(db, 'Customer', `${update_customer.companyName.replaceAll(' ', '_')}_${update_customer.id}`)
-  await updateDoc(updateCustomer, { ...update_customer })
-}
-export const deleteCustomerFirestore = async (del_customer: string) => {
-  await deleteDoc(doc(db, 'Customers', del_customer))
-}
+//#endregion
+//#region REREIVE DATABASE
 
-//RETRIEVE DATABASE
 /**
  * @param collectionObject collection name
  */
@@ -96,6 +91,8 @@ const GenerateWarehouseObject = (querySnapshot: QuerySnapshot<DocumentData>): Wa
 
   return warehouseArrayObject
 }
+
+//#endregion
 
 //----------------------------------------------------------------
 //#region SET INITIALIAL FIRESORE CONTRACT

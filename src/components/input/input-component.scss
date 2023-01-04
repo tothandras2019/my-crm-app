@@ -9,6 +9,7 @@
   height: 20px;
   background-color: transparent;
   padding: 10px;
+
   label {
     text-transform: capitalize;
     font-weight: 500;
@@ -16,7 +17,9 @@
   }
   input[type='text'] {
     border-bottom: 1px solid $palette-alert-color;
-    padding: 1px;
+    padding: 2px;
+    letter-spacing: 1.1px;
     box-sizing: border-box;
+    color: $palette-primary-color;
   }
 }

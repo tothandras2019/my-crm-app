@@ -81,7 +81,7 @@ function App() {
           <Route path={`/`} element={<Cards />} />
           <Route path={`/dashboard`} element={<Dashboard />} />
           <Route path={`/new customer`} element={<ManageCustomersForm />} />
-          <Route path={`/contacts`} element={customerState && <Contacts customers={customerState} />} />
+          <Route path={`/contacts`} element={customerState && <Contacts customersData={customerState} />} />
           <Route path={`/calendar`} element={<h1>calendar will be here</h1>} />
           <Route path={`/settings`} element={<h1>settings will be here</h1>} />
         </Route>

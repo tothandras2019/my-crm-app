@@ -6,7 +6,7 @@ import { MainContext } from '../../utility/contexts/main.context'
 import { deleteCustomer } from '../../DATASTORE/data-types/man.data.reducers/customer-reducer/customer.data.actions'
 import { PathContext } from '../../utility/contexts/action.context'
 
-export const Contacts = ({ customers: customersData }: { customers: Required<CustomerDataType>[] }): JSX.Element => {
+export const Contacts = ({ customersData }: { customersData: Required<CustomerDataType>[] }): JSX.Element => {
   const { SetMenuManagerOpenOption } = useContext(PathContext)
 
   const { customers } = useContext(MainContext)

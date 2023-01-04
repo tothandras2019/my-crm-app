@@ -12,7 +12,7 @@ export const SectionActionHeader = (): JSX.Element => {
 
   return (
     <header>
-      {<OpenCloseButton pageTextValue={`Manage ${path.currentPath.length <= 0 ? undefined : path.currentPath}`} handler={handleManagerOption} />}
+      {<OpenCloseButton pageTextValue={`Manage ${path.currentPath.length <= 0 ? 'home' : path.currentPath}`} handler={handleManagerOption} />}
     </header>
   )
 }

@@ -31,6 +31,7 @@ export enum LeadEnum {
   badTiming = 'bad_Timing',
 }
 export enum LifecicyleEnum {
+  open = 'open',
   subscriber = 'subscriber',
   lead = 'lead',
   marketingQualified = 'marketing/qualified ',

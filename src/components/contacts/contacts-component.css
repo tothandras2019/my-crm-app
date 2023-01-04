@@ -4,10 +4,37 @@
   min-height: 100vh;
 }
 
+.App {
+  position: relative;
+}
+
+.modal_window {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: transparent;
+  animation-name: appear_modal;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes appear_modal {
+  to {
+    background-color: rgba(196, 240, 238, 0.5);
+    backdrop-filter: blur(2px);
+  }
+}
 .contacts-container {
-  margin-top: 10px;
+  margin: 10px 0 0 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 .contacts-container .contact-details {
+  position: relative;
   cursor: pointer;
   background-color: rgb(53, 198, 193);
   box-shadow: 5px 5px 5px rgb(1, 45, 81);
@@ -16,4 +43,13 @@
   max-width: 350px;
   border-radius: 10px;
   gap: 10px;
+}
+.contacts-container .contact-details p:nth-child(1) {
+  padding-top: 40px;
+  height: 20px;
+}
+.contacts-container .contact-details .delete-button_absolute {
+  position: absolute;
+  top: 0;
+  right: 0;
 }/*# sourceMappingURL=contacts-component.css.map */

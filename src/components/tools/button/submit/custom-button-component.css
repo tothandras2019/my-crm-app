@@ -1,13 +1,37 @@
 #root {
-  background-color: linear-gradient(45deg, rgb(1, 45, 81) 10%, rgb(53, 198, 193) 70%);
+  background: linear-gradient(60deg, rgb(1, 45, 81) 15%, rgb(53, 198, 193) 70%);
   color: rgb(1, 45, 81);
   min-height: 100vh;
 }
 
+.App {
+  position: relative;
+}
+
+.modal_window {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: transparent;
+  animation-name: appear_modal;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes appear_modal {
+  to {
+    background-color: rgba(196, 240, 238, 0.5);
+    backdrop-filter: blur(2px);
+  }
+}
 input[type=submit],
 input[type=button] {
-  padding: 10px;
+  padding: 5px;
   min-width: 100px;
+  height: 30px;
   margin: 5px;
   border: 2px solid rgb(1, 45, 81);
   border-radius: 5px;

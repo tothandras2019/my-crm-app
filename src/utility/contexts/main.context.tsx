@@ -3,8 +3,8 @@ import { ProductsName, ProductType } from '../../DATASTORE/data-types/data-types
 import { UserDataActionTypes, UserDataReducer } from '../../DATASTORE/login-reducer'
 import { UserInitArray, UserType } from './../../DATASTORE/data-types/user-data-types'
 import { InitaialAvailableProducts, ProductsReducer, ProductActionType } from '../../DATASTORE/products-reducer'
-import { ContactReducer, CustomerActionType, CustomersArrayType } from '../../DATASTORE/contacts-reducer'
-import { CustomerDispatchType, CustomersDataReducer } from '../../DATASTORE/data-types/man.data.reducers/customer-reducer/customer.data.reducer'
+import { ContactReducer, CustomersArrayType } from '../../DATASTORE/contacts-reducer'
+import { CustomerActionType, CustomersDataReducer } from '../../DATASTORE/data-types/man.data.reducers/customer-reducer/customer.data.reducer'
 import { CustomerDataType } from '../../DATASTORE/data-types/main.data.types/customer-data-types'
 import { ContractDispatchType, ContractsDataReducer } from '../../DATASTORE/data-types/man.data.reducers/contracts-reducer/contracts.data.reducer'
 import { ContractType } from '../../DATASTORE/data-types/main.data.types/contract-data-types'
@@ -12,7 +12,9 @@ import { WarehouseingServiceType } from '../../DATASTORE/data-types/main.data.ty
 import { WarehouseDataReducer, WarehouseDispatchType } from '../../DATASTORE/data-types/man.data.reducers/warehouse-reducer/warehouse.data.reducer'
 
 export const MainContext = createContext<{
-  customers: { customerState: CustomerDataType[] | [] | undefined; CustomerDispatch: Dispatch<CustomerDispatchType> }
+  // export const MainContext = createContext<{
+  customers: { customerState: CustomerDataType[] | []; CustomerDispatch: Dispatch<CustomerActionType> }
+  // customers: { customerState: CustomerDataType[] | [] | undefined; CustomerDispatch: Dispatch<CustomerActionType> }
   products: { productState: ProductType[] | [] | undefined; ProductDispatch: Dispatch<ProductActionType> }
   userAllData: { userDataState: UserType[] | []; UserDataDispatch: Dispatch<UserDataActionTypes> }
   contracts: { contractDataState: ContractType[] | []; ContractsDataDispatch: Dispatch<ContractDispatchType> }

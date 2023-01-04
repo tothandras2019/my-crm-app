@@ -1,14 +1,17 @@
 import { MainContext } from './main.context'
 import { createContext, Dispatch, SetStateAction, useContext, useState } from 'react'
+import { CustomerDataType } from '../../DATASTORE/data-types/main.data.types/customer-data-types'
 
 type InitManagerMenuOptionsType = {
   contacts: boolean
+  customerForModify: { customer: CustomerDataType | null }
   dashboard: boolean
   calendar: boolean
   settings: boolean
 }
 export const InitManagerMenuOptions = {
   contacts: false,
+  customerForModify: { customer: null },
   dashboard: false,
   calendar: false,
   settings: false,

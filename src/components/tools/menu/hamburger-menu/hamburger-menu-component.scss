@@ -6,8 +6,7 @@ $size: 140px;
   top: 0;
   left: 0;
   min-width: $size;
-  min-height: $size;
-  border-bottom-right-radius: 10px;
+  min-height: 50px;
 
   display: flex;
   justify-content: center;
@@ -53,7 +52,7 @@ $size: 140px;
     // background-color: $palette-main-color;
     // border-radius: 50%;
     width: $size;
-    height: $size;
+    // height: $size;
     span {
       background-color: transparent;
       transition: 0.5s;

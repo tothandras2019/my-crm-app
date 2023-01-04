@@ -6,8 +6,8 @@ import { PathContext } from './../../../../utility/contexts/action.context'
 type LinkButtonType = { value: string; hide: boolean; IconSVGComponent: () => JSX.Element | undefined }
 export const LinkButton = ({ value = '', hide = false, IconSVGComponent }: Partial<LinkButtonType>): JSX.Element => {
   const { setPath } = useContext(PathContext)
-
   const navigateTo = useNavigate()
+
   const handleNavigation = () => {
     const navTo = value === 'home' ? '/' : value
     navigateTo(navTo)

@@ -4,13 +4,35 @@
   min-height: 100vh;
 }
 
+.App {
+  position: relative;
+}
+
+.modal_window {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: transparent;
+  animation-name: appear_modal;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes appear_modal {
+  to {
+    background-color: rgba(196, 240, 238, 0.5);
+    backdrop-filter: blur(2px);
+  }
+}
 .menu-button {
   position: absolute;
   top: 0;
   left: 0;
   min-width: 140px;
-  min-height: 140px;
-  border-bottom-right-radius: 10px;
+  min-height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,7 +73,6 @@
 .menu-button.close {
   transition: 0.5s;
   width: 140px;
-  height: 140px;
 }
 .menu-button.close span {
   background-color: transparent;

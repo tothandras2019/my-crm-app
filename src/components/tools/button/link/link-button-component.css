@@ -4,14 +4,37 @@
   min-height: 100vh;
 }
 
+.App {
+  position: relative;
+}
+
+.modal_window {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: transparent;
+  animation-name: appear_modal;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes appear_modal {
+  to {
+    background-color: rgba(196, 240, 238, 0.5);
+    backdrop-filter: blur(2px);
+  }
+}
 .menu-link {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  min-height: 100px;
+  min-height: 90px;
   min-width: 120px;
   font-size: larger;
-  transition: 0.8s;
+  transition: 0.5s;
   gap: 10px;
   cursor: pointer;
 }
@@ -21,18 +44,24 @@
   width: 70px;
   font-weight: 500;
   letter-spacing: 1.1px;
-  transition: 0.8s;
+  transition: 0.5s;
+}
+.menu-link svg {
+  opacity: 1;
+  transition: 0.5s;
 }
 .menu-link.hide {
-  position: absolute;
-  top: 20px;
-  left: 0px;
+  top: 0;
+  left: 0;
   min-width: 0;
   min-height: 0;
   opacity: 0;
+  transition: 0.5s;
 }
 .menu-link.hide p {
   opacity: 0;
   font-size: 0;
-  transition: 1s;
+}
+.menu-link.hide svg {
+  height: 0;
 }/*# sourceMappingURL=link-button-component.css.map */

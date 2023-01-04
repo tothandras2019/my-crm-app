@@ -9,7 +9,7 @@ export const FinancialInfoPanel = ({ summary }: { summary: number }) => {
         <h2>Orders total</h2>
         <h4>{`${formatter.format(summary)}`} </h4>
       </div>
-      <OpenCloseButton changeValue={'show details'} handler={() => {}} />
+      <OpenCloseButton pageTextValue={'show details'} handler={() => {}} />
     </div>
   )
 }

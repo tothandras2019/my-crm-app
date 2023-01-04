@@ -2,7 +2,7 @@
 import FIREBASECONFIG from './keys-data.json'
 import { initializeApp } from 'firebase/app'
 import { getAnalytics } from 'firebase/analytics'
-import { getFirestore, collection, getDocs, QuerySnapshot, DocumentData, addDoc } from 'firebase/firestore'
+import { getFirestore, collection, getDocs, QuerySnapshot, DocumentData, addDoc, doc, setDoc, deleteDoc, updateDoc } from 'firebase/firestore'
 import { ContractType } from '../../DATASTORE/data-types/main.data.types/contract-data-types'
 import { initContract } from './../../DATASTORE/data/initialContract'
 import { WarehouseingServiceType } from '../../DATASTORE/data-types/main.data.types/product-data-types'
@@ -18,24 +18,31 @@ const app = initializeApp(FIREBASECONFIG)
 //-------------------------
 const db = getFirestore(app)
 
+//MANIPULATE CUSTOMER DATA
+export const addCustomerToFirestore = async (newCustomer: CustomerDataType) => {
+  const customerRef = doc(db, 'Customers', `${newCustomer.companyName.replaceAll(' ', '_')}_${newCustomer.id}`)
+  await setDoc(customerRef, newCustomer)
+}
+export const updateCustomerFirestore = async (update_customer: CustomerDataType) => {
+  const updateCustomer = doc(db, 'Customer', `${update_customer.companyName.replaceAll(' ', '_')}_${update_customer.id}`)
+  await updateDoc(updateCustomer, { ...update_customer })
+}
+export const deleteCustomerFirestore = async (del_customer: string) => {
+  await deleteDoc(doc(db, 'Customers', del_customer))
+}
+
+//RETRIEVE DATABASE
 /**
  * @param collectionObject collection name
  */
 export const getCustomerCollection = async (collectionObject: string) =>
   GenerateCustomerObject((await getDocs(collection(db, collectionObject))) as QuerySnapshot<DocumentData>)
 
-// const querySnapshot: QuerySnapshot<DocumentData> = await getDocs(collection(db, collectionObject))
-// return GenerateCustomerObject(querySnapshot)
 export const getContractCollection = async (collectionObject: string) =>
   GenerateContractsObject((await getDocs(collection(db, collectionObject))) as QuerySnapshot<DocumentData>)
 
-// const querySnapshot: QuerySnapshot<DocumentData> = await getDocs(collection(db, collectionObject))
-// return GenerateContractsObject(querySnapshot)
-
 export const getWarehouseCollection = async (collectionObject: string) =>
   GenerateWarehouseObject((await getDocs(collection(db, collectionObject))) as QuerySnapshot<DocumentData>)
-
-// const querySnapshot: QuerySnapshot<DocumentData> = await getDocs(collection(db, collectionObject))
 
 const GenerateCustomerObject = (querySnapshot: QuerySnapshot<DocumentData>): CustomerDataType[] => {
   let customersDataArray: CustomerDataType[] = []

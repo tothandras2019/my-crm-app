@@ -4,7 +4,7 @@ import { Cards } from './components/card/cards-component'
 import { Navigation } from './components/navigation/navigation-component'
 import { Route, Routes } from 'react-router-dom'
 import { Dashboard } from './components/dashboard/dashboard-component'
-import { RecordCustomers } from './components/record-customer/record-customer-component'
+import { ManageCustomersForm } from './components/record-customer/record-customer-component'
 import { MainContext } from './utility/contexts/main.context'
 import { getContractCollection, getCustomerCollection, getWarehouseCollection } from './utility/google-cloud-store/google-cloud-store'
 import { fillUpCustomer } from './DATASTORE/data-types/man.data.reducers/customer-reducer/customer.data.actions'
@@ -80,7 +80,7 @@ function App() {
         <Route path={`/`} element={<Navigation />}>
           <Route path={`/`} element={<Cards />} />
           <Route path={`/dashboard`} element={<Dashboard />} />
-          <Route path={`/new customer`} element={<RecordCustomers />} />
+          <Route path={`/new customer`} element={<ManageCustomersForm />} />
           <Route path={`/contacts`} element={customerState && <Contacts customers={customerState} />} />
           <Route path={`/calendar`} element={<h1>calendar will be here</h1>} />
           <Route path={`/settings`} element={<h1>settings will be here</h1>} />
@@ -88,7 +88,12 @@ function App() {
       </Routes>
       {MenuManagerOpenOption.contacts && (
         <div className='modal_window'>
-          <RecordCustomers />
+          <ManageCustomersForm />
+        </div>
+      )}
+      {MenuManagerOpenOption.customerForModify.customer && (
+        <div className='modal_window'>
+          <ManageCustomersForm isModification={true} customerData={MenuManagerOpenOption.customerForModify.customer} />
         </div>
       )}
 

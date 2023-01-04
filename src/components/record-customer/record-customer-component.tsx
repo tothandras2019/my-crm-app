@@ -1,31 +1,55 @@
 import './record-customer-component.css'
 import { Input } from '../input/input-component'
-import { FormEvent, Fragment, SyntheticEvent, useContext } from 'react'
-import { InitCustomersType, LeadEnum, LifecicyleEnum, ProductCategoryEnum } from '../../DATASTORE/data-types/data-types'
+import { FormEvent, Fragment, useContext, useEffect, useState } from 'react'
+import { LeadEnum, LifecicyleEnum } from '../../DATASTORE/data-types/data-types'
 import { CustomerContext } from './../../DATASTORE/contacts-reducer'
 import { CustomButton } from '../tools/button/submit/custom-button-component'
 import { InitManagerMenuOptions, PathContext } from '../../utility/contexts/action.context'
 import { ManageDataFrame } from '../manage-data-frame/manage-data-frame-component'
 import { CustomerDataType } from '../../DATASTORE/data-types/main.data.types/customer-data-types'
 import { MainContext } from '../../utility/contexts/main.context'
-import { addCustomer } from '../../DATASTORE/data-types/man.data.reducers/customer-reducer/customer.data.actions'
+import { addCustomer, modifyCustomer } from '../../DATASTORE/data-types/man.data.reducers/customer-reducer/customer.data.actions'
 
-export const RecordCustomers = () => {
+type ManageCustomersFormType = { isModification: boolean; customerData: CustomerDataType | undefined }
+export const ManageCustomersForm = ({ isModification = false, customerData }: Partial<ManageCustomersFormType>) => {
   const { dispatch } = useContext(CustomerContext)
   const { SetMenuManagerOpenOption } = useContext(PathContext)
   const { customers } = useContext(MainContext)
-  const { CustomerDispatch } = customers
+  const { customerState, CustomerDispatch } = customers
+
+  const [newCustomerID, setNewCustomerID] = useState<number | string | null>(null)
+
+  useEffect(() => {
+    if (!customerState) return
+    const length = customerState?.length
+    if (length <= 0) return
+
+    if (isModification && customerData) return setNewCustomerID(customerData.id)
+
+    const id = parseInt(customerState[length - 1].id) + 1
+    setNewCustomerID(id)
+  }, [customerState])
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const target = event.target as HTMLFormElement
+    const formDataArray: string[] = retreiveFromData(target)
+    const registerCustomerData: CustomerDataType = fillCustomerData(formDataArray)
+
+    isModification ? CustomerDispatch(modifyCustomer(registerCustomerData)) : CustomerDispatch(addCustomer(registerCustomerData))
+  }
+
+  const retreiveFromData = (target: HTMLFormElement): string[] => {
     const formDataArray: string[] = []
     Object.values<HTMLInputElement>(target).forEach((item) => item instanceof HTMLInputElement && formDataArray.push(item.value))
+    return formDataArray
+  }
 
-    const [company, name, position, email, country, code, city, building, street, zip, emailMain, telephone, media, link] = formDataArray
+  const fillCustomerData = (formDataArray: string[]): CustomerDataType => {
+    const [company, name, email, country, code, city, building, street, zip, emailMain, telephone, media, link] = formDataArray
 
-    const registerCustomerData: CustomerDataType = {
-      id: 'n/a',
+    return {
+      id: newCustomerID ? newCustomerID?.toString() : '0',
       companyName: company,
       address: [
         {
@@ -53,14 +77,10 @@ export const RecordCustomers = () => {
         },
       ],
       status: {
-        lifecycleState: '',
-        leadState: '',
+        lifecycleState: LifecicyleEnum.open,
+        leadState: LeadEnum.open,
       },
     }
-
-    CustomerDispatch(addCustomer(registerCustomerData))
-
-    // dispatch({ type: 'ADD/CUSTOMER', payload: companyDetails })
   }
 
   const handleCancel = () => SetMenuManagerOpenOption(InitManagerMenuOptions)
@@ -68,48 +88,46 @@ export const RecordCustomers = () => {
   return (
     <ManageDataFrame>
       <Fragment>
-        <h1>Record customer</h1>
+        <h1>{isModification ? 'Modify customer' : 'Record customer'}</h1>
         <form onSubmit={handleSubmit}>
           <div>
             <fieldset>
               <legend>General</legend>
-              <Input label='company' />
+              <Input label='company' defaultValue={customerData?.companyName} />
               <fieldset>
                 <legend>{'Contact (primary)'}</legend>
-                <Input label='name' />
-                <Input label='position' />
-                <Input label='email' />
+                <Input label='name' defaultValue={customerData?.access[0].person} />
+                <Input label='email' defaultValue={customerData?.access[0].email} />
               </fieldset>
             </fieldset>
           </div>
           <div>
             <fieldset>
               <legend>{'Address (primary)'}</legend>
-              <Input label='country' />
-              <Input label='country code' />
-              <Input label='city' />
-              <Input label='building' />
-              <Input label='street' />
-              <Input label='zip' />
+              <Input label='country' defaultValue={customerData?.address[0].country} />
+              <Input label='country code' defaultValue={customerData?.address[0].code} />
+              <Input label='city' defaultValue={customerData?.address[0].city} />
+              <Input label='building' defaultValue={customerData?.address[0].building.toString()} />
+              <Input label='street' defaultValue={customerData?.address[0].street} />
+              <Input label='zip' defaultValue={customerData?.address[0].zip} />
             </fieldset>
           </div>
           <div>
             <fieldset>
               <legend>{'Access (primary)'}</legend>
-              <Input label='e-mail' />
-              <Input label='telephone' />
+              <Input label='e-mail' defaultValue={customerData?.access[0].email} />
+              <Input label='telephone' defaultValue={customerData?.access[0].telephone} />
             </fieldset>
           </div>
           <div>
             <fieldset>
               <legend>Social</legend>
-              <Input label='media' />
-              <Input label='link' />
+              <Input label='media' defaultValue={customerData?.social[0].media} />
+              <Input label='link' defaultValue={customerData?.social[0].link} />
             </fieldset>
           </div>
           <div className='button-container'>
-            <CustomButton />
-            <CustomButton type={'button'} value={'delete'} />
+            <CustomButton value={isModification ? 'modify' : 'submit'} />
             <CustomButton type={'button'} value={'cancel'} handler={handleCancel} />
           </div>
         </form>

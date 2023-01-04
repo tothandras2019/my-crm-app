@@ -10,5 +10,7 @@ export const SectionActionHeader = (): JSX.Element => {
     return () => SetMenuManagerOpenOption(InitManagerMenuOptions)
   }, [path.currentPath])
 
-  return <header>{<OpenCloseButton changeValue={path.currentPath} handler={handleManagerOption} />}</header>
+  return (
+    <header>{<OpenCloseButton pageTextValue={path.currentPath.length <= 0 ? undefined : path.currentPath} handler={handleManagerOption} />}</header>
+  )
 }

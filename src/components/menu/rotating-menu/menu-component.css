@@ -4,44 +4,45 @@
   min-height: 100vh;
 }
 
+.App {
+  position: relative;
+}
+
+.modal_window {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: transparent;
+  animation-name: appear_modal;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes appear_modal {
+  to {
+    background-color: rgba(196, 240, 238, 0.5);
+    backdrop-filter: blur(2px);
+  }
+}
 .menu-container {
   position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding-top: 100px;
+  padding: 50px 0 0 5px;
   top: 0px;
   left: 0px;
   width: 130px;
   height: 100vh;
-  transition: 0.8s;
-}
-.menu-container .menu-link-container {
-  border-radius: 50%;
-  transition: 0.8s;
-}
-.menu-container .menu-link-container.close {
-  position: absolute;
-  max-width: 1px;
-  height: 1px;
-  top: 0;
-  left: 0;
-  min-width: 0px;
-  min-height: 0px;
-  transition: 5s;
+  transition: 0.5s;
 }
 .menu-container.close {
   min-width: 100px;
-  max-height: 100px;
+  height: 0;
   padding-top: 0px;
-  transition: 5s;
-}
-@keyframes rotate {
-  from {
-    transform: rotateZ(0deg);
-  }
-  to {
-    transform: rotateZ(360deg);
-  }
+  transition: 0.5s;
 }/*# sourceMappingURL=menu-component.css.map */

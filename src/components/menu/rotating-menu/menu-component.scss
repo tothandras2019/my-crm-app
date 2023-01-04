@@ -5,50 +5,17 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding-top: 100px;
+  padding: 50px 0 0 5px;
   top: 0px;
   left: 0px;
   width: 130px;
   height: 100vh;
-  transition: 0.8s;
+  transition: 0.5s;
 
-  .menu-link-container {
-    // position: absolute;
-    // animation-name: rotate;
-    // animation-duration: 20s;
-    // animation-iteration-count: infinite;
-    // animation-timing-function: linear;
-
-    border-radius: 50%;
-    // background-color: $palette-main-color;
-    transition: 0.8s;
-    &.close {
-      position: absolute;
-      max-width: 1px;
-      height: 1px;
-      top: 0;
-      left: 0;
-      min-width: 0px;
-      min-height: 0px;
-      // background-color: transparent;
-      transition: 5s;
-    }
-  }
   &.close {
-    // top: 0px;
-    // left: 0px;
     min-width: 100px;
-    max-height: 100px;
+    height: 0;
     padding-top: 0px;
-    transition: 5s;
-  }
-
-  @keyframes rotate {
-    from {
-      transform: rotateZ(0deg);
-    }
-    to {
-      transform: rotateZ(360deg);
-    }
+    transition: 0.5s;
   }
 }

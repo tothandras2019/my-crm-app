@@ -15,7 +15,7 @@ export const InfoPanel = ({ title, address }: { title: string; address: AddressT
     <div className={`info-panel`}>
       <div className='info-panel-title'>
         <h4>{title}</h4>
-        <OpenCloseButton changeValue={isShowDetails ? 'hide' : 'show'} handler={handlerShow} />
+        <OpenCloseButton pageTextValue={isShowDetails ? 'hide' : 'show'} handler={handlerShow} />
       </div>
       {address.map((value, i) => (
         <div key={`info-${value}--${i}`} className={`info-panel-details ${isShowDetails ? 'show' : ''}`}>

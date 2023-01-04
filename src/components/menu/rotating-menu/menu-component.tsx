@@ -27,7 +27,3 @@ export const Menu = ({
     </div>
   )
 }
-
-// {
-//   items.map((item, i) => <LinkButton key={`item--${i}`} value={item} rotating={positionDegree * i} hide={hideElement.value} />)
-// }

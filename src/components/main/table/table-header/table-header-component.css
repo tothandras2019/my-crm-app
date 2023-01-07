@@ -27,25 +27,7 @@
     backdrop-filter: blur(2px);
   }
 }
-.input-container {
+.full-details-header .full-details-title {
   display: flex;
-  gap: 10px;
-  align-items: center;
-  justify-content: center;
-  width: fit-content;
-  height: 20px;
-  background-color: transparent;
-  padding: 10px;
-}
-.input-container label {
-  text-transform: capitalize;
-  font-weight: 300;
-  min-width: 100px;
-}
-.input-container input[type=text] {
-  border-bottom: 1px solid #317d65;
-  padding: 2px;
-  letter-spacing: 1.1px;
-  box-sizing: border-box;
-  color: rgb(196, 240, 238);
-}/*# sourceMappingURL=input-component.css.map */
+  font-weight: 500;
+}/*# sourceMappingURL=table-header-component.css.map */

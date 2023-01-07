@@ -2,19 +2,9 @@ import { SyntheticEvent, useState } from 'react'
 import './input-component.css'
 
 type InputType = { label: string; defaultValue: string }
-export const Input = ({ label, defaultValue }: Partial<InputType>): JSX.Element => {
-  // const [value, setValue] = useState('')
-
-  // const handleChangeValue = (event: SyntheticEvent<HTMLInputElement>) => {
-  //   const value = event.target as HTMLInputElement
-  // }
-
-  return (
-    <div className={`input-container ${label}`}>
-      <label htmlFor={`input-field-${label}`}>{label}</label>
-      <input type='text' name={`input-field-${label}`} defaultValue={defaultValue} />
-    </div>
-  )
-}
-
-//  onChange = { handleChangeValue }
+export const Input = ({ label = undefined, defaultValue }: Partial<InputType>): JSX.Element => (
+  <div className={`input-container ${label}`}>
+    {label && <label htmlFor={`input-field-${label}`}>{label}</label>}
+    <input type='text' name={`input-field-${label}`} defaultValue={defaultValue} />
+  </div>
+)

@@ -27,25 +27,17 @@
     backdrop-filter: blur(2px);
   }
 }
-.input-container {
+.addresses-container {
   display: flex;
-  gap: 10px;
-  align-items: center;
-  justify-content: center;
-  width: fit-content;
-  height: 20px;
-  background-color: transparent;
-  padding: 10px;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 1000px;
+  height: 500px;
+  background-color: grey;
 }
-.input-container label {
-  text-transform: capitalize;
-  font-weight: 300;
-  min-width: 100px;
+.addresses-container div {
+  display: flex;
 }
-.input-container input[type=text] {
-  border-bottom: 1px solid #317d65;
-  padding: 2px;
-  letter-spacing: 1.1px;
-  box-sizing: border-box;
-  color: rgb(196, 240, 238);
-}/*# sourceMappingURL=input-component.css.map */
+.addresses-container div p {
+  min-width: 150px;
+}/*# sourceMappingURL=addresses-component.css.map */

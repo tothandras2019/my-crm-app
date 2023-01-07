@@ -28,28 +28,36 @@
   }
 }
 .contacts-container {
-  margin: 10px 0 0 10px;
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
   gap: 10px;
+  background-color: rgb(196, 240, 238);
+  color: rgb(1, 45, 81);
+  margin: 10px;
 }
-.contacts-container .contact-details {
-  position: relative;
-  cursor: pointer;
-  background-color: rgb(53, 198, 193);
-  box-shadow: 5px 5px 5px rgb(1, 45, 81);
-  padding: 10px;
-  width: fit-content;
-  max-width: 350px;
-  border-radius: 10px;
+.contacts-container .header-details {
+  display: flex;
   gap: 10px;
+  justify-content: flex-start;
+  font-weight: 500;
 }
-.contacts-container .contact-details p:nth-child(1) {
-  padding-top: 40px;
-  height: 20px;
+.contacts-container p {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  text-align: left;
+  min-width: 180px;
+  box-sizing: border-box;
+  padding-left: 10px;
 }
-.contacts-container .contact-details .delete-button_absolute {
-  position: absolute;
-  top: 0;
-  right: 0;
+.contacts-container .contact-details .main-details {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
+}
+@media screen and (max-width: 1270px) {
+  .contacts-container .contact-details p {
+    min-width: fit-content;
+  }
 }/*# sourceMappingURL=contacts-component.css.map */

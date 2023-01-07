@@ -1,0 +1,16 @@
+@import './../../../App.scss';
+
+.full-details {
+  padding-left: 30px;
+  p {
+    font-size: medium;
+  }
+  .full-details-row {
+    display: flex;
+    flex-direction: column;
+
+    .full-details-items {
+      display: flex;
+    }
+  }
+}

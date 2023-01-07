@@ -2,13 +2,12 @@
 
 input[type='submit'],
 input[type='button'] {
-  padding: 5px;
   min-width: 100px;
-  height: 30px;
+  height: 28px;
   margin: 5px;
   border: 2px solid $palette-main-color;
   border-radius: 5px;
-  box-shadow: 5px 5px 5px $palette-main-color;
+  // box-shadow: 5px 5px 5px $palette-main-color;
 
   background-color: $palette-main-color;
   color: $palette-primary-color;

@@ -6,6 +6,7 @@ import { formatter } from '../../utility/number.formatter'
 import { SyntheticEvent, useEffect, useRef, useState, useContext, FormEvent, FC } from 'react'
 import { usePosition } from '../../utility/custom-hooks/usePosition'
 import { CustomerContext } from './../../DATASTORE/contacts-reducer'
+import { CustomButton } from '../tools/button/submit/custom-button-component'
 
 type ShowIdType = { id: number; isShowContract: boolean; isShowAmount: boolean }
 

@@ -46,8 +46,3 @@ export const Table = ({ address, access, social }: TableDataType): JSX.Element =
     </div>
   )
 }
-
-//  primary: boolean
-//  person: string
-//  email: string
-//  telephone: string

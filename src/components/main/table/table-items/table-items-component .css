@@ -2,11 +2,6 @@
   background: linear-gradient(60deg, rgb(1, 45, 81) 15%, rgb(53, 198, 193) 70%);
   color: rgb(1, 45, 81);
   min-height: 100vh;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-#root::-webkit-scrollbar {
-  display: none;
 }
 
 .App {
@@ -32,11 +27,11 @@
     backdrop-filter: blur(2px);
   }
 }
-header {
-  width: 100%;
-  min-height: 50px;
-  background-color: rgb(1, 45, 81);
-  color: rgb(196, 240, 238);
+.full-details-items {
   display: flex;
-  justify-content: flex-start;
-}/*# sourceMappingURL=section-action-header.css.map */
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(53, 198, 193);
+}
+.full-details-items .full-details-title-row {
+  display: flex;
+}/*# sourceMappingURL=table-items-component .css.map */

@@ -1,0 +1,11 @@
+@import './../../../../App.scss';
+
+.full-details-items {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid $palette-secondary-color;
+
+  .full-details-title-row {
+    display: flex;
+  }
+}

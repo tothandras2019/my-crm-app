@@ -29,7 +29,7 @@
 }
 input[type=submit],
 input[type=button] {
-  min-width: 100px;
+  min-width: 140px;
   height: 28px;
   margin: 5px;
   border: 2px solid rgb(1, 45, 81);
@@ -39,9 +39,24 @@ input[type=button] {
   text-transform: capitalize;
   transition: 0.5s;
 }
+input[type=submit].green,
+input[type=button].green {
+  background-color: rgb(74, 156, 74);
+  border: 2px solid rgb(74, 156, 74);
+}
+input[type=submit].red,
+input[type=button].red {
+  background-color: rgb(176, 58, 58);
+  border: 2px solid rgb(176, 58, 58);
+}
+input[type=submit].yellow,
+input[type=button].yellow {
+  background-color: rgb(172, 176, 58);
+  border: 2px solid rgb(172, 176, 58);
+}
 input[type=submit]:hover,
 input[type=button]:hover {
-  letter-spacing: 1.2px;
+  letter-spacing: 1.1px;
 }
 input[type=submit]:active,
 input[type=button]:active {

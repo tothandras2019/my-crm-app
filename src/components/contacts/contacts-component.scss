@@ -37,17 +37,22 @@
   background-color: $palette-primary-color;
   color: $palette-main-color;
   margin: 10px;
+  padding: 0 30px;
 
   .header-details {
     display: flex;
     gap: 10px;
-    justify-content: flex-start;
+    justify-content: space-between;
     font-weight: 500;
+    .header-details-column {
+      display: flex;
+    }
   }
   p {
     display: flex;
     align-items: center;
-    height: 40px;
+    height: 45px;
+    word-break: normal;
     text-align: left;
     min-width: 180px;
     box-sizing: border-box;
@@ -57,7 +62,10 @@
     .main-details {
       display: flex;
       gap: 10px;
-      justify-content: flex-start;
+      justify-content: space-between;
+      .main-details-header {
+        display: flex;
+      }
     }
 
     @media screen and (max-width: 1270px) {

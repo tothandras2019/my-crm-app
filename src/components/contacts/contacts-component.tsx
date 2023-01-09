@@ -28,11 +28,14 @@ export const Contacts = ({ customersData }: { customersData: Required<CustomerDa
   return (
     <div className='contacts-container'>
       <div className='header-details'>
-        <p>{'id'}</p>
-        <p>{'companyName'}</p>
-        <p>{'person'}</p>
-        <p>{'telephone'}</p>
-        <p>{'email'}</p>
+        <div className='header-details-column'>
+          <p>{'id'}</p>
+          <p>{'companyName'}</p>
+          <p>{'person'}</p>
+          <p>{'telephone'}</p>
+          <p>{'email'}</p>
+        </div>
+        <CustomButton color={'green'} value={'new contact'} handler={() => {}} />
       </div>
       {customersData.map((customer, i) => {
         const { id, companyName, address, access, social, status } = customer
@@ -40,14 +43,14 @@ export const Contacts = ({ customersData }: { customersData: Required<CustomerDa
         return (
           <div id={id} key={`${id}_${i}`} className='contact-details'>
             <div className='main-details'>
-              <p>{id}</p>
-              <p>{companyName}</p>
-              <p>{access[0].person}</p>
-              <p>{access[0].telephone}</p>
-              <p>{access[0].email}</p>
-              <p>
-                <CustomButton value='details' handler={handleOpenDetails} />
-              </p>
+              <div className='main-details-header'>
+                <p>{id}</p>
+                <p>{companyName}</p>
+                <p>{access[0].person}</p>
+                <p>{access[0].telephone}</p>
+                <p>{access[0].email}</p>
+              </div>
+              <CustomButton value='details' handler={handleOpenDetails} />
             </div>
             {isOpenDetails && <Table address={address} access={access} social={social} />}
           </div>
@@ -56,24 +59,3 @@ export const Contacts = ({ customersData }: { customersData: Required<CustomerDa
     </div>
   )
 }
-
-// <div id={id} key={`${id}_${i}`} className='contact-details'>
-//   <p>id: {id}</p>
-//   <div className='delete-button_absolute'>
-//     <CustomButton value='modify' type='button' id={id} handler={() => handleModification(customer)} />
-//     <CustomButton value='delete' type='button' id={id} handler={handleDelete} />
-//   </div>
-//   <h1>{companyName}</h1>
-//   <div>
-//     <ul>
-//       {access.map(({ primary, person, email, telephone }, access_index) => (
-//         <li key={`${access_index}`}>
-//           <h4>{primary ? 'primary' : 'secondary'}</h4>
-//           <p>contact:{person}</p>
-//           <p>e-mail:{email}</p>
-//           <p>tel: {telephone ? telephone : 'not registered'}</p>
-//         </li>
-//       ))}
-//     </ul>
-//   </div>
-// </div>

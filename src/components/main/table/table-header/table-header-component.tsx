@@ -8,10 +8,12 @@ export const TableHeader = ({ title, headerValues }: TableHeaderType): JSX.Eleme
     <div className='full-details-header'>
       <h4>{title}</h4>
       <div className='full-details-title'>
-        {headerValues.map((value, i) => (
-          <p key={`${value}_${i}`}>{value}</p>
-        ))}
-        <CustomButton value={'add'} />
+        <div className='full-details-title-column'>
+          {headerValues.map((value, i) => (
+            <p key={`${value}_${i}`}>{value}</p>
+          ))}
+        </div>
+        <CustomButton color={'green'} value={'add'} />
       </div>
     </div>
   )

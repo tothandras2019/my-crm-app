@@ -10,7 +10,7 @@ import { CustomerDataType } from '../../DATASTORE/data-types/main.data.types/cus
 import { MainContext } from '../../utility/contexts/main.context'
 import { addCustomer, modifyCustomer } from '../../DATASTORE/data-types/man.data.reducers/customer-reducer/customer.data.actions'
 import { Addresses } from './addresses/addresses-component'
-import { ModifyAllCustomerData } from './modify-all-customer-data/modify-all-customer-data'
+import { ManageCustomerData } from './modify-all-customer-data/modify-all-customer-data'
 
 type ManageCustomersFormType = { isModification: boolean; customerData: CustomerDataType | undefined }
 export const ManageCustomersForm = ({ isModification = false, customerData }: Partial<ManageCustomersFormType>) => {
@@ -36,7 +36,10 @@ export const ManageCustomersForm = ({ isModification = false, customerData }: Pa
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const target = event.target as HTMLFormElement
+
     const formDataArray: string[] = retreiveFromData(target)
+    console.log(formDataArray)
+
     const registerCustomerData: CustomerDataType = fillCustomerData(formDataArray)
 
     isModification ? CustomerDispatch(modifyCustomer(registerCustomerData)) : CustomerDispatch(addCustomer(registerCustomerData))
@@ -44,12 +47,14 @@ export const ManageCustomersForm = ({ isModification = false, customerData }: Pa
 
   const retreiveFromData = (target: HTMLFormElement): string[] => {
     const formDataArray: string[] = []
-    Object.values<HTMLInputElement>(target).forEach((item) => item instanceof HTMLInputElement && formDataArray.push(item.value))
+    Object.values<HTMLInputElement>(target).forEach((item) => {
+      item instanceof HTMLInputElement && formDataArray.push(item.value)
+    })
     return formDataArray
   }
 
   const fillCustomerData = (formDataArray: string[]): CustomerDataType => {
-    const [company, name, email, country, code, city, building, street, zip, emailMain, telephone, media, link] = formDataArray
+    const [company, name, email, telephone, country, code, city, building, street, zip, media, link] = formDataArray
 
     return {
       id: newCustomerID ? newCustomerID?.toString() : '0',
@@ -98,11 +103,12 @@ export const ManageCustomersForm = ({ isModification = false, customerData }: Pa
             <fieldset>
               <legend>General</legend>
               <Input label='company' defaultValue={customerData?.companyName} />
-              <fieldset>
-                <legend>{'Contact (primary)'}</legend>
-                <Input label='name' defaultValue={customerData?.access[0].person} />
-                <Input label='email' defaultValue={customerData?.access[0].email} />
-              </fieldset>
+            </fieldset>
+            <fieldset>
+              <legend>{'Access (primary)'}</legend>
+              <Input label='name' defaultValue={customerData?.access[0].person} />
+              <Input label='email' defaultValue={customerData?.access[0].email} />
+              <Input label='telephone' defaultValue={customerData?.access[0].telephone} />
             </fieldset>
           </div>
           <div>
@@ -118,25 +124,18 @@ export const ManageCustomersForm = ({ isModification = false, customerData }: Pa
           </div>
           <div>
             <fieldset>
-              <legend>{'Access (primary)'}</legend>
-              <Input label='e-mail' defaultValue={customerData?.access[0].email} />
-              <Input label='telephone' defaultValue={customerData?.access[0].telephone} />
-            </fieldset>
-          </div>
-          <div>
-            <fieldset>
               <legend>Social</legend>
               <Input label='media' defaultValue={customerData?.social[0].media} />
               <Input label='link' defaultValue={customerData?.social[0].link} />
             </fieldset>
           </div>
           <div className='button-container'>
-            <CustomButton type={'button'} value={'show all'} handler={() => setShowAll(true)} />
-            {/* <CustomButton value={isModification ? 'modify' : 'submit'} /> */}
+            {/* <CustomButton type={'button'} value={'show all'} handler={() => setShowAll(true)} /> */}
+            <CustomButton value={isModification ? 'modify' : 'submit'} />
             <CustomButton type={'button'} value={'cancel'} handler={handleCancel} />
           </div>
         </form>
-        {showAll && <ModifyAllCustomerData customerData={customerData} />}
+        {/* {showAll && <ModifyAllCustomerData customerData={customerData} />} */}
       </Fragment>
     </ManageDataFrame>
   )

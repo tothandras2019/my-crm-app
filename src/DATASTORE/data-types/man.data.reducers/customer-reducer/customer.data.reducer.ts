@@ -21,6 +21,7 @@ export const CustomersDataReducer = (state: CustomerDataType[], action: Customer
     }
     case CUSTOMER_ACTION_TYPE.MODIFY_CUSTOMER: {
       const newModifiedCustomer = payload as CustomerDataType
+      console.log(payload)
 
       updateCustomerFirestore(newModifiedCustomer)
       return [...state.filter((customer) => customer.id !== newModifiedCustomer.id), newModifiedCustomer]

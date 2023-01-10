@@ -63,6 +63,8 @@
       display: flex;
       gap: 10px;
       justify-content: space-between;
+      background: linear-gradient(180deg, $palette-main-color 10%, $palette-secondary-color 50%);
+
       .main-details-header {
         display: flex;
       }

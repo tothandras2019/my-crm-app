@@ -13,9 +13,11 @@ import { fillUpWarehouse } from './DATASTORE/data-types/man.data.reducers/wareho
 import { CalendarSvg, ContactsSvg, DashboardSvg, HomeSvg, SettingsSvg } from './icons/main-menu/menu_svg_items'
 import { Contacts } from './components/contacts/contacts-component'
 import { PathContext } from './utility/contexts/action.context'
+import { ManageCustomerData } from './components/record-customer/modify-all-customer-data/modify-all-customer-data'
+import { OpenModalContext } from './utility/contexts/contacts-data-modification/manage.modifications.context'
 
 function App() {
-  // const { customers, dispatch } = useContext(CustomerContext)
+  const { openModifyModal } = useContext(OpenModalContext)
 
   const { MenuManagerOpenOption } = useContext(PathContext)
   const { products, customers, contracts, warehouse } = useContext(MainContext)
@@ -96,6 +98,8 @@ function App() {
           <ManageCustomersForm isModification={true} customerData={MenuManagerOpenOption.customerForModify.customer} />
         </div>
       )}
+
+      {openModifyModal.openModifyUiData && <ManageCustomerData />}
 
       {/* {MenuManagerOpenOption.calendar && <></>}
       {MenuManagerOpenOption.settings && <></>}

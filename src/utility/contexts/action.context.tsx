@@ -9,7 +9,7 @@ type InitManagerMenuOptionsType = {
   calendar: boolean
   settings: boolean
 }
-export const InitManagerMenuOptions = {
+export const InitManagerMenuOptions: InitManagerMenuOptionsType = {
   contacts: false,
   customerForModify: { customer: null },
   dashboard: false,

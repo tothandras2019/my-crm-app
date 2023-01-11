@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Outlet } from 'react-router-dom'
-import { Menu } from '../menu/rotating-menu/menu-component'
+import { Menu } from '../menu/header-menu/menu-component'
 import { Section } from '../section/section-component'
 import { LinkButton } from '../tools/button/link/link-button-component'
 import './navigation-component.css'

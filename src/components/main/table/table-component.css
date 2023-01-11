@@ -36,11 +36,13 @@
   margin-top: 10px;
 }
 .full-details .full-details-container legend {
-  margin: 0 0 10px 10px;
+  margin-left: 10px;
   font-weight: 500;
   font-size: larger;
 }
 .full-details .full-details-container p {
+  display: flex;
+  align-items: center;
   font-size: small;
 }
 .full-details .full-details-container .full-details-row {

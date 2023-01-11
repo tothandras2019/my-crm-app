@@ -13,11 +13,12 @@ type ShowIdType = { id: number; isShowContract: boolean; isShowAmount: boolean }
 export const Table = ({ customers }: { customers: InitCustomersType[] }): JSX.Element => {
   //#region VARIABLES
   // const headersHelper = ['id', 'companyName', 'status', 'contract', 'subscribed']
+  // const [position, setPosition] = usePosition()
+
   const headersHelper = ['id', 'companyName', 'status', 'contract', 'subscribed', 'orders aboumt']
   const [showContractTooltip, setShowContractTooltip] = useState(false)
   const [showSummaryTooltip, setShowSummaryTooltip] = useState(false)
   const [toolTipPosition, setToolTipPosition] = useState({ X: 0, Y: 0 })
-  const [position, setPosition] = usePosition()
   const [isShownIds, setIsShownIds] = useState<ShowIdType[]>([])
 
   const { setActive } = useContext(CustomerContext)
@@ -26,8 +27,8 @@ export const Table = ({ customers }: { customers: InitCustomersType[] }): JSX.El
   const productSummaryRef = useRef<HTMLDivElement>(null)
   //#endregion
   //#region GENERAL FUNCTIONS:
-  const ManageCurrentAndEvent = (currentElement: HTMLElement, coughtMouseEvent: MouseEvent) =>
-    setPosition(() => ({ element: currentElement, event: coughtMouseEvent }))
+  // const ManageCurrentAndEvent = (currentElement: HTMLElement, coughtMouseEvent: MouseEvent) =>
+  //   setPosition(() => ({ element: currentElement, event: coughtMouseEvent }))
 
   useEffect(() => {
     if (isShownIds.length !== 0) return
@@ -49,37 +50,37 @@ export const Table = ({ customers }: { customers: InitCustomersType[] }): JSX.El
   }
   //#endregion
   //#region CONTRACTS EVENTS:
-  const handleMouseMoveToContract = (event: FormEvent<HTMLDivElement>) => {
-    const currentElement = contractAmountRef.current
-    if (currentElement) ManageCurrentAndEvent(currentElement, event.nativeEvent as MouseEvent)
-    setToolTipPosition(() => ({ X: position.x, Y: position.y }))
-  }
+  // const handleMouseMoveToContract = (event: FormEvent<HTMLDivElement>) => {
+  //   const currentElement = contractAmountRef.current
+  //   if (currentElement) ManageCurrentAndEvent(currentElement, event.nativeEvent as MouseEvent)
+  //   setToolTipPosition(() => ({ X: position.x, Y: position.y }))
+  // }
 
-  const handleMouseEnterToContract = (event: FormEvent<HTMLDivElement>) => {
-    const target = event.target as HTMLDivElement
-    setIdVisibility(target, 'isShowContract', true)
-    setShowContractTooltip(true)
-  }
-  const handleMouseLeaveToContract = () => {
-    setIdVisibility(null, 'isShowContract', false)
-    setShowContractTooltip(false)
-  }
+  // const handleMouseEnterToContract = (event: FormEvent<HTMLDivElement>) => {
+  //   const target = event.target as HTMLDivElement
+  //   setIdVisibility(target, 'isShowContract', true)
+  //   setShowContractTooltip(true)
+  // }
+  // const handleMouseLeaveToContract = () => {
+  //   setIdVisibility(null, 'isShowContract', false)
+  //   setShowContractTooltip(false)
+  // }
   //#endregion
   //#region SUMMARY EVENTS:----------------------------
-  const handleMouseMoveOnSummary = (event: FormEvent<HTMLDivElement>) => {
-    const currentElement = productSummaryRef.current
-    if (currentElement) ManageCurrentAndEvent(currentElement, event.nativeEvent as MouseEvent)
-    setToolTipPosition(() => ({ X: position.x, Y: position.y }))
-  }
-  const handleMouseEnterToSummary = (event: FormEvent<HTMLDivElement>) => {
-    const target = event.target as HTMLDivElement
-    setIdVisibility(target, 'isShowAmount', true)
-    setShowSummaryTooltip(true)
-  }
-  const handleMouseLeaveToSummary = () => {
-    setIdVisibility(null, 'isShowAmount', false)
-    setShowSummaryTooltip(false)
-  }
+  // const handleMouseMoveOnSummary = (event: FormEvent<HTMLDivElement>) => {
+  //   const currentElement = productSummaryRef.current
+  //   if (currentElement) ManageCurrentAndEvent(currentElement, event.nativeEvent as MouseEvent)
+  //   setToolTipPosition(() => ({ X: position.x, Y: position.y }))
+  // }
+  // const handleMouseEnterToSummary = (event: FormEvent<HTMLDivElement>) => {
+  //   const target = event.target as HTMLDivElement
+  //   setIdVisibility(target, 'isShowAmount', true)
+  //   setShowSummaryTooltip(true)
+  // }
+  // const handleMouseLeaveToSummary = () => {
+  //   setIdVisibility(null, 'isShowAmount', false)
+  //   setShowSummaryTooltip(false)
+  // }
 
   const handleChooseCustomer = (customer: InitCustomersType) => {
     setActive(customer)
@@ -108,9 +109,9 @@ export const Table = ({ customers }: { customers: InitCustomersType[] }): JSX.El
               data-id={`amount-${id}`}
               ref={contractAmountRef}
               className='contract-amount'
-              onMouseEnter={handleMouseEnterToContract}
-              onMouseMove={handleMouseMoveToContract}
-              onMouseLeave={handleMouseLeaveToContract}
+              // onMouseEnter={handleMouseEnterToContract}
+              // onMouseMove={handleMouseMoveToContract}
+              // onMouseLeave={handleMouseLeaveToContract}
             >
               <p>{formatter.format(contract.total)}</p>
               <p>{formatter.format(summOrders)}</p>
@@ -120,9 +121,9 @@ export const Table = ({ customers }: { customers: InitCustomersType[] }): JSX.El
             <div
               data-id={`summary-${id}`}
               ref={productSummaryRef}
-              onMouseEnter={handleMouseEnterToSummary}
-              onMouseMove={handleMouseMoveOnSummary}
-              onMouseLeave={handleMouseLeaveToSummary}
+              // onMouseEnter={handleMouseEnterToSummary}
+              // onMouseMove={handleMouseMoveOnSummary}
+              // onMouseLeave={handleMouseLeaveToSummary}
             >
               <p>{formatter.format(summOrders)}</p>
               {/* {showAmount && showSummaryTooltip && <SummaryDetails coords={toolTipPosition} items={subscribed.products} />} */}

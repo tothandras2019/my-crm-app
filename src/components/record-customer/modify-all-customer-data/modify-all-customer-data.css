@@ -23,7 +23,7 @@
 
 @keyframes appear_modal {
   to {
-    background-color: rgba(196, 240, 238, 0.5);
+    background-color: rgba(196, 240, 238, 0.7);
     backdrop-filter: blur(2px);
   }
 }
@@ -36,10 +36,21 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgb(12, 65, 99);
   border-radius: 10px;
+  opacity: 0;
   color: rgb(196, 240, 238);
   width: fit-content;
   height: fit-content;
   padding: 40px;
+  animation-name: appear_data_frame;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes appear_data_frame {
+  to {
+    opacity: 1;
+    background-color: rgb(12, 65, 99);
+  }
 }/*# sourceMappingURL=modify-all-customer-data.css.map */

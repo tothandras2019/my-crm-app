@@ -5,7 +5,7 @@ import { TableHeader } from './table-header/table-header-component'
 import { CustomButton } from '../../tools/button/submit/custom-button-component'
 import { TableItems } from './table-items/table-items-component'
 import { useContext } from 'react'
-import { OpenModalContext } from '../../../utility/contexts/contacts-data-modification/manage.modifications.context'
+import { OpenModalContext } from '../../../utility/contexts/contacts-data/contacts-data-context'
 
 type TableDataType = { address: AddressType[]; access: AccessType[]; social: SocialType[]; customerId: string }
 export const Table = ({ address, access, social, customerId }: TableDataType): JSX.Element => {
@@ -49,7 +49,7 @@ export const Table = ({ address, access, social, customerId }: TableDataType): J
         <div className='full-details-row'>
           {address.map((addressObject, index) => {
             const { primary, country, code, city, building, street, zip } = addressObject
-            const dataArray = [primary, country, code, city, building, street, zip]
+            const dataArray = [primary, country, code, city, building, street, zip] //strict order!
             return (
               <TableItems
                 key={`address_${index}`}
@@ -69,7 +69,7 @@ export const Table = ({ address, access, social, customerId }: TableDataType): J
         <div className='full-details-row'>
           {access.map((addressObject, index) => {
             const { primary, person, email, telephone } = addressObject
-            const dataArray = [primary, person, email, telephone]
+            const dataArray = [primary, person, email, telephone] //strict order!
             return <TableItems key={`access_${index}`} index={index} dataArray={dataArray} dataObject={addressObject} customerId={customerId} />
           })}
         </div>
@@ -80,7 +80,7 @@ export const Table = ({ address, access, social, customerId }: TableDataType): J
         <div className='full-details-row'>
           {social.map((addressObject, index) => {
             const { media, link } = addressObject
-            const dataArray = [media, link]
+            const dataArray = [media, link] //strict order!
             return <TableItems key={`social_${index}`} index={index} dataArray={dataArray} dataObject={addressObject} customerId={customerId} />
           })}
         </div>

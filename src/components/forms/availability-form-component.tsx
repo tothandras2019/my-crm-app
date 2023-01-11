@@ -1,6 +1,6 @@
 import { FormEvent, useContext } from 'react'
 import { AddressType, AccessType, SocialType } from '../../DATASTORE/data-types/main.data.types/customer-data-types'
-import { OpenModalContext } from '../../utility/contexts/contacts-data-modification/manage.modifications.context'
+import { OpenModalContext } from '../../utility/contexts/contacts-data/contacts-data-context'
 import { Input } from '../input/input-component'
 import { CustomButton } from '../tools/button/submit/custom-button-component'
 import { AccessFormInputs } from './access-form-inputs/access-form-inputs'

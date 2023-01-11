@@ -14,7 +14,7 @@ import { CalendarSvg, ContactsSvg, DashboardSvg, HomeSvg, SettingsSvg } from './
 import { Contacts } from './components/contacts/contacts-component'
 import { PathContext } from './utility/contexts/action.context'
 import { ManageCustomerData } from './components/record-customer/modify-all-customer-data/modify-all-customer-data'
-import { OpenModalContext } from './utility/contexts/contacts-data-modification/manage.modifications.context'
+import { OpenModalContext } from './utility/contexts/contacts-data/contacts-data-context'
 
 function App() {
   const { openModifyModal } = useContext(OpenModalContext)
@@ -93,14 +93,22 @@ function App() {
           <ManageCustomersForm />
         </div>
       )}
-      {MenuManagerOpenOption.customerForModify.customer && (
+      {/* {MenuManagerOpenOption.customerForModify.customer && (
         <div className='modal_window'>
           <ManageCustomersForm isModification={true} customerData={MenuManagerOpenOption.customerForModify.customer} />
         </div>
-      )}
+      )} */}
 
-      {openModifyModal.openModifyUiData && <ManageCustomerData />}
-      {!openModifyModal.isModification && <ManageCustomerData />}
+      {openModifyModal.openModifyUiData && (
+        <div className='modal_window'>
+          <ManageCustomerData />
+        </div>
+      )}
+      {!openModifyModal.isModification && (
+        <div className='modal_window'>
+          <ManageCustomerData />
+        </div>
+      )}
 
       {/* {MenuManagerOpenOption.calendar && <></>}
       {MenuManagerOpenOption.settings && <></>}

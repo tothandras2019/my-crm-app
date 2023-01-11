@@ -2,23 +2,21 @@ import './record-customer-component.css'
 import { Input } from '../input/input-component'
 import { FormEvent, Fragment, useContext, useEffect, useState } from 'react'
 import { LeadEnum, LifecicyleEnum } from '../../DATASTORE/data-types/data-types'
-import { CustomerContext } from './../../DATASTORE/contacts-reducer'
 import { CustomButton } from '../tools/button/submit/custom-button-component'
 import { InitManagerMenuOptions, PathContext } from '../../utility/contexts/action.context'
 import { ManageDataFrame } from '../manage-data-frame/manage-data-frame-component'
 import { CustomerDataType } from '../../DATASTORE/data-types/main.data.types/customer-data-types'
 import { MainContext } from '../../utility/contexts/main.context'
 import { addCustomer, modifyCustomer } from '../../DATASTORE/data-types/man.data.reducers/customer-reducer/customer.data.actions'
-import { Addresses } from './addresses/addresses-component'
-import { ManageCustomerData } from './modify-all-customer-data/modify-all-customer-data'
 import { AddressFormInputs } from '../forms/address-form-inputs/address-form-inputs'
 import { SocialFormInputs } from '../forms/social-form-inputs/social-form-inputs'
 import { AccessFormInputs } from '../forms/access-form-inputs/access-form-inputs'
 
 type ManageCustomersFormType = { isModification: boolean; customerData: CustomerDataType | undefined }
 export const ManageCustomersForm = ({ isModification = false, customerData }: Partial<ManageCustomersFormType>) => {
-  const { dispatch } = useContext(CustomerContext)
+  // const { dispatch } = useContext(CustomerContext)
   const { SetMenuManagerOpenOption } = useContext(PathContext)
+
   const { customers } = useContext(MainContext)
   const { customerState, CustomerDispatch } = customers
 
@@ -93,7 +91,6 @@ export const ManageCustomersForm = ({ isModification = false, customerData }: Pa
   }
 
   const handleCancel = () => SetMenuManagerOpenOption(InitManagerMenuOptions)
-  const handleShowAll = () => {}
 
   return (
     <ManageDataFrame>

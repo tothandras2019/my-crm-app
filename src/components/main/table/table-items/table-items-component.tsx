@@ -1,7 +1,7 @@
 import './table-items-component .css'
 import { CustomButton } from '../../../tools/button/submit/custom-button-component'
 import { useContext, useEffect, useState } from 'react'
-import { OpenModalContext, OpenModalType } from '../../../../utility/contexts/contacts-data-modification/manage.modifications.context'
+import { OpenModalContext, OpenModalType } from '../../../../utility/contexts/contacts-data/contacts-data-context'
 import { AccessType, AddressType, SocialType } from '../../../../DATASTORE/data-types/main.data.types/customer-data-types'
 
 export const TableItems = ({

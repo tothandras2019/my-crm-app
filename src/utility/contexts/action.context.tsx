@@ -4,14 +4,14 @@ import { CustomerDataType } from '../../DATASTORE/data-types/main.data.types/cus
 
 type InitManagerMenuOptionsType = {
   contacts: boolean
-  customerForModify: { customer: CustomerDataType | null }
+  // customerForModify: { customer: CustomerDataType | null }
   dashboard: boolean
   calendar: boolean
   settings: boolean
 }
 export const InitManagerMenuOptions: InitManagerMenuOptionsType = {
   contacts: false,
-  customerForModify: { customer: null },
+  // customerForModify: { customer: null },
   dashboard: false,
   calendar: false,
   settings: false,

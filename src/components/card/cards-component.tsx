@@ -23,8 +23,6 @@ export const Cards = (): JSX.Element => {
   const [customersData, setcustomersData] = useState<SummaryCustomerOrdersAmountType[] | null | undefined>(null)
 
   useEffect(() => {
-    console.log(contractDataState)
-
     const summdata = (orders: Order[]): number => {
       return orders.reduce((acc, order) => {
         return (acc += order.ordered_products.reduce((accOrder: number, prod) => {
@@ -71,10 +69,6 @@ export const Cards = (): JSX.Element => {
 
     return () => {}
   }, [contractDataState])
-
-  useEffect(() => {
-    console.log(customersData)
-  }, [customersData])
 
   return (
     <div className='card-container'>

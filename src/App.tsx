@@ -100,6 +100,7 @@ function App() {
       )}
 
       {openModifyModal.openModifyUiData && <ManageCustomerData />}
+      {!openModifyModal.isModification && <ManageCustomerData />}
 
       {/* {MenuManagerOpenOption.calendar && <></>}
       {MenuManagerOpenOption.settings && <></>}

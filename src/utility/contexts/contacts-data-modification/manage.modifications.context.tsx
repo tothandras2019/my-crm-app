@@ -7,18 +7,18 @@ export type OpenModalType = {
   isModification: boolean
   openModifyUiData: boolean
   customerId: string | undefined
-  accessData: { rowId: number | undefined; data: AccessType | undefined }
-  addressData: { rowId: number | undefined; data: AddressType | undefined }
-  socialData: { rowId: number | undefined; data: SocialType | undefined }
+  accessData: { isAddNew: boolean; rowId: number | undefined; data: AccessType | undefined }
+  addressData: { isAddNew: boolean; rowId: number | undefined; data: AddressType | undefined }
+  socialData: { isAddNew: boolean; rowId: number | undefined; data: SocialType | undefined }
 }
 
 export const InitOpenModal: OpenModalType = {
   isModification: true,
   openModifyUiData: false,
   customerId: undefined,
-  accessData: { rowId: undefined, data: undefined },
-  addressData: { rowId: undefined, data: undefined },
-  socialData: { rowId: undefined, data: undefined },
+  accessData: { isAddNew: false, rowId: undefined, data: undefined },
+  addressData: { isAddNew: false, rowId: undefined, data: undefined },
+  socialData: { isAddNew: false, rowId: undefined, data: undefined },
 }
 type openModifyModalType = Dispatch<SetStateAction<OpenModalType>>
 

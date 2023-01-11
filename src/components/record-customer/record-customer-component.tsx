@@ -11,6 +11,9 @@ import { MainContext } from '../../utility/contexts/main.context'
 import { addCustomer, modifyCustomer } from '../../DATASTORE/data-types/man.data.reducers/customer-reducer/customer.data.actions'
 import { Addresses } from './addresses/addresses-component'
 import { ManageCustomerData } from './modify-all-customer-data/modify-all-customer-data'
+import { AddressFormInputs } from '../forms/address-form-inputs/address-form-inputs'
+import { SocialFormInputs } from '../forms/social-form-inputs/social-form-inputs'
+import { AccessFormInputs } from '../forms/access-form-inputs/access-form-inputs'
 
 type ManageCustomersFormType = { isModification: boolean; customerData: CustomerDataType | undefined }
 export const ManageCustomersForm = ({ isModification = false, customerData }: Partial<ManageCustomersFormType>) => {
@@ -38,8 +41,6 @@ export const ManageCustomersForm = ({ isModification = false, customerData }: Pa
     const target = event.target as HTMLFormElement
 
     const formDataArray: string[] = retreiveFromData(target)
-    console.log(formDataArray)
-
     const registerCustomerData: CustomerDataType = fillCustomerData(formDataArray)
 
     isModification ? CustomerDispatch(modifyCustomer(registerCustomerData)) : CustomerDispatch(addCustomer(registerCustomerData))
@@ -97,45 +98,26 @@ export const ManageCustomersForm = ({ isModification = false, customerData }: Pa
   return (
     <ManageDataFrame>
       <Fragment>
-        <h1>{isModification ? 'Modify customer' : 'Record customer'}</h1>
+        <h1>{isModification ? 'Modify customer' : 'add new customer'}</h1>
         <form onSubmit={handleSubmit}>
           <div>
             <fieldset>
               <legend>General</legend>
               <Input label='company' defaultValue={customerData?.companyName} />
             </fieldset>
-            <fieldset>
-              <legend>{'Access (primary)'}</legend>
-              <Input label='name' defaultValue={customerData?.access[0].person} />
-              <Input label='email' defaultValue={customerData?.access[0].email} />
-              <Input label='telephone' defaultValue={customerData?.access[0].telephone} />
-            </fieldset>
+            <AccessFormInputs />
           </div>
           <div>
-            <fieldset>
-              <legend>{'Address (primary)'}</legend>
-              <Input label='country' defaultValue={customerData?.address[0].country} />
-              <Input label='country code' defaultValue={customerData?.address[0].code} />
-              <Input label='city' defaultValue={customerData?.address[0].city} />
-              <Input label='building' defaultValue={customerData?.address[0].building.toString()} />
-              <Input label='street' defaultValue={customerData?.address[0].street} />
-              <Input label='zip' defaultValue={customerData?.address[0].zip} />
-            </fieldset>
+            <AddressFormInputs />
           </div>
           <div>
-            <fieldset>
-              <legend>Social</legend>
-              <Input label='media' defaultValue={customerData?.social[0].media} />
-              <Input label='link' defaultValue={customerData?.social[0].link} />
-            </fieldset>
+            <SocialFormInputs />
           </div>
           <div className='button-container'>
-            {/* <CustomButton type={'button'} value={'show all'} handler={() => setShowAll(true)} /> */}
             <CustomButton value={isModification ? 'modify' : 'submit'} />
             <CustomButton type={'button'} value={'cancel'} handler={handleCancel} />
           </div>
         </form>
-        {/* {showAll && <ModifyAllCustomerData customerData={customerData} />} */}
       </Fragment>
     </ManageDataFrame>
   )

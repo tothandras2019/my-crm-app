@@ -99,7 +99,6 @@ const GenerateWarehouseObject = (querySnapshot: QuerySnapshot<DocumentData>): Wa
 export const addInitialColletion = async (collectionName: string, collectionObj: ContractType | WarehouseingServiceType | typeof initCustomer) => {
   try {
     const docRef = await addDoc(collection(db, collectionName), collectionObj)
-    console.log(docRef.id)
   } catch (error) {
     console.error('[Error on upload initial doc]', error)
   }

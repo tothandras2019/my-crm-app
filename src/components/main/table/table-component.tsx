@@ -17,13 +17,28 @@ export const Table = ({ address, access, social, customerId }: TableDataType): J
   const socialHeaderValues: string[] = ['media', 'link']
 
   const handleNewAddress = () => {
-    setOpenModifyModal((state) => ({ ...state, isModification: false }))
+    setOpenModifyModal((state) => ({
+      ...state,
+      customerId: customerId,
+      isModification: false,
+      addressData: { ...state.addressData, isAddNew: true },
+    }))
   }
   const handleNewAccess = () => {
-    setOpenModifyModal((state) => ({ ...state, isModification: false }))
+    setOpenModifyModal((state) => ({
+      ...state,
+      customerId: customerId,
+      isModification: false,
+      accessData: { ...state.accessData, isAddNew: true },
+    }))
   }
   const handleNewsocial = () => {
-    setOpenModifyModal((state) => ({ ...state, isModification: false }))
+    setOpenModifyModal((state) => ({
+      ...state,
+      customerId: customerId,
+      isModification: false,
+      socialData: { ...state.socialData, isAddNew: true },
+    }))
   }
 
   return (

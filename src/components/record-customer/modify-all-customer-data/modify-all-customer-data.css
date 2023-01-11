@@ -2,11 +2,6 @@
   background: linear-gradient(60deg, rgb(1, 45, 81) 15%, rgb(53, 198, 193) 70%);
   color: rgb(1, 45, 81);
   min-height: 100vh;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-#root::-webkit-scrollbar {
-  display: none;
 }
 
 .App {
@@ -33,11 +28,18 @@
   }
 }
 .modify-form {
-  position: absolute;
+  position: fixed;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgb(170, 170, 130);
+  background-color: rgb(12, 65, 99);
+  border-radius: 10px;
+  color: rgb(196, 240, 238);
+  width: fit-content;
+  height: fit-content;
+  padding: 40px;
 }/*# sourceMappingURL=modify-all-customer-data.css.map */

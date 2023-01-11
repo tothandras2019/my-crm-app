@@ -27,6 +27,15 @@ input[type='button'] {
     border: 2px solid rgb(172, 176, 58);
   }
 
+  &.blue {
+    background-color: rgb(97, 67, 196);
+    border: 2px solid rgb(97, 67, 196);
+  }
+  &.transparent {
+    background-color: transparent;
+    border: transparent;
+  }
+
   &:hover {
     letter-spacing: 1.1px;
   }

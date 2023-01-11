@@ -2,13 +2,15 @@
 
 nav {
   position: fixed;
-  min-width: 140px;
+  padding-top: 100px;
+  width: 140px;
   height: 100vh;
-  background-color: $palette-main-color;
+  background-color: $transparent-palette-main-color;
+  backdrop-filter: blur(10px);
   color: $palette-primary-color;
   z-index: 1000;
   transition: 0.5s;
   &.hide {
-    background-color: transparent;
+    width: 50px;
   }
 }

@@ -2,11 +2,6 @@
   background: linear-gradient(60deg, rgb(1, 45, 81) 15%, rgb(53, 198, 193) 70%);
   color: rgb(1, 45, 81);
   min-height: 100vh;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-#root::-webkit-scrollbar {
-  display: none;
 }
 
 .App {
@@ -36,14 +31,15 @@
   position: absolute;
   top: 0;
   left: 0;
-  min-width: 140px;
+  min-width: 50px;
   min-height: 50px;
+  box-sizing: border-box;
+  padding-left: 10px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   transition: 0.5s;
   z-index: 100;
-  background-color: rgb(1, 45, 81);
 }
 .menu-button span {
   position: relative;
@@ -77,7 +73,6 @@
 }
 .menu-button.close {
   transition: 0.5s;
-  width: 140px;
 }
 .menu-button.close span {
   background-color: transparent;

@@ -1,40 +1,12 @@
 @import './../../App.scss';
 
-// .contacts-container {
-//   margin: 10px 0 0 10px;
-//   display: flex;
-//   flex-wrap: wrap;
-//   gap: 10px;
-
-//   .contact-details {
-//     position: relative;
-//     p:nth-child(1) {
-//       padding-top: 40px;
-//       height: 20px;
-//     }
-
-//     .delete-button_absolute {
-//       position: absolute;
-//       top: 0;
-//       right: 0;
-//     }
-//     cursor: pointer;
-//     background-color: $palette-secondary-color;
-//     box-shadow: 5px 5px 5px $palette-main-color;
-//     padding: 10px;
-//     width: fit-content;
-//     max-width: 350px;
-//     border-radius: 10px;
-//     gap: 10px;
-//   }
-// }
-
 .contacts-container {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   gap: 10px;
-  background-color: $palette-primary-color;
+  background-color: $transparent-palette-transparent-primary-color;
+
   color: $palette-main-color;
   margin: 10px;
   padding: 0 30px;
@@ -50,8 +22,8 @@
   }
   p {
     display: flex;
-    align-items: center;
-    height: 45px;
+    align-items: flex-start;
+    height: 40px;
     word-break: normal;
     text-align: left;
     min-width: 180px;
@@ -63,14 +35,16 @@
       display: flex;
       gap: 10px;
       justify-content: space-between;
-      background: linear-gradient(180deg, $palette-main-color 10%, $palette-secondary-color 50%);
-
+      background: linear-gradient(180deg, $palette-main-color 30%, transparent 90%);
+      border-radius: 5px;
+      color: $palette-primary-color;
+      text-shadow: 3px 3px 5px $palette-main-color;
       .main-details-header {
         display: flex;
       }
     }
 
-    @media screen and (max-width: 1270px) {
+    @media screen and (max-width: 1370px) {
       p {
         min-width: fit-content;
       }

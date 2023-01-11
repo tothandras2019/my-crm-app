@@ -12,7 +12,7 @@ export const Navigation = (): JSX.Element => {
 
   return (
     <>
-      <nav className={`${hide ? 'hide' : ''}`}>
+      <nav className={`${hide ? 'hide' : ''}`} onMouseEnter={handleHideNavigation} onMouseLeave={handleHideNavigation}>
         <Menu items={navigationItems} hideElement={{ value: hide, setter: setHide }} />
       </nav>
       <Section Element={<Outlet />} />

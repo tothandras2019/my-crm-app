@@ -2,10 +2,19 @@
 
 .full-details-items {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   border-bottom: 1px solid $palette-secondary-color;
 
   .full-details-title-row {
     display: flex;
+    p {
+      width: $table-data-element-size;
+    }
+
+    &.narrow {
+      p {
+        width: 130px;
+      }
+    }
   }
 }

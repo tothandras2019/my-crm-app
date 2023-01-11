@@ -27,17 +27,18 @@
     backdrop-filter: blur(2px);
   }
 }
-.full-details-header h4 {
-  background-color: rgb(100, 188, 219);
-  padding-left: 10px;
-  width: 300px;
-}
 .full-details-header .full-details-title {
   display: flex;
   font-weight: 500;
-  justify-content: space-between;
+  justify-content: flex-start;
   border-bottom: 1px solid rgb(1, 45, 81);
 }
 .full-details-header .full-details-title .full-details-title-column {
   display: flex;
+}
+.full-details-header .full-details-title .full-details-title-column p {
+  width: 200px;
+}
+.full-details-header .full-details-title .full-details-title-column.narrow p {
+  width: 130px;
 }/*# sourceMappingURL=table-header-component.css.map */

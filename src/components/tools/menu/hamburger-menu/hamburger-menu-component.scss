@@ -1,19 +1,19 @@
 @import './../../../../App.scss';
 
-$size: 140px;
+$size: 50px;
 .menu-button {
   position: absolute;
   top: 0;
   left: 0;
   min-width: $size;
   min-height: 50px;
-
+  box-sizing: border-box;
+  padding-left: 10px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   transition: 0.5s;
   z-index: 100;
-  background-color: $palette-main-color;
 
   span {
     position: relative;
@@ -49,10 +49,7 @@ $size: 140px;
 
   &.close {
     transition: 0.5s;
-    // background-color: $palette-main-color;
-    // border-radius: 50%;
-    width: $size;
-    // height: $size;
+
     span {
       background-color: transparent;
       transition: 0.5s;

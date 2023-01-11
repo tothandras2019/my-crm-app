@@ -6,7 +6,7 @@ $transition-value: 0.5s;
   justify-content: flex-start;
   align-items: center;
   min-height: 90px;
-  min-width: 120px;
+  width: 130px;
   font-size: larger;
   transition: $transition-value;
   gap: 10px;
@@ -21,28 +21,16 @@ $transition-value: 0.5s;
     transition: $transition-value;
   }
 
-  svg {
-    opacity: 1;
-    transition: $transition-value;
-  }
-
   &.hide {
-    // position: absolute;
-    top: 0;
-    left: 0;
-    min-width: 0;
-    min-height: 0;
-    opacity: 0;
+    width: 50px;
     transition: $transition-value;
 
     p {
       opacity: 0;
-      font-size: 0;
-    }
+      width: 0;
+      transition: 0.5s;
 
-    svg {
-      height: 0;
-      // opacity: 0;
+      font-size: 0;
     }
   }
 }

@@ -43,17 +43,28 @@ export const Table = ({ address, access, social, customerId }: TableDataType): J
 
   return (
     <div className='full-details'>
-      <div>
-        <TableHeader title={'Address'} headerValues={addressHeaderValues} handler={handleNewAddress} />
+      <fieldset className='full-details-container'>
+        <legend>{'Address'}</legend>
+        <TableHeader title={'Address'} headerValues={addressHeaderValues} handler={handleNewAddress} isNarrowColumn={true} />
         <div className='full-details-row'>
           {address.map((addressObject, index) => {
             const { primary, country, code, city, building, street, zip } = addressObject
             const dataArray = [primary, country, code, city, building, street, zip]
-            return <TableItems key={`address_${index}`} index={index} dataArray={dataArray} dataObject={addressObject} customerId={customerId} />
+            return (
+              <TableItems
+                key={`address_${index}`}
+                index={index}
+                dataArray={dataArray}
+                dataObject={addressObject}
+                customerId={customerId}
+                isNarrowColumn={true}
+              />
+            )
           })}
         </div>
-      </div>
-      <div>
+      </fieldset>
+      <fieldset className='full-details-container'>
+        <legend>Access</legend>
         <TableHeader title={'Access'} headerValues={accessHeaderValues} handler={handleNewAccess} />
         <div className='full-details-row'>
           {access.map((addressObject, index) => {
@@ -62,8 +73,9 @@ export const Table = ({ address, access, social, customerId }: TableDataType): J
             return <TableItems key={`access_${index}`} index={index} dataArray={dataArray} dataObject={addressObject} customerId={customerId} />
           })}
         </div>
-      </div>
-      <div>
+      </fieldset>
+      <fieldset className='full-details-container'>
+        <legend>Social</legend>
         <TableHeader title={'Social'} headerValues={socialHeaderValues} handler={handleNewsocial} />
         <div className='full-details-row'>
           {social.map((addressObject, index) => {
@@ -72,7 +84,7 @@ export const Table = ({ address, access, social, customerId }: TableDataType): J
             return <TableItems key={`social_${index}`} index={index} dataArray={dataArray} dataObject={addressObject} customerId={customerId} />
           })}
         </div>
-      </div>
+      </fieldset>
     </div>
   )
 }

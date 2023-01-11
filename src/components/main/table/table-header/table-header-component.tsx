@@ -1,14 +1,13 @@
 import { CustomButton } from '../../../tools/button/submit/custom-button-component'
 import './table-header-component.css'
 
-type TableHeaderType = { title: string; headerValues: string[]; handler: () => void }
+type TableHeaderType = { title: string; headerValues: string[]; handler: () => void; isNarrowColumn?: boolean }
 
-export const TableHeader = ({ title, headerValues, handler }: TableHeaderType): JSX.Element => {
+export const TableHeader = ({ title, headerValues, handler, isNarrowColumn = false }: TableHeaderType): JSX.Element => {
   return (
     <div className='full-details-header'>
-      <h4>{title}</h4>
       <div className='full-details-title'>
-        <div className='full-details-title-column'>
+        <div className={`full-details-title-column ${isNarrowColumn ? 'narrow' : ''}`}>
           {headerValues.map((value, i) => (
             <p key={`${value}_${i}`}>{value}</p>
           ))}

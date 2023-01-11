@@ -63,7 +63,7 @@ export const Contacts = ({ customersData }: { customersData: Required<CustomerDa
                 <p>{access[0].telephone}</p>
                 <p>{access[0].email}</p>
               </div>
-              <CustomButton value='details' id={index} handler={handleOpenDetails} />
+              <CustomButton color={'blue'} value='details' id={index} handler={handleOpenDetails} />
             </div>
             {isOpenDetailsObject[index] && <Table address={address} access={access} social={social} customerId={id} />}
           </div>

@@ -23,17 +23,27 @@
 
 @keyframes appear_modal {
   to {
-    background-color: rgba(196, 240, 238, 0.5);
+    background-color: rgba(196, 240, 238, 0.7);
     backdrop-filter: blur(2px);
   }
 }
 .full-details {
   padding-left: 30px;
 }
-.full-details p {
-  font-size: medium;
+.full-details .full-details-container {
+  border: 1px solid rgb(1, 45, 81);
+  border-radius: 10px;
+  margin-top: 10px;
 }
-.full-details .full-details-row {
+.full-details .full-details-container legend {
+  margin: 0 0 10px 10px;
+  font-weight: 500;
+  font-size: larger;
+}
+.full-details .full-details-container p {
+  font-size: small;
+}
+.full-details .full-details-container .full-details-row {
   display: flex;
   flex-direction: column;
 }/*# sourceMappingURL=table-component.css.map */

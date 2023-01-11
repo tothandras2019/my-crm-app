@@ -2,11 +2,6 @@
   background: linear-gradient(60deg, rgb(1, 45, 81) 15%, rgb(53, 198, 193) 70%);
   color: rgb(1, 45, 81);
   min-height: 100vh;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-#root::-webkit-scrollbar {
-  display: none;
 }
 
 .App {
@@ -37,7 +32,7 @@
   justify-content: flex-start;
   align-items: center;
   min-height: 90px;
-  min-width: 120px;
+  width: 130px;
   font-size: larger;
   transition: 0.5s;
   gap: 10px;
@@ -51,22 +46,13 @@
   letter-spacing: 1.1px;
   transition: 0.5s;
 }
-.menu-link svg {
-  opacity: 1;
-  transition: 0.5s;
-}
 .menu-link.hide {
-  top: 0;
-  left: 0;
-  min-width: 0;
-  min-height: 0;
-  opacity: 0;
+  width: 50px;
   transition: 0.5s;
 }
 .menu-link.hide p {
   opacity: 0;
+  width: 0;
+  transition: 0.5s;
   font-size: 0;
-}
-.menu-link.hide svg {
-  height: 0;
 }/*# sourceMappingURL=link-button-component.css.map */

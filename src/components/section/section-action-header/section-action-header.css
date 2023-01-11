@@ -2,11 +2,6 @@
   background: linear-gradient(60deg, rgb(1, 45, 81) 15%, rgb(53, 198, 193) 70%);
   color: rgb(1, 45, 81);
   min-height: 100vh;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-#root::-webkit-scrollbar {
-  display: none;
 }
 
 .App {
@@ -39,4 +34,8 @@ header {
   color: rgb(196, 240, 238);
   display: flex;
   justify-content: flex-start;
+  align-items: center;
+  padding-left: 30px;
+  box-sizing: border-box;
+  text-transform: uppercase;
 }/*# sourceMappingURL=section-action-header.css.map */

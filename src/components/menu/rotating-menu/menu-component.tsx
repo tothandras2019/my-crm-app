@@ -23,7 +23,7 @@ export const Menu = ({
       {Object.entries(mainMenuItemsIcon).map(([key, value], i) => {
         return <LinkButton key={`item--${i}`} value={key} hide={hideElement.value} IconSVGComponent={value} />
       })}
-      <HamburgerMenu handler={handleCloseMenu} />
+      <HamburgerMenu hideElementValue={hideElement.value} handler={handleCloseMenu} />
     </div>
   )
 }

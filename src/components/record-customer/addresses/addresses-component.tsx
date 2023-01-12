@@ -2,7 +2,7 @@ import './addresses-component.css'
 
 import { Fragment } from 'react'
 import { AddressType } from '../../../DATASTORE/data-types/main.data.types/customer-data-types'
-import { Input } from '../../input/input-component'
+import { Input } from '../../tools/input/input-component'
 
 type AddressInputType = { data: AddressType[] }
 export const Addresses = ({ data }: AddressInputType): JSX.Element => (

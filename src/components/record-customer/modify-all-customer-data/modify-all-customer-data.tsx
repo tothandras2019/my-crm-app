@@ -1,20 +1,20 @@
 import './modify-all-customer-data.css'
 import { AccessType, AddressType, CustomerDataType, SocialType } from '../../../DATASTORE/data-types/main.data.types/customer-data-types'
-import { Input } from '../../input/input-component'
+import { Input } from '../../tools/input/input-component'
 import { CustomButton } from '../../tools/button/submit/custom-button-component'
 import { Addresses } from '../addresses/addresses-component'
 import { FormEvent, useContext, useEffect, useState } from 'react'
-import { InitOpenModal, OpenModalContext } from '../../../utility/contexts/contacts-data/contacts-data-context'
+import { InitTempAvailabilityData, AvailabilityContext, CHANGE_STATUS_ACTION } from '../../../utility/contexts/contacts-data/contacts-data-context'
 import { MainContext } from '../../../utility/contexts/main.context'
 import { modifyCustomer, addCustomer } from '../../../DATASTORE/data-types/man.data.reducers/customer-reducer/customer.data.actions'
 import { ModifyForm } from '../../forms/availability-form-component'
 
 export const ManageCustomerData = (): JSX.Element => {
-  const { openModifyModal, setOpenModifyModal } = useContext(OpenModalContext)
+  const { openModifyModal, setOpenModifyModal } = useContext(AvailabilityContext)
   const { customers } = useContext(MainContext)
   const { customerState, CustomerDispatch } = customers
 
-  const { isModification, addressData, socialData, accessData } = openModifyModal
+  const { isModification, address: addressData, social: socialData, access: accessData } = openModifyModal
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -22,11 +22,9 @@ export const ManageCustomerData = (): JSX.Element => {
     const target = event.target as HTMLInputElement
     const valuesArray: string[] = []
     Object.values(target).forEach((input, index) => input instanceof HTMLInputElement && input.type === 'text' && valuesArray.push(input.value))
-
     isModification
-      ? modifyExisting_CustomerData(getDataObject(valuesArray), matchFoundCustomerAndKey)
+      ? changeExisting_CustomerData(getDataObject(valuesArray), matchFoundCustomerAndKey)
       : addNew_CustomerData(getDataObject(valuesArray), matchFoundCustomerAndKey)
-    // : addNew_CustomerData(getNew_DataObject(valuesArray), matchFoundCustomerAndKey)
   }
 
   const matchFoundCustomerAndKey = () => {
@@ -46,59 +44,54 @@ export const ManageCustomerData = (): JSX.Element => {
     FoundCustomerCallBack: () => { key: string | undefined; foundCustomer: CustomerDataType | undefined } | undefined,
   ) => {
     const { key, foundCustomer } = FoundCustomerCallBack() as { key: string; foundCustomer: CustomerDataType | undefined }
+    if (!key || !foundCustomer) return
 
     let modCustomer: CustomerDataType | undefined = undefined
     if (key && foundCustomer) {
-      if (key === 'address') {
-        modCustomer = {
-          ...foundCustomer,
-          [key]: [...foundCustomer[key], modifiedObject as AddressType],
-        }
-      }
-      if (key === 'access') {
-        modCustomer = {
-          ...foundCustomer,
-          [key]: [...foundCustomer[key], modifiedObject as AccessType],
-        }
-      }
-      if (key === 'social') {
-        modCustomer = {
-          ...foundCustomer,
-          [key]: [...foundCustomer[key], modifiedObject as SocialType],
-        }
-      }
+      if (key === 'address') modCustomer = { ...foundCustomer, [key]: [...foundCustomer[key], modifiedObject as AddressType] }
+      if (key === 'access') modCustomer = { ...foundCustomer, [key]: [...foundCustomer[key], modifiedObject as AccessType] }
+      if (key === 'social') modCustomer = { ...foundCustomer, [key]: [...foundCustomer[key], modifiedObject as SocialType] }
     }
-
     modCustomer && CustomerDispatch(modifyCustomer(modCustomer))
   }
 
-  const modifyExisting_CustomerData = (
+  const changeExisting_CustomerData = (
     modifiedObject: AddressType | SocialType | AccessType | null | undefined,
     FoundCustomerCallBack: () => { key: string | undefined; foundCustomer: CustomerDataType | undefined },
   ) => {
     const { key, foundCustomer } = FoundCustomerCallBack() as { key: string; foundCustomer: CustomerDataType | undefined }
     let modCustomer: CustomerDataType | undefined = undefined
+    if (!key || !foundCustomer) return
 
-    if (key && foundCustomer) {
-      if (key === 'address') {
+    if (openModifyModal.changeStatus === CHANGE_STATUS_ACTION.modifycation) {
+      if (key === 'address')
         modCustomer = {
           ...foundCustomer,
-          [key]: foundCustomer[key].map((data, index) => (index === openModifyModal.addressData.rowId ? (modifiedObject as AddressType) : data)),
+          [key]: foundCustomer[key].map((data, index) => (index === openModifyModal[key].rowId ? (modifiedObject as AddressType) : data)),
         }
-      }
 
-      if (key === 'access') {
+      if (key === 'access')
         modCustomer = {
           ...foundCustomer,
-          [key]: foundCustomer[key].map((data, index) => (index === openModifyModal.accessData.rowId ? (modifiedObject as AccessType) : data)),
+          [key]: foundCustomer[key].map((data, index) => (index === openModifyModal[key].rowId ? (modifiedObject as AccessType) : data)),
         }
-      }
-      if (key === 'social') {
+
+      if (key === 'social')
         modCustomer = {
           ...foundCustomer,
-          [key]: foundCustomer[key].map((data, index) => (index === openModifyModal.socialData.rowId ? (modifiedObject as SocialType) : data)),
+          [key]: foundCustomer[key].map((data, index) => (index === openModifyModal[key].rowId ? (modifiedObject as SocialType) : data)),
         }
-      }
+    }
+
+    if (openModifyModal.changeStatus === CHANGE_STATUS_ACTION.delete) {
+      if (key === 'address')
+        modCustomer = { ...foundCustomer, [key]: foundCustomer[key].filter((data, index) => index !== openModifyModal[key].rowId) }
+
+      if (key === 'access')
+        modCustomer = { ...foundCustomer, [key]: foundCustomer[key].filter((data, index) => index !== openModifyModal[key].rowId) }
+
+      if (key === 'social')
+        modCustomer = { ...foundCustomer, [key]: foundCustomer[key].filter((data, index) => index !== openModifyModal[key].rowId) }
     }
 
     modCustomer && CustomerDispatch(modifyCustomer(modCustomer))
@@ -139,7 +132,7 @@ export const ManageCustomerData = (): JSX.Element => {
   }
 
   const handleCancel = () => {
-    setOpenModifyModal(InitOpenModal)
+    setOpenModifyModal(InitTempAvailabilityData)
   }
 
   return <ModifyForm submitHandler={handleSubmit} handleCancel={handleCancel} />

@@ -1,0 +1,72 @@
+#root {
+  background: linear-gradient(60deg, rgb(1, 45, 81) 15%, rgb(53, 198, 193) 70%);
+  color: rgb(1, 45, 81);
+  min-height: 100vh;
+}
+
+.App {
+  position: relative;
+}
+
+.modal_window {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: transparent;
+  animation-name: appear_modal;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes appear_modal {
+  to {
+    background-color: rgba(196, 240, 238, 0.7);
+    backdrop-filter: blur(2px);
+  }
+}
+.search-input-container {
+  background-color: transparent;
+  border: 1px solid rgb(1, 45, 81);
+  border-radius: 50px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  gap: 5px;
+}
+.search-input-container input[type=button].reset-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 10px;
+  width: 25px;
+  height: 25px;
+  background-color: transparent;
+  color: rgb(1, 45, 81);
+  border: none;
+  border-radius: 50%;
+  outline: none;
+  transition: 0.3s;
+}
+.search-input-container input[type=button].reset-button:focus {
+  background-color: rgb(1, 45, 81);
+  color: rgb(196, 240, 238);
+}
+.search-input-container input[type=button].reset-button:active {
+  background-color: rgb(196, 240, 238);
+  color: rgb(1, 45, 81);
+}
+.search-input-container svg .search-icon {
+  fill: rgb(1, 45, 81);
+}
+.search-input-container .search-input {
+  outline: none;
+  color: rgb(1, 45, 81);
+}
+.search-input-container .search-input::placeholder {
+  font-style: italic;
+}/*# sourceMappingURL=search-input-component.css.map */

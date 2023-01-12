@@ -23,13 +23,12 @@
 
 @keyframes appear_modal {
   to {
-    background-color: rgba(196, 240, 238, 0.5);
+    background-color: rgba(196, 240, 238, 0.7);
     backdrop-filter: blur(2px);
   }
 }
 input[type=submit],
 input[type=button] {
-  min-width: 140px;
   height: 28px;
   margin: 5px;
   border: 2px solid rgb(1, 45, 81);

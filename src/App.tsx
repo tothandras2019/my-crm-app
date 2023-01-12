@@ -1,4 +1,3 @@
-import { CustomerContext } from './DATASTORE/contacts-reducer'
 import { useContext, useEffect } from 'react'
 import { Cards } from './components/card/cards-component'
 import { Navigation } from './components/navigation/navigation-component'
@@ -10,14 +9,13 @@ import { getContractCollection, getCustomerCollection, getWarehouseCollection } 
 import { fillUpCustomer } from './DATASTORE/data-types/man.data.reducers/customer-reducer/customer.data.actions'
 import { fillUpContracts } from './DATASTORE/data-types/man.data.reducers/contracts-reducer/contracts.data.actions'
 import { fillUpWarehouse } from './DATASTORE/data-types/man.data.reducers/warehouse-reducer/warehouse.data.actions'
-import { CalendarSvg, ContactsSvg, DashboardSvg, HomeSvg, SettingsSvg } from './icons/main-menu/menu_svg_items'
 import { Contacts } from './components/contacts/contacts-component'
 import { PathContext } from './utility/contexts/action.context'
 import { ManageCustomerData } from './components/record-customer/modify-all-customer-data/modify-all-customer-data'
-import { OpenModalContext } from './utility/contexts/contacts-data/contacts-data-context'
+import { AvailabilityContext } from './utility/contexts/contacts-data/contacts-data-context'
 
 function App() {
-  const { openModifyModal } = useContext(OpenModalContext)
+  const { openModifyModal } = useContext(AvailabilityContext)
 
   const { MenuManagerOpenOption } = useContext(PathContext)
   const { products, customers, contracts, warehouse } = useContext(MainContext)
@@ -61,30 +59,15 @@ function App() {
     console.log('wh:', warehouseDataState)
   }, [customerState, contractDataState, warehouseDataState])
 
-  const NewInitCustomers = {
-    id: 1,
-    name: 'BASF',
-    email: 'BASF@BASF.com',
-    address: {
-      country: 'GB',
-      city: 'Perth',
-      building: 34,
-      street: 'Snake of black',
-      zip: 143234,
-    },
-    salesStatus: 'new',
-    opportunityAmount: 23425,
-  }
-
   return (
     <div className='App'>
       <Routes>
         <Route path={`/`} element={<Navigation />}>
           <Route path={`/`} element={<Cards />} />
           <Route path={`/dashboard`} element={<Dashboard />} />
-          <Route path={`/new customer`} element={<ManageCustomersForm />} />
-          <Route path={`/contacts`} element={customerState && <Contacts customersData={customerState} />} />
+          <Route path={`/contracts`} element={<h1>contracts will be here</h1>} />
           <Route path={`/calendar`} element={<h1>calendar will be here</h1>} />
+          <Route path={`/contacts`} element={customerState && <Contacts customersData={customerState} />} />
           <Route path={`/settings`} element={<h1>settings will be here</h1>} />
         </Route>
       </Routes>
@@ -93,11 +76,6 @@ function App() {
           <ManageCustomersForm />
         </div>
       )}
-      {/* {MenuManagerOpenOption.customerForModify.customer && (
-        <div className='modal_window'>
-          <ManageCustomersForm isModification={true} customerData={MenuManagerOpenOption.customerForModify.customer} />
-        </div>
-      )} */}
 
       {openModifyModal.openModifyUiData && (
         <div className='modal_window'>
@@ -109,10 +87,6 @@ function App() {
           <ManageCustomerData />
         </div>
       )}
-
-      {/* {MenuManagerOpenOption.calendar && <></>}
-      {MenuManagerOpenOption.settings && <></>}
-      {MenuManagerOpenOption.dashboard && <></>} */}
     </div>
   )
 }

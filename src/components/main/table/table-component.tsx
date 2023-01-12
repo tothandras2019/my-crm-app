@@ -5,11 +5,11 @@ import { TableHeader } from './table-header/table-header-component'
 import { CustomButton } from '../../tools/button/submit/custom-button-component'
 import { TableItems } from './table-items/table-items-component'
 import { useContext } from 'react'
-import { OpenModalContext } from '../../../utility/contexts/contacts-data/contacts-data-context'
+import { AvailabilityContext } from '../../../utility/contexts/contacts-data/contacts-data-context'
 
 type TableDataType = { address: AddressType[]; access: AccessType[]; social: SocialType[]; customerId: string }
 export const Table = ({ address, access, social, customerId }: TableDataType): JSX.Element => {
-  const { openModifyModal, setOpenModifyModal } = useContext(OpenModalContext)
+  const { openModifyModal, setOpenModifyModal } = useContext(AvailabilityContext)
   const { isModification } = openModifyModal
 
   const addressHeaderValues: string[] = ['primary', 'country', 'code', 'city', 'building', 'street', 'zip']
@@ -21,7 +21,7 @@ export const Table = ({ address, access, social, customerId }: TableDataType): J
       ...state,
       customerId: customerId,
       isModification: false,
-      addressData: { ...state.addressData, isAddNew: true },
+      address: { ...state.address, isAddNew: true },
     }))
   }
   const handleNewAccess = () => {
@@ -29,7 +29,7 @@ export const Table = ({ address, access, social, customerId }: TableDataType): J
       ...state,
       customerId: customerId,
       isModification: false,
-      accessData: { ...state.accessData, isAddNew: true },
+      access: { ...state.access, isAddNew: true },
     }))
   }
   const handleNewsocial = () => {
@@ -37,7 +37,7 @@ export const Table = ({ address, access, social, customerId }: TableDataType): J
       ...state,
       customerId: customerId,
       isModification: false,
-      socialData: { ...state.socialData, isAddNew: true },
+      social: { ...state.social, isAddNew: true },
     }))
   }
 

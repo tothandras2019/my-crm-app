@@ -1,5 +1,5 @@
 import './record-customer-component.css'
-import { Input } from '../input/input-component'
+import { Input } from '../tools/input/input-component'
 import { FormEvent, Fragment, useContext, useEffect, useState } from 'react'
 import { LeadEnum, LifecicyleEnum } from '../../DATASTORE/data-types/data-types'
 import { CustomButton } from '../tools/button/submit/custom-button-component'

@@ -1,7 +1,7 @@
 import { FormEvent, useContext } from 'react'
 import { AddressType, AccessType, SocialType } from '../../DATASTORE/data-types/main.data.types/customer-data-types'
-import { OpenModalContext } from '../../utility/contexts/contacts-data/contacts-data-context'
-import { Input } from '../input/input-component'
+import { AvailabilityContext } from '../../utility/contexts/contacts-data/contacts-data-context'
+import { Input } from '../tools/input/input-component'
 import { CustomButton } from '../tools/button/submit/custom-button-component'
 import { AccessFormInputs } from './access-form-inputs/access-form-inputs'
 import { AddressFormInputs } from './address-form-inputs/address-form-inputs'
@@ -12,8 +12,8 @@ type ModifyFormType = {
   handleCancel: () => void
 }
 export const ModifyForm = ({ submitHandler, handleCancel }: Partial<ModifyFormType>): JSX.Element => {
-  const { openModifyModal } = useContext(OpenModalContext)
-  const { accessData, addressData, socialData } = openModifyModal
+  const { openModifyModal } = useContext(AvailabilityContext)
+  const { access: accessData, address: addressData, social: socialData } = openModifyModal
   return (
     <form className='modify-form' onSubmit={submitHandler}>
       <div>

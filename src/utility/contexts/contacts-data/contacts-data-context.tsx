@@ -1,34 +1,40 @@
 import { createContext, Dispatch, SetStateAction, useState } from 'react'
 import { AccessType, AddressType, SocialType } from '../../../DATASTORE/data-types/main.data.types/customer-data-types'
 
-export {}
+export enum CHANGE_STATUS_ACTION {
+  new = 'new',
+  modifycation = 'modifycation',
+  delete = 'delete',
+}
 
-export type OpenModalType = {
+export type InitTempAvailabilityDataType = {
   isModification: boolean
   openModifyUiData: boolean
   customerId: string | undefined
-  accessData: { isAddNew: boolean; rowId: number | undefined; data: AccessType | undefined }
-  addressData: { isAddNew: boolean; rowId: number | undefined; data: AddressType | undefined }
-  socialData: { isAddNew: boolean; rowId: number | undefined; data: SocialType | undefined }
+  changeStatus: CHANGE_STATUS_ACTION | undefined
+  access: { isAddNew: boolean; rowId: number | undefined; data: AccessType | undefined }
+  address: { isAddNew: boolean; rowId: number | undefined; data: AddressType | undefined }
+  social: { isAddNew: boolean; rowId: number | undefined; data: SocialType | undefined }
 }
 
-export const InitOpenModal: OpenModalType = {
+export const InitTempAvailabilityData: InitTempAvailabilityDataType = {
   isModification: true,
   openModifyUiData: false,
   customerId: undefined,
-  accessData: { isAddNew: false, rowId: undefined, data: undefined },
-  addressData: { isAddNew: false, rowId: undefined, data: undefined },
-  socialData: { isAddNew: false, rowId: undefined, data: undefined },
+  changeStatus: undefined,
+  access: { isAddNew: false, rowId: undefined, data: undefined },
+  address: { isAddNew: false, rowId: undefined, data: undefined },
+  social: { isAddNew: false, rowId: undefined, data: undefined },
 }
-type openModifyModalType = Dispatch<SetStateAction<OpenModalType>>
+type openModifyModalType = Dispatch<SetStateAction<InitTempAvailabilityDataType>>
 
-export const OpenModalContext = createContext<{ openModifyModal: OpenModalType; setOpenModifyModal: openModifyModalType }>({
-  openModifyModal: InitOpenModal,
+export const AvailabilityContext = createContext<{ openModifyModal: InitTempAvailabilityDataType; setOpenModifyModal: openModifyModalType }>({
+  openModifyModal: InitTempAvailabilityData,
   setOpenModifyModal: () => {},
 })
 
 export const OpenModalContextProvider = ({ children }: { children: any }) => {
-  const [openModifyModal, setOpenModifyModal] = useState<OpenModalType>(InitOpenModal)
+  const [openModifyModal, setOpenModifyModal] = useState<InitTempAvailabilityDataType>(InitTempAvailabilityData)
 
-  return <OpenModalContext.Provider value={{ openModifyModal, setOpenModifyModal }}>{children}</OpenModalContext.Provider>
+  return <AvailabilityContext.Provider value={{ openModifyModal, setOpenModifyModal }}>{children}</AvailabilityContext.Provider>
 }

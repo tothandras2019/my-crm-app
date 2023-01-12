@@ -1,7 +1,7 @@
 import './head-info-panel-component.css'
 
 import { GeneralType, LeadEnum, LifecicyleEnum } from '../../../DATASTORE/data-types/data-types'
-import { ContractIcon, IdNo, Lifecycle, Status } from '../../../icons/sub-menu/svg-icons-components'
+import { ContractIconHandShakeSvg, IdNoSvg, LifecycleSvg, StatusSvg } from '../../../icons/sub-menu/svg-icons-components'
 
 type HeadInfoPanelType = {
   id: number | string
@@ -13,19 +13,19 @@ export const HeadInfoPanel = ({ id, lifecycleState, leadState, period }: Partial
   return (
     <div className='info-panel-head'>
       <div className='status'>
-        <p> {IdNo()} </p>
+        <p> {IdNoSvg()} </p>
         <h4>{id} </h4>
       </div>
       <div className='status'>
-        <p> {Lifecycle()} </p>
+        <p> {LifecycleSvg()} </p>
         <h4>{lifecycleState} </h4>
       </div>
       <div className='status'>
-        <p> {Status()} </p>
+        <p> {StatusSvg()} </p>
         <h4>{leadState}</h4>
       </div>
       <div className='status'>
-        <p> {ContractIcon()} </p>
+        <p> {ContractIconHandShakeSvg()} </p>
         <h4>{period}</h4>
       </div>
     </div>

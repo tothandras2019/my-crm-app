@@ -2,7 +2,7 @@ import './menu-component.css'
 import { LinkButton } from '../../tools/button/link/link-button-component'
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { HamburgerMenu } from '../../tools/menu/hamburger-menu/hamburger-menu-component'
-import { mainMenuItemsIcon } from '../../../DATASTORE/data/navigation-headers'
+import { mainMenuItemsIcon } from '../../../utility/menu-items/menu-items'
 
 export const Menu = ({
   items,

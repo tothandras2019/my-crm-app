@@ -7,11 +7,11 @@ import { AccessFormInputs } from './access-form-inputs/access-form-inputs'
 import { AddressFormInputs } from './address-form-inputs/address-form-inputs'
 import { SocialFormInputs } from './social-form-inputs/social-form-inputs'
 
-type ModifyFormType = {
+type MofifyContactsFormType = {
   submitHandler: (event: FormEvent<HTMLFormElement>) => void
   handleCancel: () => void
 }
-export const ModifyForm = ({ submitHandler, handleCancel }: Partial<ModifyFormType>): JSX.Element => {
+export const MofifyContactsForm = ({ submitHandler, handleCancel }: Partial<MofifyContactsFormType>): JSX.Element => {
   const { openModifyModal } = useContext(AvailabilityContext)
   const { access: accessData, address: addressData, social: socialData } = openModifyModal
   return (

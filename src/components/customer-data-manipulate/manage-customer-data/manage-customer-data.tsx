@@ -1,13 +1,10 @@
-import './modify-all-customer-data.css'
+import './manage-customer-data.css'
 import { AccessType, AddressType, CustomerDataType, SocialType } from '../../../DATASTORE/data-types/main.data.types/customer-data-types'
-import { Input } from '../../tools/input/input-component'
-import { CustomButton } from '../../tools/button/submit/custom-button-component'
-import { Addresses } from '../addresses/addresses-component'
-import { FormEvent, useContext, useEffect, useState } from 'react'
+import { FormEvent, useContext } from 'react'
 import { InitTempAvailabilityData, AvailabilityContext, CHANGE_STATUS_ACTION } from '../../../utility/contexts/contacts-data/contacts-data-context'
 import { MainContext } from '../../../utility/contexts/main.context'
-import { modifyCustomer, addCustomer } from '../../../DATASTORE/data-types/man.data.reducers/customer-reducer/customer.data.actions'
-import { ModifyForm } from '../../forms/availability-form-component'
+import { modifyCustomer } from '../../../DATASTORE/data-types/man.data.reducers/customer-reducer/customer.data.actions'
+import { MofifyContactsForm } from '../../forms/mofify-contacts-form-component'
 
 export const ManageCustomerData = (): JSX.Element => {
   const { openModifyModal, setOpenModifyModal } = useContext(AvailabilityContext)
@@ -135,5 +132,5 @@ export const ManageCustomerData = (): JSX.Element => {
     setOpenModifyModal(InitTempAvailabilityData)
   }
 
-  return <ModifyForm submitHandler={handleSubmit} handleCancel={handleCancel} />
+  return <MofifyContactsForm submitHandler={handleSubmit} handleCancel={handleCancel} />
 }

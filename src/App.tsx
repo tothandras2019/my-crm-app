@@ -3,7 +3,7 @@ import { Cards } from './components/card/cards-component'
 import { Navigation } from './components/navigation/navigation-component'
 import { Route, Routes } from 'react-router-dom'
 import { Dashboard } from './components/dashboard/dashboard-component'
-import { ManageCustomersForm } from './components/record-customer/record-customer-component'
+import { ManageCustomersForm } from './components/customer-data-manipulate/add-new-customer/record-customer-component'
 import { MainContext } from './utility/contexts/main.context'
 import { getContractCollection, getCustomerCollection, getWarehouseCollection } from './utility/google-cloud-store/google-cloud-store'
 import { fillUpCustomer } from './DATASTORE/data-types/man.data.reducers/customer-reducer/customer.data.actions'
@@ -11,7 +11,7 @@ import { fillUpContracts } from './DATASTORE/data-types/man.data.reducers/contra
 import { fillUpWarehouse } from './DATASTORE/data-types/man.data.reducers/warehouse-reducer/warehouse.data.actions'
 import { Contacts } from './components/contacts/contacts-component'
 import { PathContext } from './utility/contexts/action.context'
-import { ManageCustomerData } from './components/record-customer/modify-all-customer-data/modify-all-customer-data'
+import { ManageCustomerData } from './components/customer-data-manipulate/manage-customer-data/manage-customer-data'
 import { AvailabilityContext } from './utility/contexts/contacts-data/contacts-data-context'
 
 function App() {

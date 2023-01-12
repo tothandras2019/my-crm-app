@@ -13,6 +13,7 @@ import { Contacts } from './components/contacts/contacts-component'
 import { PathContext } from './utility/contexts/action.context'
 import { ManageCustomerData } from './components/customer-data-manipulate/manage-customer-data/manage-customer-data'
 import { AvailabilityContext } from './utility/contexts/contacts-data/contacts-data-context'
+import { ContractsMain } from './components/CONTRACTS_MGM/contracts-main/contracts-main-component'
 
 function App() {
   const { openModifyModal } = useContext(AvailabilityContext)
@@ -65,7 +66,7 @@ function App() {
         <Route path={`/`} element={<Navigation />}>
           <Route path={`/`} element={<Cards />} />
           <Route path={`/dashboard`} element={<Dashboard />} />
-          <Route path={`/contracts`} element={<h1>contracts will be here</h1>} />
+          <Route path={`/contracts`} element={<ContractsMain contracts={contractDataState} />} />
           <Route path={`/calendar`} element={<h1>calendar will be here</h1>} />
           <Route path={`/contacts`} element={customerState && <Contacts customersData={customerState} />} />
           <Route path={`/settings`} element={<h1>settings will be here</h1>} />

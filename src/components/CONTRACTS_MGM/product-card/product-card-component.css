@@ -1,0 +1,38 @@
+#root {
+  background: linear-gradient(60deg, rgb(1, 45, 81) 15%, rgb(53, 198, 193) 70%);
+  color: rgb(1, 45, 81);
+  min-height: 100vh;
+}
+
+.App {
+  position: relative;
+}
+
+.modal_window {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: transparent;
+  animation-name: appear_modal;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes appear_modal {
+  to {
+    background-color: rgba(196, 240, 238, 0.7);
+    backdrop-filter: blur(2px);
+  }
+}
+.product-entries-container {
+  background-color: rgb(12, 65, 99);
+  margin: 10px;
+  padding: 10px;
+  width: 350px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  box-shadow: 5px 5px 5px rgb(1, 45, 81);
+}/*# sourceMappingURL=product-card-component.css.map */

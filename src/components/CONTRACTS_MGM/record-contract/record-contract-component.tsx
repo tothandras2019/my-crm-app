@@ -3,6 +3,7 @@ import { ManageDataFrame } from '../../manage-data-frame/manage-data-frame-compo
 import { OpenCloseButton } from '../../tools/button/open-close/open-close-button-component'
 import { CustomButton } from '../../tools/button/submit/custom-button-component'
 import { Input } from '../../tools/input/input-component'
+import { InputFieldSetForm } from './../../forms/product-form-inputs/product-form-inputs-component'
 
 export const RecordOrders = (): JSX.Element => {
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
@@ -13,7 +14,7 @@ export const RecordOrders = (): JSX.Element => {
     <ManageDataFrame>
       <div>
         <form onSubmit={handleSubmit}>
-          <Input label='test' />
+          <InputFieldSetForm title={'product'} data={undefined} />
           <CustomButton color={'green'} value={'submit'} type={'submit'} />
           <OpenCloseButton color={'yellow'} pageTextValue={'cancel'} handler={handleCancel} />
         </form>

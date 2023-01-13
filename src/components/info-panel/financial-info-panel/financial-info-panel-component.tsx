@@ -1,12 +1,20 @@
 import './financial-info-panel-component.css'
 import { formatter } from '../../../utility/number.formatter'
 import { OpenCloseButton } from '../../tools/button/open-close/open-close-button-component'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { OtherActionContexts } from '../../../utility/contexts/action.context'
 
-export const FinancialInfoPanel = ({ summary }: { summary: number }) => {
-  const { SetShowOrders } = useContext(OtherActionContexts)
-  const handleShowOrders = () => SetShowOrders((state) => ({ ...state, isShow: !state.isShow }))
+type FinancialInfoPanelType = { customerIndex: number; summary: number }
+export const FinancialInfoPanel = ({ customerIndex, summary }: FinancialInfoPanelType) => {
+  const { showOrders, SetShowOrders } = useContext(OtherActionContexts)
+  const handleShowOrders = () => {
+    const tempOrderIndexs = showOrders.indexs.map((val, index) => (index === customerIndex ? !val : val))
+    SetShowOrders((state) => ({ ...state, indexs: tempOrderIndexs }))
+  }
+
+  // useEffect(() => {
+  //   console.log(showOrders)
+  // }, [showOrders])
 
   return (
     <div className='info-financial-panel'>

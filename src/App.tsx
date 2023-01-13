@@ -14,6 +14,7 @@ import { OtherActionContexts } from './utility/contexts/action.context'
 import { ManageCustomerData } from './components/customer-data-manipulate/manage-customer-data/manage-customer-data'
 import { AvailabilityContext } from './utility/contexts/contacts-data/contacts-data-context'
 import { ContractsMain } from './components/CONTRACTS_MGM/contracts-main/contracts-main-component'
+import { RecordOrders } from './components/CONTRACTS_MGM/record-contract/record-contract-component'
 
 function App() {
   const { openModifyModal } = useContext(AvailabilityContext)
@@ -88,6 +89,8 @@ function App() {
           <ManageCustomerData />
         </div>
       )}
+
+      <RecordOrders />
     </div>
   )
 }

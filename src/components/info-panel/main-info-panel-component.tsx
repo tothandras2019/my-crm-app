@@ -8,11 +8,22 @@ import { HeadInfoPanel } from './head-info-panel/head-info-panel-component'
 import { CustomerDataType, SummaryCustomerOrdersAmountType } from '../../DATASTORE/data-types/main.data.types/customer-data-types'
 import { IndicatorDetailed } from '../indicator-detailed/indicator-detailerd-component'
 import { OpenCloseButton } from '../tools/button/open-close/open-close-button-component'
+import { useContext, useEffect } from 'react'
+import { OtherActionContexts } from '../../utility/contexts/action.context'
 
-type MainInfoPanelType = { customer: SummaryCustomerOrdersAmountType }
-export const MainInfoPannel = ({ customer }: MainInfoPanelType) => {
+type MainInfoPanelType = { customerIndex: number; customer: SummaryCustomerOrdersAmountType }
+export const MainInfoPannel = ({ customerIndex, customer }: MainInfoPanelType) => {
   const { id, date, companyName, access, address, status, social, summaryOrdersamount } = customer
   const { lifecycleState, leadState } = status
+
+  const { selectedCustomerData, SetSelectedCustomerType } = useContext(OtherActionContexts)
+  const handleNewOrder = () => {
+    SetSelectedCustomerType((state) => ({ ...state, customer: customer }))
+  }
+
+  useEffect(() => {
+    console.log(selectedCustomerData)
+  }, [selectedCustomerData])
 
   return (
     <div className='info-panel-card' id={id}>
@@ -34,10 +45,10 @@ export const MainInfoPannel = ({ customer }: MainInfoPanelType) => {
       <div className='order-actions-container'>
         <h2>Order actions</h2>
         <div>
-          <OpenCloseButton color={`green`} pageTextValue={'new order'} handler={() => {}} />
+          <OpenCloseButton color={`green`} pageTextValue={'new order'} handler={handleNewOrder} />
         </div>
       </div>
-      <FinancialInfoPanel summary={summaryOrdersamount} />
+      <FinancialInfoPanel customerIndex={customerIndex} summary={summaryOrdersamount} />
     </div>
   )
 }

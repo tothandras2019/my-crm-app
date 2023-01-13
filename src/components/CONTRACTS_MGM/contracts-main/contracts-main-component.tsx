@@ -3,7 +3,7 @@ import { ContractType } from '../../../DATASTORE/data-types/main.data.types/cont
 import { Separator } from '../../tools/separator/separator-component'
 import { ProductCard } from '../product-card/product-card-component'
 import { OrderedProductsComponent } from '../ordered-products/ordered-producs-component'
-import { Fragment, useContext, useEffect, useState } from 'react'
+import { Fragment, useCallback, useContext, useEffect, useState } from 'react'
 import { MainInfoPannel } from '../../info-panel/main-info-panel-component'
 import { SummaryCustomerOrdersAmountType } from '../../../DATASTORE/data-types/main.data.types/customer-data-types'
 import { Order } from '../../../DATASTORE/data-types/main.data.types/order-data-types'
@@ -13,11 +13,22 @@ import { OpenCloseButton } from '../../tools/button/open-close/open-close-button
 type ContractsMainType = { contracts: ContractType[] }
 
 export const ContractsMain = ({ contracts }: ContractsMainType): JSX.Element => {
-  const { showOrders } = useContext(OtherActionContexts)
+  const { showOrders, SetShowOrders } = useContext(OtherActionContexts)
 
-  const [customersData, SetcustomersData] = useState<SummaryCustomerOrdersAmountType[] | null | undefined>(null)
+  const [customersData, SetcustomersData] = useState<SummaryCustomerOrdersAmountType[] | []>([])
+
+  const GenerateBooleanArray = useCallback(() => {
+    const length = contracts.length
+    let result: boolean[] = []
+    for (let i = 0; i < length; i++) {
+      result.push(false)
+    }
+    SetShowOrders((state) => ({ ...state, indexs: result }))
+  }, [contracts])
 
   useEffect(() => {
+    GenerateBooleanArray()
+
     const summdata = (orders: Order[]): number => {
       return orders.reduce((acc, order) => {
         return (acc += order.ordered_products.reduce((accOrder: number, prod) => {
@@ -72,10 +83,10 @@ export const ContractsMain = ({ contracts }: ContractsMainType): JSX.Element => 
         return (
           <div key={`contracts_${contracts}`} className='contracts-main-container'>
             {customersData &&
-              customersData.map((customer, i) => {
-                return <MainInfoPannel key={`${customer}-${i}`} customer={customer} />
+              customersData.map((customer, index) => {
+                return <MainInfoPannel customerIndex={index} key={`${customer}-${index}`} customer={customer} />
               })}
-            {showOrders.isShow && (
+            {showOrders.indexs[index] && (
               <div className='contracts-orders-container'>
                 <h3>Orders </h3>
                 {orders.map((order) => {

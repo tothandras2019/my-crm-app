@@ -1,7 +1,8 @@
 import { MainContext } from './main.context'
 import { createContext, Dispatch, SetStateAction, useContext, useState } from 'react'
-import { CustomerDataType } from '../../DATASTORE/data-types/main.data.types/customer-data-types'
-
+import { CustomerDataType, SummaryCustomerOrdersAmountType } from '../../DATASTORE/data-types/main.data.types/customer-data-types'
+//#region InitManagerMenuOptions
+type SetInitManagerMenuOptionDispatchType = Dispatch<SetStateAction<InitManagerMenuOptionsType>>
 type InitManagerMenuOptionsType = {
   contacts: boolean
   // customerForModify: { customer: CustomerDataType | null }
@@ -16,49 +17,78 @@ export const InitManagerMenuOptions: InitManagerMenuOptionsType = {
   calendar: false,
   settings: false,
 }
+//#endregion
+//#region ShowOrdersDetails
+type SetShowOrdersDispatchType = Dispatch<SetStateAction<ShowOrdersDetailsType>>
 type ShowOrdersDetailsType = {
-  isShow: boolean
+  indexs: boolean[]
 }
 export const ShowOrdersDetails: ShowOrdersDetailsType = {
-  isShow: false,
+  indexs: [],
 }
-
+//#endregion
+//#region SelectedCustomer
+type SetSelectedCustomerDispatchType = Dispatch<SetStateAction<SelectedCustomerType>>
+type SelectedCustomerType = {
+  customer: SummaryCustomerOrdersAmountType | undefined
+}
+export const SelectedCustomer: SelectedCustomerType = {
+  customer: undefined,
+}
+//#endregion
+//#region PathAction
+type SetPathDispatchType = Dispatch<SetStateAction<SetPathType>>
 type SetPathType = { [key: string]: string }
-export const SectionActions: SetPathType = {
+export const PathAction: SetPathType = {
   currentPath: '',
 }
+//#endregion
 
-type SetPathDispatchType = Dispatch<SetStateAction<SetPathType>>
-type SetButtonValueDispatchType = Dispatch<SetStateAction<InitManagerMenuOptionsType>>
-type SetShowOrdersDispatchType = Dispatch<SetStateAction<ShowOrdersDetailsType>>
-
+//#region MAIN CONTEXT
 type ContextType = {
   path: SetPathType
   setPath: SetPathDispatchType
   MenuManagerOpenOption: InitManagerMenuOptionsType
-  SetMenuManagerOpenOption: SetButtonValueDispatchType
+  SetMenuManagerOpenOption: SetInitManagerMenuOptionDispatchType
   showOrders: ShowOrdersDetailsType
   SetShowOrders: SetShowOrdersDispatchType
+  selectedCustomerData: SelectedCustomerType
+  SetSelectedCustomerType: SetSelectedCustomerDispatchType
 }
 export const OtherActionContexts = createContext<ContextType>({
-  path: SectionActions,
+  path: PathAction,
   setPath: () => {},
   MenuManagerOpenOption: InitManagerMenuOptions,
   SetMenuManagerOpenOption: () => {},
   showOrders: ShowOrdersDetails,
   SetShowOrders: () => {},
+  selectedCustomerData: SelectedCustomer,
+  SetSelectedCustomerType: () => {},
 })
+//#endregion
 
+//#region PROVIDER
 export const PathContextProvider = ({ children }: { children: any }) => {
-  const [path, setPath] = useState(SectionActions)
+  const [path, setPath] = useState(PathAction)
   const [menuManagerOpenOption, SetMenuManagerOpenOption] = useState<InitManagerMenuOptionsType>(InitManagerMenuOptions)
   const [showOrders, SetShowOrders] = useState<ShowOrdersDetailsType>(ShowOrdersDetails)
+  const [selectedCustomerData, SetSelectedCustomerType] = useState<SelectedCustomerType>(SelectedCustomer)
 
   return (
     <OtherActionContexts.Provider
-      value={{ path, setPath, MenuManagerOpenOption: menuManagerOpenOption, SetMenuManagerOpenOption, showOrders, SetShowOrders }}
+      value={{
+        path,
+        setPath,
+        MenuManagerOpenOption: menuManagerOpenOption,
+        SetMenuManagerOpenOption,
+        showOrders,
+        SetShowOrders,
+        selectedCustomerData,
+        SetSelectedCustomerType,
+      }}
     >
       {children}
     </OtherActionContexts.Provider>
   )
 }
+//#endregion

@@ -14,15 +14,28 @@ import {
   SummaryCustomerOrdersAmountType,
 } from './../../DATASTORE/data-types/main.data.types/customer-data-types'
 import { Order } from '../../DATASTORE/data-types/main.data.types/order-data-types'
+import { OtherActionContexts } from '../../utility/contexts/action.context'
 
 export const Cards = (): JSX.Element => {
-  const { customers, contracts } = useContext(MainContext)
-  const { customerState } = customers
+  const { SetShowOrders } = useContext(OtherActionContexts)
+  const { contracts } = useContext(MainContext)
   const { contractDataState } = contracts
 
   const [customersData, setcustomersData] = useState<SummaryCustomerOrdersAmountType[] | null | undefined>(null)
 
+  const GenerateBooleanArray = () => {
+    const length = contractDataState.length
+    let result = []
+    for (let i = 0; i < length; i++) {
+      result.push(false)
+    }
+    return result
+  }
+
   useEffect(() => {
+    const tempIndex = GenerateBooleanArray()
+    SetShowOrders((state) => ({ ...state, indexs: tempIndex }))
+
     const summdata = (orders: Order[]): number => {
       return orders.reduce((acc, order) => {
         return (acc += order.ordered_products.reduce((accOrder: number, prod) => {
@@ -73,8 +86,8 @@ export const Cards = (): JSX.Element => {
   return (
     <div className='card-container'>
       {customersData &&
-        customersData.map((customer, i) => {
-          return <MainInfoPannel key={`${customer}-${i}`} customer={customer} />
+        customersData.map((customer, index) => {
+          return <></>
         })}
     </div>
   )

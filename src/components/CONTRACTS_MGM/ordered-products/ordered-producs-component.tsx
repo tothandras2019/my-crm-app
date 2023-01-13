@@ -6,7 +6,6 @@ export const OrderedProductsComponent = ({ order, children }: OrderedProductsTyp
   const { id, products } = order
   return (
     <div className='ordered-products-container'>
-      <p>{id}</p>
       <div className='products-container'>{children}</div>
     </div>
   )

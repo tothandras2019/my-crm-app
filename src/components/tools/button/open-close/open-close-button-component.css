@@ -1,7 +1,49 @@
+#root {
+  background: linear-gradient(60deg, rgb(1, 45, 81) 15%, rgb(53, 198, 193) 70%);
+  color: rgb(1, 45, 81);
+  min-height: 100vh;
+}
+
+.App {
+  position: relative;
+}
+
+.modal_window {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: transparent;
+  animation-name: appear_modal;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes appear_modal {
+  to {
+    background-color: rgba(196, 240, 238, 0.7);
+    backdrop-filter: blur(2px);
+  }
+}
 input[type=button] {
-  background-color: rgb(84, 84, 236);
   border-radius: 5px;
-  width: 80px;
+  font-size: smaller;
+  width: 110px;
   height: fit-content;
   transition: 0.5s;
+  box-shadow: 3px 3px 5px #317d65;
+}
+input[type=button].green {
+  background-color: rgb(74, 156, 74);
+  border: 2px solid rgb(74, 156, 74);
+}
+input[type=button].red {
+  background-color: rgb(176, 58, 58);
+  border: 2px solid rgb(176, 58, 58);
+}
+input[type=button].yellow {
+  background-color: rgb(172, 176, 58);
+  border: 2px solid rgb(172, 176, 58);
 }/*# sourceMappingURL=open-close-button-component.css.map */

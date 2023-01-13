@@ -4,7 +4,7 @@ import { CustomButton } from './../tools/button/submit/custom-button-component'
 import { FormEvent, MutableRefObject, useContext, useEffect, useRef, useState } from 'react'
 import { MainContext } from '../../utility/contexts/main.context'
 import { deleteCustomer } from '../../DATASTORE/data-types/man.data.reducers/customer-reducer/customer.data.actions'
-import { PathContext } from '../../utility/contexts/action.context'
+import { OtherActionContexts } from '../../utility/contexts/action.context'
 import { Table } from '../main/table/table-component'
 import { Input } from '../tools/input/input-component'
 import { SearchSvg } from '../../icons/sub-menu/svg-icons-components'
@@ -13,7 +13,7 @@ import { CotactDetails } from './contact-details/contact-details-component'
 
 export const Contacts = ({ customersData }: { customersData: Required<CustomerDataType>[] }): JSX.Element => {
   const searchValue = useRef<HTMLInputElement | null>(null)
-  const { path, SetMenuManagerOpenOption } = useContext(PathContext)
+  const { path, SetMenuManagerOpenOption } = useContext(OtherActionContexts)
   const [templateCustomerData, setTemplateCustomerData] = useState<CustomerDataType[] | []>([])
   const [filteredCustomerData, setFilteredCustomerData] = useState<CustomerDataType[] | []>([])
 

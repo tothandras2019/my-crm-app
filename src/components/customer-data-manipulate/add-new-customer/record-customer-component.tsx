@@ -3,7 +3,7 @@ import { Input } from './../../tools/input/input-component'
 import { FormEvent, Fragment, useContext, useEffect, useState } from 'react'
 import { LeadEnum, LifecicyleEnum } from '../../../DATASTORE/data-types/data-types'
 import { CustomButton } from '../../tools/button/submit/custom-button-component'
-import { InitManagerMenuOptions, PathContext } from '../../../utility/contexts/action.context'
+import { InitManagerMenuOptions, OtherActionContexts } from '../../../utility/contexts/action.context'
 import { ManageDataFrame } from '../../manage-data-frame/manage-data-frame-component'
 import { CustomerDataType } from '../../../DATASTORE/data-types/main.data.types/customer-data-types'
 import { MainContext } from '../../../utility/contexts/main.context'
@@ -15,7 +15,7 @@ import { AccessFormInputs } from '../../forms/access-form-inputs/access-form-inp
 type ManageCustomersFormType = { isModification: boolean; customerData: CustomerDataType | undefined }
 export const ManageCustomersForm = ({ isModification = false, customerData }: Partial<ManageCustomersFormType>) => {
   // const { dispatch } = useContext(CustomerContext)
-  const { SetMenuManagerOpenOption } = useContext(PathContext)
+  const { SetMenuManagerOpenOption } = useContext(OtherActionContexts)
 
   const { customers } = useContext(MainContext)
   const { customerState, CustomerDispatch } = customers

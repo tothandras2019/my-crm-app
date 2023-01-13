@@ -3,4 +3,45 @@
 .contracts-container {
   color: $palette-primary-color;
   padding: 10px;
+  box-sizing: border-box;
+
+  .contracts-main-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .contracts-orders-container {
+    padding: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: $palette-main-color;
+    border-radius: 5px;
+    opacity: 0;
+    animation-name: showOrders;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+    .contracts-orders-info {
+      .contracts-orders-info_header {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 50px;
+        padding: 10px;
+      }
+    }
+  }
+
+  @keyframes showOrders {
+    to {
+      opacity: 1;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    .contracts-main-container {
+      display: flex;
+    }
+  }
 }

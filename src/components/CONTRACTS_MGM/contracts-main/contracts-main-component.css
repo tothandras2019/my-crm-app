@@ -30,4 +30,39 @@
 .contracts-container {
   color: rgb(196, 240, 238);
   padding: 10px;
+  box-sizing: border-box;
+}
+.contracts-container .contracts-main-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.contracts-container .contracts-orders-container {
+  padding: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: rgb(1, 45, 81);
+  border-radius: 5px;
+  opacity: 0;
+  animation-name: showOrders;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+.contracts-container .contracts-orders-container .contracts-orders-info .contracts-orders-info_header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 50px;
+  padding: 10px;
+}
+@keyframes showOrders {
+  to {
+    opacity: 1;
+  }
+}
+@media screen and (max-width: 900px) {
+  .contracts-container .contracts-main-container {
+    display: flex;
+  }
 }/*# sourceMappingURL=contracts-main-component.css.map */

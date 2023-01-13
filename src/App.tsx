@@ -10,7 +10,7 @@ import { fillUpCustomer } from './DATASTORE/data-types/man.data.reducers/custome
 import { fillUpContracts } from './DATASTORE/data-types/man.data.reducers/contracts-reducer/contracts.data.actions'
 import { fillUpWarehouse } from './DATASTORE/data-types/man.data.reducers/warehouse-reducer/warehouse.data.actions'
 import { Contacts } from './components/contacts/contacts-component'
-import { PathContext } from './utility/contexts/action.context'
+import { OtherActionContexts } from './utility/contexts/action.context'
 import { ManageCustomerData } from './components/customer-data-manipulate/manage-customer-data/manage-customer-data'
 import { AvailabilityContext } from './utility/contexts/contacts-data/contacts-data-context'
 import { ContractsMain } from './components/CONTRACTS_MGM/contracts-main/contracts-main-component'
@@ -18,7 +18,7 @@ import { ContractsMain } from './components/CONTRACTS_MGM/contracts-main/contrac
 function App() {
   const { openModifyModal } = useContext(AvailabilityContext)
 
-  const { MenuManagerOpenOption } = useContext(PathContext)
+  const { MenuManagerOpenOption } = useContext(OtherActionContexts)
   const { products, customers, contracts, warehouse } = useContext(MainContext)
 
   const { ProductDispatch } = products

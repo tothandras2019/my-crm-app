@@ -28,11 +28,20 @@
   }
 }
 .product-entries-container {
-  background-color: rgb(12, 65, 99);
-  margin: 10px;
-  padding: 10px;
-  width: 350px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin: 2px 0;
+  padding: 5px;
+  width: 100%;
   border-radius: 3px;
   box-sizing: border-box;
+  background: linear-gradient(to right, rgb(1, 45, 81) 5%, rgb(60, 135, 181) 90%);
+  border: 1px solid rgb(89, 160, 214);
+  border-radius: 5px;
   box-shadow: 5px 5px 5px rgb(1, 45, 81);
+}
+.product-entries-container p {
+  font-size: medium;
 }/*# sourceMappingURL=product-card-component.css.map */

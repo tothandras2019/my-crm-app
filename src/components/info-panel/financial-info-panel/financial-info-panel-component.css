@@ -2,8 +2,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
-  min-width: 170px;
+  justify-content: flex-start;
+  min-width: 120px;
+  margin-right: 25px;
 }
 .info-financial-panel .info-financial-panel-summary {
   display: flex;

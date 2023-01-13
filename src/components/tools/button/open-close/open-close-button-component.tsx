@@ -1,4 +1,6 @@
 import './open-close-button-component.css'
-export const OpenCloseButton = ({ pageTextValue = 'home', handler }: { pageTextValue: string | undefined; handler: () => void }) => {
-  return <input type='button' value={pageTextValue} onClick={handler} />
+
+type OpenCloseButtonType = { color?: string; pageTextValue: string | undefined; handler: () => void }
+export const OpenCloseButton = ({ color = '', pageTextValue = 'home', handler }: OpenCloseButtonType) => {
+  return <input className={color} type='button' value={pageTextValue} onClick={handler} />
 }

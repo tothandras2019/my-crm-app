@@ -3,14 +3,68 @@
 .info-panel-card {
   position: relative;
   display: flex;
-  gap: 15px;
-  max-width: 500px;
-  margin: 5px;
+  justify-content: space-between;
+
+  gap: 10px;
+  margin: 0px;
   padding: 10px;
-  height: fit-content;
+  box-sizing: border-box;
+  // width: 100%;
+  // min-height: 100%;
   background-color: $palette-primary-color;
   color: $palette-main-color;
-  border-radius: 10px;
+  border-radius: 5px;
   border: 2px solid $palette-main-color;
-  box-shadow: 3px 3px 5px $palette-main-color;
+  transition: 0.5s;
+
+  .info-panel-card-left {
+    display: flex;
+    justify-content: flex-start;
+    gap: 40px;
+    .info-contacts {
+      min-width: 300px;
+    }
+  }
+  .order-actions-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h2 {
+      text-align: center;
+    }
+    div {
+      display: flex;
+    }
+  }
+  @media screen and (max-width: 1400px) {
+    .order-actions-container {
+      justify-content: center;
+
+      div {
+        justify-content: center;
+        flex-direction: column;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .info-panel-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    .info-panel-card-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .order-actions-container {
+      div {
+        justify-content: center;
+        flex-direction: row;
+      }
+    }
+  }
 }

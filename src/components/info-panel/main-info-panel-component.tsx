@@ -10,20 +10,34 @@ import { IndicatorDetailed } from '../indicator-detailed/indicator-detailerd-com
 import { OpenCloseButton } from '../tools/button/open-close/open-close-button-component'
 import { useContext, useEffect } from 'react'
 import { OtherActionContexts } from '../../utility/contexts/action.context'
+import { Order } from '../../DATASTORE/data-types/main.data.types/order-data-types'
+import { OrderedProducts } from '../../DATASTORE/data-types/main.data.types/order-product-type'
+import { ContractType } from '../../DATASTORE/data-types/main.data.types/contract-data-types'
 
-type MainInfoPanelType = { customerIndex: number; customer: SummaryCustomerOrdersAmountType }
-export const MainInfoPannel = ({ customerIndex, customer }: MainInfoPanelType) => {
-  const { id, date, companyName, access, address, status, social, summaryOrdersamount } = customer
+type MainInfoPanelType = { customerIndex: number; customerData: SummaryCustomerOrdersAmountType }
+export const MainInfoPannel = ({ customerIndex, customerData }: MainInfoPanelType) => {
+  const { contract, summaryOrdersamount } = customerData
+  const { id, date, customer, orders } = contract
+  const { companyName, access, social, status, address } = customer
   const { lifecycleState, leadState } = status
 
   const { selectedCustomerData, SetSelectedCustomerType } = useContext(OtherActionContexts)
-  const handleNewOrder = () => {
-    SetSelectedCustomerType((state) => ({ ...state, customer: customer }))
-  }
 
-  useEffect(() => {
-    console.log(selectedCustomerData)
-  }, [selectedCustomerData])
+  const handleNewOrder = () => {
+    const newOrderedProducts: OrderedProducts = { id: 100, products: [] }
+
+    const newOrder: Order = {
+      order_id: 345,
+      order_date: new Date().toLocaleString(),
+      ordered_products: [newOrderedProducts],
+    }
+
+    const newContrat: ContractType = { id: id, date: date, customer: customer, orders: [newOrder] }
+    const contract = { contract: newContrat, summaryOrdersamount: summaryOrdersamount }
+
+    SetSelectedCustomerType((state) => ({ ...state, customer: contract }))
+    //contract reducer!!!
+  }
 
   return (
     <div className='info-panel-card' id={id}>
@@ -45,7 +59,7 @@ export const MainInfoPannel = ({ customerIndex, customer }: MainInfoPanelType) =
       <div className='order-actions-container'>
         <h2>Order actions</h2>
         <div>
-          <OpenCloseButton color={`green`} pageTextValue={'new order'} handler={handleNewOrder} />
+          <OpenCloseButton color={`green`} pageTextValue={'add order'} handler={handleNewOrder} />
         </div>
       </div>
       <FinancialInfoPanel customerIndex={customerIndex} summary={summaryOrdersamount} />

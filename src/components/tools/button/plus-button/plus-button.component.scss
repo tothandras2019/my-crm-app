@@ -1,0 +1,44 @@
+@import './../../../../App.scss';
+
+.plus-button_circle {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  svg {
+    position: absolute;
+    fill: $palette-main-color;
+  }
+  button {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: $palette-primary-color;
+    color: green;
+    border: transparent;
+    &::before {
+      position: absolute;
+      content: '';
+      top: 3px;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 1px solid $palette-main-color;
+      border-radius: 50%;
+      z-index: -1;
+      background-color: $palette-alert-color;
+    }
+
+    &:active {
+      top: 3px;
+      &::before {
+        top: 0;
+      }
+    }
+  }
+}

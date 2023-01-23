@@ -10,6 +10,9 @@ export const ContractsDataReducer = (state: ContractType[] | [], action: Contrac
   switch (type) {
     case CONTRACTS_ACTION_TYPE.FILL_DATA: {
       const custmoersArray = payload as ContractType[]
+
+      // addContract_Firestore(custmoersArray)
+
       return custmoersArray
     }
     case CONTRACTS_ACTION_TYPE.ADD_CONTRACTS: {
@@ -17,12 +20,15 @@ export const ContractsDataReducer = (state: ContractType[] | [], action: Contrac
     }
     case CONTRACTS_ACTION_TYPE.MODIFY_CONTRACT: {
       const newModifiedCustomer = payload as ContractType
+
+      //updateContract_Firestore(newModifiedCustomer)
       const filteredCustomerState = state.filter((product) => product.id !== newModifiedCustomer.id)
       const newState = { ...filteredCustomerState, newModifiedCustomer }
 
       return [...newState]
     }
     case CONTRACTS_ACTION_TYPE.DELETE_CONTRACT: {
+      //deleteContract_Firebase(payload)
       return [...state.filter((product) => product.id !== payload)]
     }
     default: {

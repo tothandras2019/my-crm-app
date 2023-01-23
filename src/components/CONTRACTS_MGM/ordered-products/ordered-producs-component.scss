@@ -1,6 +1,11 @@
 @import './../../../App.scss';
 
 .ordered-products-container {
+  .ordered-products_menu {
+    display: flex;
+    justify-content: flex-start;
+    gap: 30px;
+  }
   .products-container {
     display: flex;
     flex-direction: column;

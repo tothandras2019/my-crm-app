@@ -32,7 +32,7 @@ type SetSelectedCustomerDispatchType = Dispatch<SetStateAction<SelectedCustomerT
 type SelectedCustomerType = {
   customer: SummaryCustomerOrdersAmountType | undefined
 }
-export const SelectedCustomer: SelectedCustomerType = {
+export const InitSelectedCustomer: SelectedCustomerType = {
   customer: undefined,
 }
 //#endregion
@@ -62,7 +62,7 @@ export const OtherActionContexts = createContext<ContextType>({
   SetMenuManagerOpenOption: () => {},
   showOrders: ShowOrdersDetails,
   SetShowOrders: () => {},
-  selectedCustomerData: SelectedCustomer,
+  selectedCustomerData: InitSelectedCustomer,
   SetSelectedCustomerType: () => {},
 })
 //#endregion
@@ -72,7 +72,7 @@ export const PathContextProvider = ({ children }: { children: any }) => {
   const [path, setPath] = useState(PathAction)
   const [menuManagerOpenOption, SetMenuManagerOpenOption] = useState<InitManagerMenuOptionsType>(InitManagerMenuOptions)
   const [showOrders, SetShowOrders] = useState<ShowOrdersDetailsType>(ShowOrdersDetails)
-  const [selectedCustomerData, SetSelectedCustomerType] = useState<SelectedCustomerType>(SelectedCustomer)
+  const [selectedCustomerData, SetSelectedCustomerType] = useState<SelectedCustomerType>(InitSelectedCustomer)
 
   return (
     <OtherActionContexts.Provider

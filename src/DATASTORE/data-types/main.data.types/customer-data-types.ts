@@ -1,3 +1,4 @@
+import { ContractType } from './contract-data-types'
 import { Order } from './order-data-types'
 
 export type CustomerDataType = {
@@ -27,12 +28,13 @@ export type SocialType = { media: string; link: string }
 export type StatusType = { lifecycleState: string; leadState: string }
 
 export type SummaryCustomerOrdersAmountType = {
-  id: string
-  date: string
-  companyName: string
-  address: AddressType[]
-  access: AccessType[]
-  social: SocialType[]
-  status: StatusType
+  contract: ContractType
   summaryOrdersamount: number
 }
+// id: string
+// date: string
+// companyName: string
+// address: AddressType[]
+// access: AccessType[]
+// social: SocialType[]
+// status: StatusType

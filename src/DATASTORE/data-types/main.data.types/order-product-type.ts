@@ -3,5 +3,5 @@ import { ServiceProductType } from './product-data-types'
 
 export type OrderedProducts = {
   id: number
-  products: ServiceProductType[]
+  products: ServiceProductType[] | []
 }

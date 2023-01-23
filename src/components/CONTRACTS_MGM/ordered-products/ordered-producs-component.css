@@ -27,6 +27,11 @@
     backdrop-filter: blur(2px);
   }
 }
+.ordered-products-container .ordered-products_menu {
+  display: flex;
+  justify-content: flex-start;
+  gap: 30px;
+}
 .ordered-products-container .products-container {
   display: flex;
   flex-direction: column;

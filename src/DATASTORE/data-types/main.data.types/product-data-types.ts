@@ -24,3 +24,12 @@ export enum Unit {
   SQUARE_METER = 'SQUARE_METER',
   PIECE = 'PIECE',
 }
+export const TempProduct = {
+  id: '',
+  category: '',
+  unitPrice: '',
+  currency: '',
+  ordered_qty: '',
+  unit_dimension: '',
+  other_information: '',
+}

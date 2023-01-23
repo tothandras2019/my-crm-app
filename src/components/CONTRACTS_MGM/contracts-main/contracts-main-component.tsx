@@ -9,13 +9,14 @@ import { SummaryCustomerOrdersAmountType } from '../../../DATASTORE/data-types/m
 import { Order } from '../../../DATASTORE/data-types/main.data.types/order-data-types'
 import { OtherActionContexts } from '../../../utility/contexts/action.context'
 import { OpenCloseButton } from '../../tools/button/open-close/open-close-button-component'
+import { summary_ContractsAmount } from '../../../DATASTORE/side-functions/side-functdions'
 
 type ContractsMainType = { contracts: ContractType[] }
 
 export const ContractsMain = ({ contracts }: ContractsMainType): JSX.Element => {
   const { showOrders, SetShowOrders } = useContext(OtherActionContexts)
 
-  const [customersData, SetcustomersData] = useState<SummaryCustomerOrdersAmountType[] | []>([])
+  const [customersData, SetCustomersData] = useState<SummaryCustomerOrdersAmountType[] | []>([])
 
   const GenerateBooleanArray = useCallback(() => {
     const length = contracts.length
@@ -29,49 +30,9 @@ export const ContractsMain = ({ contracts }: ContractsMainType): JSX.Element => 
   useEffect(() => {
     GenerateBooleanArray()
 
-    const summdata = (orders: Order[]): number => {
-      return orders.reduce((acc, order) => {
-        return (acc += order.ordered_products.reduce((accOrder: number, prod) => {
-          return (accOrder += prod.products.reduce((s, v) => {
-            s += v.unitPrice * v.ordered_qty
-            return s
-          }, 0))
-        }, 0))
-      }, 0)
-    }
+    const summaryContractsAmount = summary_ContractsAmount(contracts)
 
-    const summaryContractsAmount = (contracts as ContractType[]).reduce((contractCustomerSummaryAcc: any, contractData: ContractType) => {
-      const { customer, id, date, orders } = contractData
-
-      let contracDataObject: SummaryCustomerOrdersAmountType | undefined = contractCustomerSummaryAcc.find(
-        (contract: SummaryCustomerOrdersAmountType) => contract.id === customer.id,
-      )
-
-      const summ = summdata(orders)
-
-      if (!contracDataObject) {
-        contracDataObject = {
-          id: id,
-          date: date,
-          companyName: customer.companyName,
-          address: customer.address,
-          access: customer.access,
-          social: customer.social,
-          status: customer.status,
-          summaryOrdersamount: summ,
-        }
-
-        return [...contractCustomerSummaryAcc, contracDataObject]
-      } else {
-        const filteredContractCustomerSummaryAcc = contractCustomerSummaryAcc.filter(
-          (contract: SummaryCustomerOrdersAmountType) => contract.id !== customer.id,
-        )
-        const modifiedContracDataObject = { ...contracDataObject, summaryOrdersamount: (contracDataObject.summaryOrdersamount += summ) }
-        return [...filteredContractCustomerSummaryAcc, modifiedContracDataObject]
-      }
-    }, [])
-
-    SetcustomersData(summaryContractsAmount)
+    SetCustomersData(summaryContractsAmount)
 
     return () => {}
   }, [contracts])
@@ -84,7 +45,7 @@ export const ContractsMain = ({ contracts }: ContractsMainType): JSX.Element => 
           <div key={`contracts_${contracts}`} className='contracts-main-container'>
             {customersData &&
               customersData.map((customer, index) => {
-                return <MainInfoPannel customerIndex={index} key={`${customer}-${index}`} customer={customer} />
+                return <MainInfoPannel customerIndex={index} key={`${customer}-${index}`} customerData={customer} />
               })}
             {showOrders.indexs[index] && (
               <div className='contracts-orders-container'>

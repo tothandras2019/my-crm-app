@@ -21,7 +21,6 @@ function App() {
 
   const { MenuManagerOpenOption } = useContext(OtherActionContexts)
   const { products, customers, contracts, warehouse } = useContext(MainContext)
-  const { selectedCustomerData } = useContext(OtherActionContexts)
 
   const { ProductDispatch } = products
   const { customerState, CustomerDispatch } = customers
@@ -90,8 +89,6 @@ function App() {
           <ManageCustomerData />
         </div>
       )}
-
-      {selectedCustomerData.customer && <RecordOrders />}
     </div>
   )
 }

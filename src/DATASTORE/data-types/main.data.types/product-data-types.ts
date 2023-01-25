@@ -1,10 +1,10 @@
 export type ServiceProductType = {
-  id: number
-  category: ServiceCategory
+  id: string
+  category: string
   unitPrice: number
   currency: string
   ordered_qty: number
-  unit_dimension: Unit
+  unit_dimension: string
   other_information: string
 }
 

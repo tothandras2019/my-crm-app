@@ -1,19 +1,8 @@
 import './cards-component.css'
 
-import { MainInfoPannel } from '../info-panel/main-info-panel-component'
-import { AddressType, InitCustomersType } from './../../DATASTORE/data-types/data-types'
 import { useContext, useEffect, useState } from 'react'
 import { MainContext } from '../../utility/contexts/main.context'
-import { ContractType } from '../../DATASTORE/data-types/main.data.types/contract-data-types'
-import { CustomersArrayType } from '../../DATASTORE/contacts-reducer'
-import {
-  AccessType,
-  CustomerDataType,
-  SocialType,
-  StatusType,
-  SummaryCustomerOrdersAmountType,
-} from './../../DATASTORE/data-types/main.data.types/customer-data-types'
-import { Order } from '../../DATASTORE/data-types/main.data.types/order-data-types'
+import { SummaryCustomerOrdersAmountType } from './../../DATASTORE/data-types/main.data.types/customer-data-types'
 import { OtherActionContexts } from '../../utility/contexts/action.context'
 import { summary_ContractsAmount } from '../../DATASTORE/side-functions/side-functdions'
 
@@ -48,7 +37,7 @@ export const Cards = (): JSX.Element => {
     <div className='card-container'>
       {customersData &&
         customersData.map((customer, index) => {
-          return <h4>Not works yet</h4>
+          return <h4 key={`card_${index}`}>Not works yet</h4>
         })}
     </div>
   )

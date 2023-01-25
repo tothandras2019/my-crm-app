@@ -3,36 +3,36 @@ import { Dispatch } from 'react'
 import { CONTRACTS_ACTION_TYPE } from './contracts.data.action.types'
 import { CustomerDataType } from '../../main.data.types/customer-data-types'
 import { ContractType } from '../../main.data.types/contract-data-types'
+import { updateContract_Firestore } from '../../../../utility/google-cloud-store/google-cloud-store'
 export type ContractDispatchType = { type: string; payload: ContractType | ContractType[] | string }
 export const ContractsDataReducer = (state: ContractType[] | [], action: ContractDispatchType) => {
   const { type, payload } = action
 
   switch (type) {
     case CONTRACTS_ACTION_TYPE.FILL_DATA: {
-      const custmoersArray = payload as ContractType[]
+      const contracts = payload as ContractType[]
 
       // addContract_Firestore(custmoersArray)
 
-      return custmoersArray
+      return contracts
     }
     case CONTRACTS_ACTION_TYPE.ADD_CONTRACTS: {
-      return [...state, payload]
+      return [...state, payload as ContractType]
     }
     case CONTRACTS_ACTION_TYPE.MODIFY_CONTRACT: {
-      const newModifiedCustomer = payload as ContractType
+      const updatedContract = payload as ContractType
+      console.log(updatedContract)
 
-      //updateContract_Firestore(newModifiedCustomer)
-      const filteredCustomerState = state.filter((product) => product.id !== newModifiedCustomer.id)
-      const newState = { ...filteredCustomerState, newModifiedCustomer }
-
-      return [...newState]
+      updateContract_Firestore(updatedContract)
+      const filteredCustomerState = state.filter((product) => product.id !== updatedContract.id)
+      return [...filteredCustomerState, updatedContract]
     }
     case CONTRACTS_ACTION_TYPE.DELETE_CONTRACT: {
       //deleteContract_Firebase(payload)
       return [...state.filter((product) => product.id !== payload)]
     }
     default: {
-      return state
+      return state as ContractType[]
     }
   }
 }

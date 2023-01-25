@@ -30,14 +30,14 @@ export const initContract: ContractType = {
   },
   orders: [
     {
-      order_id: 0,
+      order_id: '0',
       order_date: '2022.10.15',
       ordered_products: [
         {
-          id: 0,
+          products_id: '0',
           products: [
             {
-              id: 0,
+              id: '0',
               category: ServiceCategory.TRANSPORT,
               unitPrice: 1,
               currency: 'EUR',
@@ -46,7 +46,7 @@ export const initContract: ContractType = {
               other_information: 'domestic',
             },
             {
-              id: 2,
+              id: '2',
               category: ServiceCategory.WAREHOUSING,
               unitPrice: 1.6,
               currency: 'EUR',
@@ -55,7 +55,7 @@ export const initContract: ContractType = {
               other_information: 'main hq warehouseing service',
             },
             {
-              id: 3,
+              id: '3',
               category: ServiceCategory.CUSTOM,
               unitPrice: 2000,
               currency: 'EUR',
@@ -68,13 +68,13 @@ export const initContract: ContractType = {
       ],
     },
     {
-      order_id: 1,
+      order_id: '1',
       ordered_products: [
         {
-          id: 0,
+          products_id: '0',
           products: [
             {
-              id: 0,
+              id: '0',
               category: ServiceCategory.TRANSPORT,
               unitPrice: 1.3,
               currency: 'EUR',
@@ -88,13 +88,13 @@ export const initContract: ContractType = {
       order_date: '2022.12.10',
     },
     {
-      order_id: 2,
+      order_id: '2',
       ordered_products: [
         {
-          id: 0,
+          products_id: '0',
           products: [
             {
-              id: 0,
+              id: '0',
               category: ServiceCategory.TRANSPORT,
               unitPrice: 1.9,
               currency: 'EUR',

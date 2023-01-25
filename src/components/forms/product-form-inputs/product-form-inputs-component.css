@@ -1,0 +1,60 @@
+#root {
+  background: linear-gradient(60deg, rgb(1, 45, 81) 15%, rgb(53, 198, 193) 70%);
+  color: rgb(1, 45, 81);
+  min-height: 100vh;
+}
+
+.App {
+  position: relative;
+}
+
+.modal_window {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: transparent;
+  animation-name: appear_modal;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes appear_modal {
+  to {
+    background-color: rgba(196, 240, 238, 0.7);
+    backdrop-filter: blur(2px);
+  }
+}
+.fieldset-container {
+  height: fit-content;
+  width: fit-content;
+}
+.fieldset-container fieldset {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 5px;
+  border: 2px solid rgb(1, 45, 81);
+  border-radius: 10px;
+  box-sizing: border-box;
+  box-shadow: 3px 3px 5px rgb(1, 45, 81);
+  gap: 15px;
+}
+.fieldset-container fieldset legend {
+  margin: 0 10px;
+  padding: 0 5px;
+  box-sizing: border-box;
+  font-weight: 700;
+  font-size: medium;
+  letter-spacing: 1.5px;
+  color: rgb(1, 45, 81);
+  text-shadow: 2px 2px 2px rgb(53, 198, 193);
+}
+.fieldset-container fieldset .product__button-actions {
+  display: flex;
+  justify-content: right;
+  gap: 20px;
+  width: fit-content;
+}/*# sourceMappingURL=product-form-inputs-component.css.map */

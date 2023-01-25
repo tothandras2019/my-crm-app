@@ -18,7 +18,7 @@ export const summ_data = (orders: Order[]): number => {
   return 0
 }
 
-export const summary_ContractsAmount = (contracts: ContractType[]) => {
+export const summary_ContractsAmount = (contracts: ContractType[]): SummaryCustomerOrdersAmountType[] => {
   return contracts.reduce((contractCustomerSummaryAcc: any, contractData: ContractType) => {
     const { customer, id, date, orders } = contractData
 
@@ -38,9 +38,9 @@ export const summary_ContractsAmount = (contracts: ContractType[]) => {
     } else {
       const filteredContractCustomerSummaryAcc = contractCustomerSummaryAcc.filter(
         (contractSumary: SummaryCustomerOrdersAmountType) => contractSumary.contract.id !== customer.id,
-      )
+      ) as SummaryCustomerOrdersAmountType[]
       const modifiedContracDataObject = { ...contracDataObject, summaryOrdersamount: (contracDataObject.summaryOrdersamount += summ) }
-      return [...filteredContractCustomerSummaryAcc, modifiedContracDataObject]
+      return [...filteredContractCustomerSummaryAcc, modifiedContracDataObject] as SummaryCustomerOrdersAmountType[]
     }
   }, [])
 }

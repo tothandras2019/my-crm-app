@@ -28,15 +28,16 @@
   }
 }
 .manage-data-frame {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: rgb(196, 240, 238);
   opacity: 0;
   border-radius: 10px;
-  width: 60%;
-  max-width: 900px;
+  padding: 30px;
+  box-sizing: border-box;
+  width: fit-content;
   animation-name: appear_data_frame;
   animation-duration: 0.5s;
   animation-iteration-count: 1;
@@ -46,6 +47,6 @@
 @keyframes appear_data_frame {
   to {
     opacity: 1;
-    background-color: rgb(12, 65, 99);
+    background-color: rgb(60, 135, 181);
   }
 }/*# sourceMappingURL=manage-data-frame-component.css.map */

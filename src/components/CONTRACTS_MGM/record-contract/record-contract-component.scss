@@ -1,6 +1,11 @@
-.record__orders-actions {
+.form-container {
   display: flex;
-  justify-content: right;
+  justify-content: center;
   width: 100%;
-  margin: 10px;
+
+  form {
+    margin: 0;
+    padding: 0;
+  }
+  // margin: 10px;
 }

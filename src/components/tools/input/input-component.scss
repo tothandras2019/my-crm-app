@@ -1,4 +1,4 @@
-@import './../../App.scss';
+@import './../../../App.scss';
 
 .input-container {
   display: flex;
@@ -8,18 +8,20 @@
   width: fit-content;
   height: 20px;
   background-color: transparent;
-  // padding: 10px;
+  padding: 10px 15px;
 
   label {
     text-transform: capitalize;
-    font-weight: 300;
-    min-width: 100px;
+    text-align: right;
+    font-weight: 500;
+    min-width: 130px;
+    color: $palette-main-color;
   }
   input[type='text'] {
     border-bottom: 1px solid $palette-alert-color;
-    padding: 2px;
     letter-spacing: 1.1px;
     box-sizing: border-box;
-    color: $palette-primary-color;
+    color: $palette-main-color;
+    width: 350px;
   }
 }

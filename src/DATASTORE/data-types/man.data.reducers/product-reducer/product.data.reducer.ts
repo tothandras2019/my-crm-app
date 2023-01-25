@@ -1,7 +1,7 @@
 import { ServiceProductType } from './../../main.data.types/product-data-types'
 import { Dispatch } from 'react'
 import { PRODUCT_ACTION_TYPE } from './product.data.action.types'
-export type ProductDispatchType = { type: string; payload: ServiceProductType | ServiceProductType[] | number }
+export type ProductDispatchType = { type: string; payload: ServiceProductType | ServiceProductType[] | string }
 export const ProductDataReducer = (state: ServiceProductType[] | [], action: ProductDispatchType) => {
   const { type, payload } = action
 
@@ -20,7 +20,7 @@ export const ProductDataReducer = (state: ServiceProductType[] | [], action: Pro
       return [...newState]
     }
     case PRODUCT_ACTION_TYPE.DELETE_PRODUCT: {
-      return [...state.filter((product) => product.id !== payload)]
+      return [...state.filter((product) => product.id !== (payload as string))]
     }
     default: {
       return state

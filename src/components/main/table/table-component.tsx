@@ -7,8 +7,8 @@ import { TableItems } from './table-items/table-items-component'
 import { useContext } from 'react'
 import { AvailabilityContext } from '../../../utility/contexts/contacts-data/contacts-data-context'
 
-type TableDataType = { address: AddressType[]; access: AccessType[]; social: SocialType[]; customerId: string }
-export const Table = ({ address, access, social, customerId }: TableDataType): JSX.Element => {
+type TableType = { address: AddressType[]; access: AccessType[]; social: SocialType[]; customerId: string }
+export const Table = ({ address, access, social, customerId }: TableType): JSX.Element => {
   const { openModifyModal, setOpenModifyModal } = useContext(AvailabilityContext)
   const { isModification } = openModifyModal
 

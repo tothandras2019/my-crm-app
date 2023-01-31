@@ -1,0 +1,55 @@
+#root {
+  background: linear-gradient(60deg, rgb(1, 45, 81) 15%, rgb(53, 198, 193) 70%);
+  color: rgb(1, 45, 81);
+  min-height: 100vh;
+}
+
+.App {
+  position: relative;
+}
+
+.modal_window {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: transparent;
+  animation-name: appear_modal;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes appear_modal {
+  to {
+    background-color: rgba(196, 240, 238, 0.7);
+    backdrop-filter: blur(2px);
+  }
+}
+.input-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  height: 20px;
+  background-color: transparent;
+  padding: 10px 15px;
+}
+.input-container label {
+  text-transform: capitalize;
+  text-align: right;
+  font-weight: 500;
+  min-width: 130px;
+  color: rgb(1, 45, 81);
+}
+.input-container select {
+  letter-spacing: 1.1px;
+  box-sizing: border-box;
+  color: rgb(1, 45, 81);
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #317d65;
+  width: 350px;
+}/*# sourceMappingURL=select-element-component.css.map */

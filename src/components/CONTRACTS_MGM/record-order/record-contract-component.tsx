@@ -8,12 +8,13 @@ import { OpenCloseButton } from '../../tools/button/open-close/open-close-button
 import { PlusButton } from '../../tools/button/plus-button/plus-button.component'
 import { CustomButton } from '../../tools/button/submit/custom-button-component'
 import { Input } from '../../tools/input/input-component'
-import { InputFieldSetForm } from './../../forms/product-form-inputs/product-form-inputs-component'
+import { InputFieldSetForm } from '../../forms/product-form-inputs/product-form-inputs-component'
 import { MainContext } from '../../../utility/contexts/main.context'
 import { ContractDispatchType } from '../../../DATASTORE/data-types/man.data.reducers/contracts-reducer/contracts.data.reducer'
 import { ContractType } from '../../../DATASTORE/data-types/main.data.types/contract-data-types'
 import { GetProductObject } from '../../../DATASTORE/data/get-product-object'
-import { ADD_PRODUCT_TO_ORDER, UPDATE_PRODUCT_ON_ORDER } from '../../../DATASTORE/manage-contract/product/add-product'
+import { ADD_PRODUCT_TO_ORDER } from '../../../DATASTORE/manage-contract/product/add-product'
+import { UPDATE_PRODUCT_ON_ORDER } from '../../../DATASTORE/manage-contract/product/update-products'
 import { modifyContract } from '../../../DATASTORE/data-types/man.data.reducers/contracts-reducer/contracts.data.actions'
 
 export const RecordOrders = (): JSX.Element => {
@@ -37,13 +38,12 @@ export const RecordOrders = (): JSX.Element => {
   }
 
   const handleUpdate_Product = (product: ServiceProductType) => {
-    console.log('[handleUpdate_Product]:', selectedCustomerData)
-
+    console.log('[handleUpdate_Product - product]', product)
     const { prodID, orderID, contracData } = getContratData(selectedCustomerData)
 
     if (!contracData) return
     const modifiedContract = UPDATE_PRODUCT_ON_ORDER(orderID, contracData, product)
-    // ContractsDataDispatch(modifyContract(modifiedContract))
+    ContractsDataDispatch(modifyContract(modifiedContract))
   }
 
   const getContratData = (selectedCustomerData: SelectedCustomerType) => {
@@ -53,9 +53,9 @@ export const RecordOrders = (): JSX.Element => {
     return { prodID, orderID, contracData }
   }
 
-  useEffect(() => {
-    console.log(inputFieldsFormContainer)
-  }, [inputFieldsFormContainer])
+  // useEffect(() => {
+  //   console.log(inputFieldsFormContainer)
+  // }, [inputFieldsFormContainer])
 
   return (
     <ManageDataFrame>
@@ -69,6 +69,7 @@ export const RecordOrders = (): JSX.Element => {
               fieldIndex={inputFieldsFormContainer.inputFields.id}
               data={inputFieldsFormContainer.inputFields.data}
               addProductHandler={handleAdd_Product}
+              updateProductHandler={handleUpdate_Product}
               cancelHandler={handleCancel}
             />
           }

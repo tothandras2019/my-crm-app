@@ -4,15 +4,15 @@ import { CustomerDataType, SummaryCustomerOrdersAmountType } from '../../DATASTO
 import { InputFieldSetForm } from '../../components/forms/product-form-inputs/product-form-inputs-component'
 import { ServiceProductType, TempProduct } from '../../DATASTORE/data-types/main.data.types/product-data-types'
 //#region InitManagerMenuOptions
-type SetInitManagerMenuOptionDispatchType = Dispatch<SetStateAction<InitManagerMenuOptionsType>>
-type InitManagerMenuOptionsType = {
+type SetInitManagerMenuOptionDispatchType = Dispatch<SetStateAction<InitInit_Open_Manager_Type>>
+type InitInit_Open_Manager_Type = {
   contacts: boolean
   // customerForModify: { customer: CustomerDataType | null }
   dashboard: boolean
   calendar: boolean
   settings: boolean
 }
-export const InitManagerMenuOptions: InitManagerMenuOptionsType = {
+export const Init_Open_Manager: InitInit_Open_Manager_Type = {
   contacts: false,
   // customerForModify: { customer: null },
   dashboard: false,
@@ -62,8 +62,8 @@ export const InputField: InputFieldType = { inputFields: { id: 0, data: TempProd
 type ContextType = {
   path: SetPathType
   setPath: SetPathDispatchType
-  MenuManagerOpenOption: InitManagerMenuOptionsType
-  SetMenuManagerOpenOption: SetInitManagerMenuOptionDispatchType
+  open_Manager: InitInit_Open_Manager_Type
+  SetOpen_Manager: SetInitManagerMenuOptionDispatchType
   showOrders: ShowOrdersDetailsType
   SetShowOrders: SetShowOrdersDispatchType
   selectedCustomerData: SelectedCustomerType
@@ -74,8 +74,8 @@ type ContextType = {
 export const OtherActionContexts = createContext<ContextType>({
   path: PathAction,
   setPath: () => {},
-  MenuManagerOpenOption: InitManagerMenuOptions,
-  SetMenuManagerOpenOption: () => {},
+  open_Manager: Init_Open_Manager,
+  SetOpen_Manager: () => {},
   showOrders: ShowOrdersDetails,
   SetShowOrders: () => {},
   selectedCustomerData: InitSelectedCustomer,
@@ -88,7 +88,7 @@ export const OtherActionContexts = createContext<ContextType>({
 //#region PROVIDER
 export const PathContextProvider = ({ children }: { children: any }) => {
   const [path, setPath] = useState(PathAction)
-  const [menuManagerOpenOption, SetMenuManagerOpenOption] = useState<InitManagerMenuOptionsType>(InitManagerMenuOptions)
+  const [open_Manager, SetOpen_Manager] = useState<InitInit_Open_Manager_Type>(Init_Open_Manager)
   const [showOrders, SetShowOrders] = useState<ShowOrdersDetailsType>(ShowOrdersDetails)
   const [selectedCustomerData, SetSelectedCustomerType] = useState<SelectedCustomerType>(InitSelectedCustomer)
   const [inputFieldsFormContainer, SetInputFieldsFormContainer] = useState<InputFieldType>(InputField)
@@ -98,8 +98,8 @@ export const PathContextProvider = ({ children }: { children: any }) => {
       value={{
         path,
         setPath,
-        MenuManagerOpenOption: menuManagerOpenOption,
-        SetMenuManagerOpenOption,
+        open_Manager,
+        SetOpen_Manager,
         showOrders,
         SetShowOrders,
         selectedCustomerData,

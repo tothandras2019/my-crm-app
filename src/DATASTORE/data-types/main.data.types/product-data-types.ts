@@ -15,11 +15,13 @@ export type WarehouseingServiceType = {
 }
 
 export enum ServiceCategory {
+  DEFAULT = 'PLEASE CHOOSE',
   WAREHOUSING = 'WAREHOUSING',
   TRANSPORT = 'TRANSPORT',
   CUSTOM = 'CUSTOM',
 }
 export enum Unit {
+  DEFAULT = 'PLEASE CHOOSE',
   DISTANCE_KM = 'DISTANCE_KM',
   SQUARE_METER = 'SQUARE_METER',
   PIECE = 'PIECE',

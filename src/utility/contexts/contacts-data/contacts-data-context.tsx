@@ -8,6 +8,7 @@ export enum CHANGE_STATUS_ACTION {
 }
 
 export type InitTempAvailabilityDataType = {
+  isOpenRecordContract: boolean
   isModification: boolean
   openModifyUiData: boolean
   customerId: string | undefined
@@ -18,6 +19,7 @@ export type InitTempAvailabilityDataType = {
 }
 
 export const InitTempAvailabilityData: InitTempAvailabilityDataType = {
+  isOpenRecordContract: false,
   isModification: true,
   openModifyUiData: false,
   customerId: undefined,

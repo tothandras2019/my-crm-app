@@ -11,6 +11,7 @@ export const LinkButton = ({ value = '', hide = false, IconSVGComponent }: Parti
   const handleNavigation = () => {
     const navTo = value === 'home' ? '/' : value
     navigateTo(navTo)
+
     setPath(() => ({ currentPath: value }))
   }
   return (

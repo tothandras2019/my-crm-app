@@ -10,10 +10,17 @@ export const SearchInput = ({
   searchedValueRef: MutableRefObject<HTMLInputElement | null>
   placeholder?: string
   reset: () => void
-}) => (
-  <span className='search-input-container'>
-    <SearchSvg />
-    <input ref={searchedValueRef} className='search-input' type='text' placeholder={placeholder} />
-    <input className='reset-button' type='button' onClick={reset} value='✖' />
-  </span>
-)
+}) => {
+  const handle_Reset = () => {
+    console.log('reset')
+    reset()
+  }
+
+  return (
+    <span className='search-input-container'>
+      <SearchSvg />
+      <input ref={searchedValueRef} className='search-input' type='text' placeholder={placeholder} />
+      <input className='reset-button' type='button' onClick={handle_Reset} value='✖' />
+    </span>
+  )
+}

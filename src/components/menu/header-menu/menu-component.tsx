@@ -12,10 +12,6 @@ export const Menu = ({
   hideElement: { value: boolean; setter: Dispatch<SetStateAction<boolean>> }
 }): JSX.Element => {
   const menItems = ['sales performance', 'success order', 'summary']
-  // const positionDegree = 360 / menItems.length
-  // const handleCloseMenu = () => {
-  //   hideElement.setter((state) => !state)
-  // }
 
   return (
     <div className={`menu-container ${hideElement.value ? 'close' : ''}`}>

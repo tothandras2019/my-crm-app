@@ -1,0 +1,17 @@
+.record_new_contract {
+  padding: 10px;
+}
+.record_new_contract p {
+  min-width: 170px;
+  margin: 5px;
+}
+.record_new_contract .customer-header-container {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.record_new_contract .customer-data-container {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+}/*# sourceMappingURL=record-new-contract-component.css.map */

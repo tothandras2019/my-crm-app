@@ -1,0 +1,29 @@
+@import './../../../App.scss';
+
+.input-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  height: 20px;
+  background-color: transparent;
+  padding: 10px 15px;
+
+  label {
+    text-transform: capitalize;
+    text-align: right;
+    font-weight: 500;
+    min-width: 130px;
+    color: $palette-main-color;
+  }
+  select {
+    letter-spacing: 1.1px;
+    box-sizing: border-box;
+    color: $palette-main-color;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid $palette-alert-color;
+    width: 350px;
+  }
+}

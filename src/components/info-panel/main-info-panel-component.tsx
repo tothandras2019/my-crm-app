@@ -15,7 +15,7 @@ import { OrderedProducts } from '../../DATASTORE/data-types/main.data.types/orde
 import { ContractType } from '../../DATASTORE/data-types/main.data.types/contract-data-types'
 import { MainContext } from '../../utility/contexts/main.context'
 import { modifyContract } from './../../../src/DATASTORE/data-types/man.data.reducers/contracts-reducer/contracts.data.actions'
-import { ID_GENERATOR } from '../../DATASTORE/side-functions/id-generator'
+import { ID_GENERATOR_ORDER } from '../../DATASTORE/side-functions/id-generator'
 import { ADD_ORDER_TO_CONTRACT } from '../../DATASTORE/manage-contract/order/add-order'
 
 type MainInfoPanelType = { customerIndex: number; customerData: SummaryCustomerOrdersAmountType }

@@ -1,18 +1,20 @@
 import './product-form-inputs-component.css'
 
-import { useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { ServiceCategory, ServiceProductType, TempProduct, Unit } from '../../../DATASTORE/data-types/main.data.types/product-data-types'
 import { OpenCloseButton } from '../../tools/button/open-close/open-close-button-component'
 import { PlusButton } from '../../tools/button/plus-button/plus-button.component'
 import { CustomButton } from '../../tools/button/submit/custom-button-component'
 import { Input } from '../../tools/input/input-component'
-import { ID_GENERATOR } from '../../../DATASTORE/side-functions/id-generator'
+import { ID_GENERATOR_ORDER } from '../../../DATASTORE/side-functions/id-generator'
+import { SelectElement } from '../../tools/select-element/select-element-component'
 type InputFieldSetFormType = {
   isModification: boolean
   fieldIndex: number
   title: string
   data: ServiceProductType | typeof TempProduct | undefined
   addProductHandler: (fieldIndex: number, prod: ServiceProductType) => void
+  updateProductHandler: (product: ServiceProductType) => void
   cancelHandler: () => void
 }
 export const InputFieldSetForm = ({
@@ -21,6 +23,7 @@ export const InputFieldSetForm = ({
   title = 'n/a',
   data,
   addProductHandler,
+  updateProductHandler,
   cancelHandler,
 }: InputFieldSetFormType): JSX.Element => {
   const [buttonTextChange, SetButtonTextChange] = useState<'Add' | 'Modify'>('Add')
@@ -40,10 +43,12 @@ export const InputFieldSetForm = ({
     SetStartData((state) => ({ ...state, [returnLabel]: value }))
 
   const handleAdd = () => {
-    const product_id = ID_GENERATOR({ type: 'prd' })
+    const product_id = ID_GENERATOR_ORDER({ type: 'prd' })
     SetStartData((state) => ({ ...state, id: product_id }))
     SetDoAddProduct(true)
   }
+
+  const handleModify = () => SetDoAddProduct(true)
 
   const handle_Cancel = () => {
     SetDoAddProduct(false)
@@ -51,21 +56,82 @@ export const InputFieldSetForm = ({
   }
 
   useEffect(() => {
+    if (data?.id.toLocaleUpperCase().includes('PRD')) {
+      SetButtonTextChange('Modify')
+
+      const { id, category, unitPrice, currency, ordered_qty, unit_dimension, other_information } = data
+
+      SetStartData({
+        id: id,
+        category: category,
+        unitPrice: unitPrice as number,
+        currency: currency,
+        ordered_qty: ordered_qty as number,
+        unit_dimension: unit_dimension,
+        other_information: other_information,
+      })
+    }
+  }, [data])
+
+  useEffect(() => {
     if (!doAddProduct) return
-    addProductHandler(fieldIndex, startData)
-    SetButtonTextChange(isModification ? 'Modify' : 'Add')
-  }, [startData])
+    if (buttonTextChange === 'Add') {
+      addProductHandler(fieldIndex, startData)
+      return
+    }
+    updateProductHandler(startData)
+  }, [startData, doAddProduct])
 
   return (
     <div className='fieldset-container'>
       <fieldset>
         <legend>{title}</legend>
         {data &&
-          Object.entries(data).map(([key, value], index, array) => (
-            <Input key={`key__${fieldIndex}_${index}`} label={key} defaultValue={value.toString()} handler={handleProductChange} />
-          ))}
+          Object.entries(data).map(([key, value], index, array) => {
+            let enumObject = null
+            if (key === 'unit_dimension' || key === 'category') {
+              if (key === 'unit_dimension') enumObject = { enum: Unit }
+              if (key === 'category') enumObject = { enum: ServiceCategory }
+            }
+
+            return (
+              <Fragment key={`${key}_${value}`}>
+                {enumObject ? (
+                  <Fragment>
+                    {'DISTANCE_KM' in enumObject.enum && (
+                      <SelectElement
+                        inputKey={key.toString()}
+                        value={value.toString()}
+                        optionEnum={Object(enumObject.enum)}
+                        handler={handleProductChange}
+                      />
+                    )}
+                    {'WAREHOUSING' in enumObject.enum && (
+                      <SelectElement
+                        inputKey={key.toString()}
+                        value={value.toString()}
+                        optionEnum={Object(enumObject.enum)}
+                        handler={handleProductChange}
+                      />
+                    )}
+                  </Fragment>
+                ) : (
+                  <>
+                    {key !== 'id' && (
+                      <Input key={`${key}_${value}`} type='text' defaultValue={value.toString()} label={key} handler={handleProductChange} />
+                    )}
+                  </>
+                )}
+              </Fragment>
+            )
+          })}
         <div className='product__button-actions'>
-          <CustomButton color={buttonTextChange === 'Modify' ? 'yellow' : 'green'} value={buttonTextChange} type={'button'} handler={handleAdd} />
+          <CustomButton
+            color={buttonTextChange === 'Modify' ? 'yellow' : 'green'}
+            value={buttonTextChange}
+            type={'button'}
+            handler={buttonTextChange === 'Modify' ? handleModify : handleAdd}
+          />
           <OpenCloseButton color={'yellow'} pageTextValue={'cancel'} handler={handle_Cancel} />
         </div>
       </fieldset>

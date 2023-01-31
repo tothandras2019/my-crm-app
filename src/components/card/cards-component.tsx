@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from 'react'
 import { MainContext } from '../../utility/contexts/main.context'
 import { SummaryCustomerOrdersAmountType } from './../../DATASTORE/data-types/main.data.types/customer-data-types'
 import { OtherActionContexts } from '../../utility/contexts/action.context'
-import { summary_ContractsAmount } from '../../DATASTORE/side-functions/side-functdions'
+import { summary_ContractsAmount } from '../../DATASTORE/side-functions/side-functions'
 
 export const Cards = (): JSX.Element => {
   const { SetShowOrders } = useContext(OtherActionContexts)

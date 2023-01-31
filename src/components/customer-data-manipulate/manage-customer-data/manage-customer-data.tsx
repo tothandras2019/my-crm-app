@@ -4,9 +4,9 @@ import { FormEvent, useContext } from 'react'
 import { InitTempAvailabilityData, AvailabilityContext, CHANGE_STATUS_ACTION } from '../../../utility/contexts/contacts-data/contacts-data-context'
 import { MainContext } from '../../../utility/contexts/main.context'
 import { modifyCustomer } from '../../../DATASTORE/data-types/man.data.reducers/customer-reducer/customer.data.actions'
-import { MofifyContactsForm } from '../../forms/mofify-contacts-form-component'
+import { Modify_Contacts_Form } from '../../forms/mofify-contacts-form-component'
 
-export const ManageCustomerData = (): JSX.Element => {
+export const Manage_Customer = (): JSX.Element => {
   const { openModifyModal, setOpenModifyModal } = useContext(AvailabilityContext)
   const { customers } = useContext(MainContext)
   const { customerState, CustomerDispatch } = customers
@@ -132,5 +132,5 @@ export const ManageCustomerData = (): JSX.Element => {
     setOpenModifyModal(InitTempAvailabilityData)
   }
 
-  return <MofifyContactsForm submitHandler={handleSubmit} handleCancel={handleCancel} />
+  return <Modify_Contacts_Form submitHandler={handleSubmit} handleCancel={handleCancel} />
 }

@@ -10,10 +10,15 @@ import { Input } from '../tools/input/input-component'
 import { SearchSvg } from '../../icons/sub-menu/svg-icons-components'
 import { SearchInput } from '../tools/search-input/search-input-component'
 import { CotactDetails } from './contact-details/contact-details-component'
+import { HeaderTitleColumn } from '../header-title-column/header-title-column-component'
+import { AvailabilityContext } from '../../utility/contexts/contacts-data/contacts-data-context'
 
 export const Contacts = ({ customersData }: { customersData: Required<CustomerDataType>[] }): JSX.Element => {
+  const [headerItem, SetHeaderItem] = useState<string[]>(['Id', 'Company', 'Person', 'Telephone', 'Email'])
+
   const searchValue = useRef<HTMLInputElement | null>(null)
-  const { path, SetMenuManagerOpenOption } = useContext(OtherActionContexts)
+  const { path, SetOpen_Manager } = useContext(OtherActionContexts)
+  const { setOpenModifyModal } = useContext(AvailabilityContext)
   const [templateCustomerData, setTemplateCustomerData] = useState<CustomerDataType[] | []>([])
   const [filteredCustomerData, setFilteredCustomerData] = useState<CustomerDataType[] | []>([])
 
@@ -40,10 +45,22 @@ export const Contacts = ({ customersData }: { customersData: Required<CustomerDa
     CustomerDispatch(deleteCustomer(customerId))
   }
 
-  const handleModification = (customer: CustomerDataType) =>
-    SetMenuManagerOpenOption((state) => ({ ...state, customerForModify: { customer: customer } }))
+  const handleModification = (customer: CustomerDataType) => {
+    SetOpen_Manager((state) => ({ ...state, customerForModify: { customer: customer } }))
+  }
 
-  const handleManagerOption = () => SetMenuManagerOpenOption((prevState) => ({ ...prevState, [path.currentPath]: true }))
+  const handle_NewContact = () => {
+    // setOpenModifyModal((state) => ({
+    //   ...state,
+    //   openModifyUiData: true,
+    //   access: { ...state.access, isAddNew: true },
+    //   address: { ...state.address, isAddNew: true },
+    //   social: { ...state.social, isAddNew: true },
+    // }))
+
+    console.log(path.currentPath)
+    SetOpen_Manager((prevState) => ({ ...prevState, [path.currentPath]: true }))
+  }
 
   const handleSubmitSearch = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -58,26 +75,23 @@ export const Contacts = ({ customersData }: { customersData: Required<CustomerDa
     current.value = ''
   }
 
-  const handleResetSearch = () => setFilteredCustomerData([])
+  const handleResetSearch = () => {
+    const current = searchValue.current
+    setFilteredCustomerData([])
+    if (current) current.value = ''
+  }
 
   return (
     <div className='contacts-container'>
-      <div className='header-details'>
-        <div className='header-details-column'>
-          <p>{'Id'}</p>
-          <p>{'Company'}</p>
-          <p>{'Person'}</p>
-          <p>{'Telephone'}</p>
-          <p>{'Email'}</p>
-        </div>
-        <div>
-          <form onSubmit={handleSubmitSearch}>
-            <SearchInput searchedValueRef={searchValue} reset={handleResetSearch} />
-            <input type='submit' style={{ display: 'none' }} />
-          </form>
-        </div>
-        <CustomButton color={'green'} value={'new contact'} handler={handleManagerOption} />
-      </div>
+      <HeaderTitleColumn
+        button_title='new contact'
+        headerItem={headerItem}
+        submit_Search={handleSubmitSearch}
+        reset={handleResetSearch}
+        useRef={searchValue}
+        handleNewItem={handle_NewContact}
+      />
+
       {filteredCustomerData.length > 0
         ? filteredCustomerData.map((customer, index) => {
             const { id, companyName, address, access, social, status } = customer

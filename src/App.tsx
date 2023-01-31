@@ -3,7 +3,7 @@ import { Cards } from './components/card/cards-component'
 import { Navigation } from './components/navigation/navigation-component'
 import { Route, Routes } from 'react-router-dom'
 import { Dashboard } from './components/dashboard/dashboard-component'
-import { ManageCustomersForm } from './components/customer-data-manipulate/add-new-customer/record-customer-component'
+import { Record_Customer } from './components/customer-data-manipulate/add-new-customer/record-customer-component'
 import { MainContext } from './utility/contexts/main.context'
 import { getContractCollection, getCustomerCollection, getWarehouseCollection } from './utility/google-cloud-store/google-cloud-store'
 import { fillUpCustomer } from './DATASTORE/data-types/man.data.reducers/customer-reducer/customer.data.actions'
@@ -11,15 +11,17 @@ import { fillUpContracts } from './DATASTORE/data-types/man.data.reducers/contra
 import { fillUpWarehouse } from './DATASTORE/data-types/man.data.reducers/warehouse-reducer/warehouse.data.actions'
 import { Contacts } from './components/contacts/contacts-component'
 import { OtherActionContexts } from './utility/contexts/action.context'
-import { ManageCustomerData } from './components/customer-data-manipulate/manage-customer-data/manage-customer-data'
+import { Manage_Customer } from './components/customer-data-manipulate/manage-customer-data/manage-customer-data'
 import { AvailabilityContext } from './utility/contexts/contacts-data/contacts-data-context'
 import { ContractsMain } from './components/CONTRACTS_MGM/contracts-main/contracts-main-component'
-import { RecordOrders } from './components/CONTRACTS_MGM/record-contract/record-contract-component'
+import { RecordOrders } from './components/CONTRACTS_MGM/record-order/record-contract-component'
+import { RecordNewContract } from './components/CONTRACTS_MGM/record-new-contract/record-new-contract-component'
 
 function App() {
   const { openModifyModal } = useContext(AvailabilityContext)
+  const { openModifyUiData, isModification, isOpenRecordContract } = openModifyModal
 
-  const { MenuManagerOpenOption } = useContext(OtherActionContexts)
+  const { open_Manager } = useContext(OtherActionContexts)
   const { products, customers, contracts, warehouse } = useContext(MainContext)
 
   const { ProductDispatch } = products
@@ -73,20 +75,25 @@ function App() {
           <Route path={`/settings`} element={<h1>settings will be here</h1>} />
         </Route>
       </Routes>
-      {MenuManagerOpenOption.contacts && (
+      {isOpenRecordContract && (
         <div className='modal_window'>
-          <ManageCustomersForm />
+          <RecordNewContract />
+        </div>
+      )}
+      {open_Manager.contacts && (
+        <div className='modal_window'>
+          <Record_Customer />
         </div>
       )}
 
-      {openModifyModal.openModifyUiData && (
+      {openModifyUiData && (
         <div className='modal_window'>
-          <ManageCustomerData />
+          <Manage_Customer />
         </div>
       )}
-      {!openModifyModal.isModification && (
+      {!isModification && (
         <div className='modal_window'>
-          <ManageCustomerData />
+          <Manage_Customer />
         </div>
       )}
     </div>

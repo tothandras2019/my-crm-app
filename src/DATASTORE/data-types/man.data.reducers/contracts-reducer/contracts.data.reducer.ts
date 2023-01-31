@@ -3,7 +3,7 @@ import { Dispatch } from 'react'
 import { CONTRACTS_ACTION_TYPE } from './contracts.data.action.types'
 import { CustomerDataType } from '../../main.data.types/customer-data-types'
 import { ContractType } from '../../main.data.types/contract-data-types'
-import { updateContract_Firestore } from '../../../../utility/google-cloud-store/google-cloud-store'
+import { addContractToFirestore, updateContract_Firestore } from '../../../../utility/google-cloud-store/google-cloud-store'
 export type ContractDispatchType = { type: string; payload: ContractType | ContractType[] | string }
 export const ContractsDataReducer = (state: ContractType[] | [], action: ContractDispatchType) => {
   const { type, payload } = action
@@ -17,12 +17,13 @@ export const ContractsDataReducer = (state: ContractType[] | [], action: Contrac
       return contracts
     }
     case CONTRACTS_ACTION_TYPE.ADD_CONTRACTS: {
-      return [...state, payload as ContractType]
+      const contract = payload as ContractType
+      console.log(contract)
+      addContractToFirestore(contract)
+      return [...state, contract]
     }
     case CONTRACTS_ACTION_TYPE.MODIFY_CONTRACT: {
       const updatedContract = payload as ContractType
-      console.log(updatedContract)
-
       updateContract_Firestore(updatedContract)
       const filteredCustomerState = state.filter((product) => product.id !== updatedContract.id)
       return [...filteredCustomerState, updatedContract]

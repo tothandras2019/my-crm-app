@@ -6,8 +6,8 @@ import { OpenCloseButton } from '../../tools/button/open-close/open-close-button
 import { ContractType } from '../../../DATASTORE/data-types/main.data.types/contract-data-types'
 import { OrderedProducts } from '../../../DATASTORE/data-types/main.data.types/order-product-type'
 import { InputField, OtherActionContexts } from '../../../utility/contexts/action.context'
-import { useContext } from 'react'
-import { DELETE_PRODUCT_ON_ORDER } from '../../../DATASTORE/manage-contract/product/add-product'
+import { useContext, useEffect } from 'react'
+import { DELETE_PRODUCT_ON_ORDER } from '../../../DATASTORE/manage-contract/product/delete-product'
 import { modifyContract } from '../../../DATASTORE/data-types/man.data.reducers/contracts-reducer/contracts.data.actions'
 import { MainContext } from '../../../utility/contexts/main.context'
 
@@ -27,7 +27,11 @@ export const ProductCard = ({ order_id, contract, product, ordered_product, hand
   const { contracts } = useContext(MainContext)
   const { ContractsDataDispatch } = contracts
 
+  useEffect(() => {}, [product])
+
   const handleModify = () => {
+    console.log(category, id, ordered_qty, unitPrice, unit_dimension, currency, other_information)
+    console.log(product)
     SetInputFieldsFormContainer((state) => ({ ...state, inputFields: { ...state.inputFields, data: product } }))
     handle_Modification(products_id, order_id, contract)
   }

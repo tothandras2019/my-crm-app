@@ -1,4 +1,4 @@
-import { FormEvent, useContext } from 'react'
+import { FormEvent, useContext, useEffect } from 'react'
 import { AddressType, AccessType, SocialType } from '../../DATASTORE/data-types/main.data.types/customer-data-types'
 import { AvailabilityContext } from '../../utility/contexts/contacts-data/contacts-data-context'
 import { Input } from '../tools/input/input-component'
@@ -7,15 +7,20 @@ import { AccessFormInputs } from './access-form-inputs/access-form-inputs'
 import { AddressFormInputs } from './address-form-inputs/address-form-inputs'
 import { SocialFormInputs } from './social-form-inputs/social-form-inputs'
 
-type MofifyContactsFormType = {
+type Modify_Contacts_Form_Type = {
   submitHandler: (event: FormEvent<HTMLFormElement>) => void
   handleCancel: () => void
 }
-export const MofifyContactsForm = ({ submitHandler, handleCancel }: Partial<MofifyContactsFormType>): JSX.Element => {
+export const Modify_Contacts_Form = ({ submitHandler, handleCancel }: Partial<Modify_Contacts_Form_Type>): JSX.Element => {
   const { openModifyModal } = useContext(AvailabilityContext)
   const { access: accessData, address: addressData, social: socialData } = openModifyModal
+
+  useEffect(() => {
+    console.log(openModifyModal)
+  }, [openModifyModal])
   return (
     <form className='modify-form' onSubmit={submitHandler}>
+      <div></div>
       <div>
         {addressData.isAddNew ? <AddressFormInputs /> : addressData.data && <AddressFormInputs addressData={addressData.data} />}
         {socialData.isAddNew ? <SocialFormInputs /> : socialData.data && <SocialFormInputs socialData={socialData.data} />}

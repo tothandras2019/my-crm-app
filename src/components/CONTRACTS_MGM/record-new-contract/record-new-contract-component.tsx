@@ -42,15 +42,15 @@ export const RecordNewContract = (): JSX.Element => {
           <div className='record_new_contract'>
             <h1>Record contract</h1>
             <div className='customer-header-container'>
-              {header.map((record) => (
-                <p>{record}</p>
+              {header.map((record, index) => (
+                <p key={`${record}_${index}`}>{record}</p>
               ))}
             </div>
             {customerState.map((customer) => {
               const { companyName, access, address, id, social, status } = customer
               const data = [companyName, access, address, id, social, status]
               return (
-                <div className='customer-data-container'>
+                <div key={`${companyName}_${id}`} className='customer-data-container'>
                   <p>{id}</p>
                   <p>{companyName}</p>
                   <p>{status.leadState}</p>

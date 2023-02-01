@@ -29,7 +29,7 @@
 }
 .fieldset-container {
   height: fit-content;
-  width: fit-content;
+  width: 100%;
 }
 .fieldset-container fieldset {
   display: flex;

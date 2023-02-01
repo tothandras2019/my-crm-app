@@ -18,3 +18,10 @@
     font-size: medium;
   }
 }
+
+@media (max-width: 900px) {
+  .product-entries-container {
+    flex-direction: column;
+    gap: 5px;
+  }
+}

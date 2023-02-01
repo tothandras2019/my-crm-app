@@ -56,6 +56,15 @@
   gap: 50px;
   padding: 5px;
 }
+@media screen and (max-width: 900px) {
+  .contracts-container .contracts-orders-container .contracts-orders-info .contracts-orders-info_header {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
 @keyframes showOrders {
   to {
     opacity: 1;

@@ -22,7 +22,7 @@ export const Init_Open_Manager: InitInit_Open_Manager_Type = {
 //#endregion
 //#region ShowOrdersDetails
 type SetShowOrdersDispatchType = Dispatch<SetStateAction<ShowOrdersDetailsType>>
-type ShowOrdersDetailsType = {
+export type ShowOrdersDetailsType = {
   indexs: boolean[]
 }
 export const ShowOrdersDetails: ShowOrdersDetailsType = {

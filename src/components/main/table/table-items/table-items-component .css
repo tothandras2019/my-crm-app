@@ -34,10 +34,8 @@
 }
 .full-details-items .full-details-title-row {
   display: flex;
+  flex-wrap: wrap;
 }
 .full-details-items .full-details-title-row p {
-  width: 200px;
-}
-.full-details-items .full-details-title-row.narrow p {
-  width: 130px;
+  width: 80px;
 }/*# sourceMappingURL=table-items-component .css.map */

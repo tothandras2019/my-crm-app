@@ -1,0 +1,29 @@
+@import './../../../App.scss';
+.contact-details {
+  width: 100%;
+  .main-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+    background: linear-gradient(180deg, $palette-main-color 30%, transparent 90%);
+    border-radius: 5px;
+    color: $palette-primary-color;
+    text-shadow: 3px 3px 5px $palette-main-color;
+    .main-details-header {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+  @media screen and (max-width: 900px) {
+    input {
+      // display: none;
+    }
+  }
+
+  @media screen and (max-width: 1370px) {
+    .main-details {
+      width: 100%;
+    }
+  }
+}

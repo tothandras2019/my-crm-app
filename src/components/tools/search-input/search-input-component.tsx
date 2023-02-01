@@ -4,7 +4,7 @@ import './search-input-component.css'
 
 export const SearchInput = ({
   searchedValueRef,
-  placeholder = 'search company',
+  placeholder = 'search company or id',
   reset,
 }: {
   searchedValueRef: MutableRefObject<HTMLInputElement | null>

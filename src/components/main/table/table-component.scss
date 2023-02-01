@@ -17,9 +17,15 @@
       align-items: center;
       font-size: small;
     }
+
     .full-details-row {
       display: flex;
       flex-direction: column;
     }
+  }
+}
+@media (max-width: 900px) {
+  .full-details {
+    padding: 5px;
   }
 }

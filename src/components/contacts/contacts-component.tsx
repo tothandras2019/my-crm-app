@@ -58,7 +58,6 @@ export const Contacts = ({ customersData }: { customersData: Required<CustomerDa
     //   social: { ...state.social, isAddNew: true },
     // }))
 
-    console.log(path.currentPath)
     SetOpen_Manager((prevState) => ({ ...prevState, [path.currentPath]: true }))
   }
 
@@ -68,7 +67,7 @@ export const Contacts = ({ customersData }: { customersData: Required<CustomerDa
 
     if (!current) return
     const value = current.value
-    const filtered = templateCustomerData.filter((customer) => customer.companyName.toLocaleLowerCase().includes(value))
+    const filtered = customersData.filter((customer) => customer.companyName.toLocaleUpperCase().includes(value.toLocaleUpperCase()))
     setFilteredCustomerData(filtered)
 
     //reset search field:
@@ -77,8 +76,8 @@ export const Contacts = ({ customersData }: { customersData: Required<CustomerDa
 
   const handleResetSearch = () => {
     const current = searchValue.current
-    setFilteredCustomerData([])
     if (current) current.value = ''
+    setFilteredCustomerData([])
   }
 
   return (

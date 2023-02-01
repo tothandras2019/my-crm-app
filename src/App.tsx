@@ -69,7 +69,7 @@ function App() {
         <Route path={`/`} element={<Navigation />}>
           <Route path={`/`} element={<Cards />} />
           <Route path={`/dashboard`} element={<Dashboard />} />
-          <Route path={`/contracts`} element={<ContractsMain contracts={contractDataState} />} />
+          <Route path={`/contracts`} element={<ContractsMain contracts_main={contractDataState} />} />
           <Route path={`/calendar`} element={<h1>calendar will be here</h1>} />
           <Route path={`/contacts`} element={customerState && <Contacts customersData={customerState} />} />
           <Route path={`/settings`} element={<h1>settings will be here</h1>} />

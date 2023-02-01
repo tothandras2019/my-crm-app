@@ -16,10 +16,11 @@ import { modifyContract } from '../../../DATASTORE/data-types/man.data.reducers/
 import { RecordOrders } from '../record-order/record-contract-component'
 import { HeaderTitleColumn } from '../../header-title-column/header-title-column-component'
 import { AvailabilityContext } from '../../../utility/contexts/contacts-data/contacts-data-context'
+import { ContractsOrders } from '../contracts-orders/contracts-orders-component'
 
-type ContractsMainType = { contracts: ContractType[] }
+type ContractsMainType = { contracts_main: ContractType[] }
 
-export const ContractsMain = ({ contracts: contractsDataMain }: ContractsMainType): JSX.Element => {
+export const ContractsMain = ({ contracts_main }: ContractsMainType): JSX.Element => {
   const [headerItem, SetHeaderItem] = useState<string[]>(['Customers'])
   const searchValue = useRef<HTMLInputElement>(null)
 
@@ -29,57 +30,49 @@ export const ContractsMain = ({ contracts: contractsDataMain }: ContractsMainTyp
   const { ContractsDataDispatch } = contracts
 
   const [customersData, SetCustomersData] = useState<SummaryCustomerOrdersAmountType[] | []>([])
-
-  const SettingShowOrderIndexes = () => {
-    const length = contractsDataMain.length
-    let result: boolean[] = []
-    for (let i = 0; i < length; i++) {
-      result.push(false)
-    }
-    SetShowOrders((state) => ({ ...state, indexs: result }))
-  }
-  // const GenerateBooleanArray = useCallback(() => {
-
-  // }, [contractsDataMain])
+  const [filteredCustomersData, SetFilteredCustomersData] = useState<SummaryCustomerOrdersAmountType[] | []>([])
 
   useEffect(() => {
-    // SettingShowOrderIndexes()
-    SetCustomersData(summary_ContractsAmount(contractsDataMain))
-    console.log(contractsDataMain)
-
+    SetCustomersData(summary_ContractsAmount(contracts_main))
     return () => {}
-  }, [contractsDataMain])
+  }, [contracts_main])
 
-  useEffect(() => {
-    SettingShowOrderIndexes()
-  }, [])
+  // useEffect(() => {
+  //   console.log(filteredCustomersData)
+  // }, [filteredCustomersData])
+
+  const FilterData = (searchFor: string): SummaryCustomerOrdersAmountType[] => {
+    const filteredTemp = customersData.filter(
+      (customer) =>
+        customer.contract.id.toLocaleUpperCase().includes(searchFor.toLocaleUpperCase()) ||
+        customer.contract.customer.companyName.toLocaleUpperCase().includes(searchFor.toLocaleUpperCase()),
+    )
+
+    return filteredTemp
+  }
 
   const handle_Search = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
     const target = event.target
+    let searchForText = ''
     Object.values(target).forEach((value) => {
       const searchInput = value as HTMLInputElement
-      if (searchInput.type === 'text') {
-        //console.log(searchInput.value)
-      }
+      if (searchInput.type === 'text') searchForText = searchInput.value
     })
-
-    handle_Reset_Search()
+    if (searchForText !== '') SetFilteredCustomersData(FilterData(searchForText))
   }
   const handle_Reset_Search = () => {
+    SetFilteredCustomersData([])
     const current = searchValue.current
     if (current) current.value = ''
   }
 
   //TODO:
-  const handle_NewContract = () => {
-    console.log('ADD NEW CONTRACT')
-    setOpenModifyModal((state) => ({ ...state, isOpenRecordContract: true }))
-  }
+  const handle_NewContract = () => setOpenModifyModal((state) => ({ ...state, isOpenRecordContract: true }))
 
   const handle_DELETE_order = (contractID: string, order_id: string) => {
-    const updatedContract = DELETE_ORDER_ON_CONTRACT(contractsDataMain, contractID, order_id)
+    const updatedContract = DELETE_ORDER_ON_CONTRACT(contracts_main, contractID, order_id)
     if (updatedContract) ContractsDataDispatch(modifyContract(updatedContract))
   }
 
@@ -108,65 +101,45 @@ export const ContractsMain = ({ contracts: contractsDataMain }: ContractsMainTyp
         reset={handle_Reset_Search}
         handleNewItem={handle_NewContract}
       />
-      {contractsDataMain.map((contract, index) => {
-        const { customer, date, orders, id } = contract
-        return (
-          <div key={`contracts_${contractsDataMain}`} className='contracts-main-container'>
-            {customersData &&
-              customersData.map((customersDat, index) => {
-                return <MainInfoPannel customerIndex={index} key={`${customersDat}-${index}`} customerData={customersDat} />
-              })}
-            {showOrders.indexs[index] && (
-              <div className='contracts-orders-container'>
-                <h3>Orders </h3>
-                {orders.map((order) => {
-                  const { order_date, order_id, ordered_products } = order
-                  return (
-                    <div key={`order_${order_id}`} className='contracts-orders-info'>
-                      <div className='contracts-orders-info_header'>
-                        <p>
-                          order date: {order_date} - order id: {order_id}
-                        </p>
-                        <OpenCloseButton color={`red`} pageTextValue={'delete order'} handler={() => handle_DELETE_order(id, order_id)} />
-                      </div>
-
-                      <div>
-                        {ordered_products.map((ordered_product, orderProd_index) => {
-                          const { products_id, products } = ordered_product
-                          return (
-                            <OrderedProductsComponent
-                              key={`ordered_prod_${orderProd_index}`}
-                              ordered_product={ordered_product}
-                              order_id={order_id}
-                              contract={contract}
-                              handler={handle_SET_SELECTED_CUSTOMER}
-                            >
-                              {
-                                <Fragment>
-                                  {products.map((product, prod_index) => (
-                                    <ProductCard
-                                      key={`prod_${prod_index}`}
-                                      order_id={order_id}
-                                      ordered_product={ordered_product}
-                                      contract={contract}
-                                      product={product}
-                                      handle_Modification={handle_MODIFY_PRODUCT}
-                                    />
-                                  ))}
-                                </Fragment>
-                              }
-                            </OrderedProductsComponent>
-                          )
-                        })}
-                      </div>
-                    </div>
-                  )
-                })}
-              </div>
-            )}
-          </div>
-        )
-      })}
+      <div className='contracts-main-container'>
+        <div>
+          {customersData && (
+            <>
+              {filteredCustomersData.length > 0 ? (
+                <>
+                  {filteredCustomersData.map((customersDat, index) => {
+                    return (
+                      <MainInfoPannel
+                        customerIndex={index}
+                        key={`${customersDat}-${index}`}
+                        customerData={customersDat}
+                        handleDelete={handle_DELETE_order}
+                        handleModifyProduct={handle_MODIFY_PRODUCT}
+                        handleSetSelectedCustomer={handle_SET_SELECTED_CUSTOMER}
+                      />
+                    )
+                  })}
+                </>
+              ) : (
+                <>
+                  {customersData.map((customersDat, index) => {
+                    return (
+                      <MainInfoPannel
+                        customerIndex={index}
+                        key={`${customersDat}-${index}`}
+                        customerData={customersDat}
+                        handleDelete={handle_DELETE_order}
+                        handleModifyProduct={handle_MODIFY_PRODUCT}
+                        handleSetSelectedCustomer={handle_SET_SELECTED_CUSTOMER}
+                      />
+                    )
+                  })}
+                </>
+              )}
+            </>
+          )}
+        </div>
+      </div>
 
       {selectedCustomerData.customer && <RecordOrders />}
     </div>

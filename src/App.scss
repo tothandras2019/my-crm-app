@@ -7,7 +7,7 @@ $palette-alert-color: #317d65;
 $transparent-palette-transparent-primary-color: rgba($palette-primary-color, 0.7);
 $transparent-palette-main-color: rgba($palette-main-color, 0.5);
 
-$table-data-element-size: 200px;
+$table-data-element-size: 80px;
 
 #root {
   background: linear-gradient(60deg, $palette-main-color 15%, $palette-secondary-color 70%);

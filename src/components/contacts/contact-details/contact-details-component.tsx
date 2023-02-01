@@ -1,3 +1,5 @@
+import './contact-details-component.css'
+
 import { FormEvent } from 'react'
 import { CustomerDataType } from '../../../DATASTORE/data-types/main.data.types/customer-data-types'
 import { Table } from '../../main/table/table-component'

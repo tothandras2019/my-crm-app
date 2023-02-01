@@ -3,46 +3,52 @@
 .info-panel-card {
   position: relative;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
 
-  gap: 10px;
-  margin: 0px;
-  padding: 10px;
-  box-sizing: border-box;
-  // width: 100%;
-  // min-height: 100%;
-  background-color: $palette-primary-color;
-  color: $palette-main-color;
-  border-radius: 5px;
-  border: 2px solid $palette-main-color;
-  transition: 0.5s;
+  .info-panel-card-header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
 
-  .info-panel-card-left {
-    display: flex;
-    justify-content: flex-start;
-    gap: 40px;
-    .info-contacts {
-      min-width: 300px;
-    }
-  }
-  .order-actions-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    h2 {
-      text-align: center;
-    }
-    div {
+    gap: 10px;
+    margin: 0px;
+    padding: 10px;
+    box-sizing: border-box;
+    // width: 100%;
+    // min-height: 100%;
+    background-color: $palette-primary-color;
+    color: $palette-main-color;
+    border-radius: 5px;
+    border: 2px solid $palette-main-color;
+    transition: 0.5s;
+
+    .info-panel-card-left {
       display: flex;
+      justify-content: flex-start;
+      gap: 40px;
+      .info-contacts {
+        min-width: 300px;
+      }
     }
-  }
-  @media screen and (max-width: 1400px) {
     .order-actions-container {
-      justify-content: center;
-
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      h2 {
+        text-align: center;
+      }
       div {
+        display: flex;
+      }
+    }
+    @media screen and (max-width: 1400px) {
+      .order-actions-container {
         justify-content: center;
-        flex-direction: column;
+
+        div {
+          justify-content: center;
+          flex-direction: column;
+        }
       }
     }
   }
@@ -53,17 +59,22 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
     width: 100%;
-    .info-panel-card-left {
+    .info-panel-card-header {
       display: flex;
       flex-direction: column;
-      align-items: center;
-    }
-    .order-actions-container {
-      div {
-        justify-content: center;
-        flex-direction: row;
+      width: 100%;
+
+      .info-panel-card-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .order-actions-container {
+        div {
+          justify-content: center;
+          flex-direction: row;
+        }
       }
     }
   }

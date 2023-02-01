@@ -44,3 +44,14 @@ export const summary_ContractsAmount = (contracts: ContractType[]): SummaryCusto
     }
   }, [])
 }
+
+export const SortOrders = (unsorted: ContractType[]): ContractType[] => {
+  return unsorted.sort((a, b) => {
+    const dateId_A = a.id.slice(4)
+    const dateId_B = b.id.slice(4)
+    console.log(dateId_A)
+    if (dateId_A < dateId_B) return -1
+    if (dateId_A > dateId_B) return 1
+    return 0
+  })
+}

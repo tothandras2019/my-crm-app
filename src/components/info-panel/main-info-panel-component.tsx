@@ -1,5 +1,5 @@
 import './main-info-panel-component.css'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 
 import { InitCustomersType } from '../../DATASTORE/data-types/data-types'
 import { Separator } from '../tools/separator/separator-component'
@@ -9,7 +9,7 @@ import { HeadInfoPanel } from './head-info-panel/head-info-panel-component'
 import { CustomerDataType, SummaryCustomerOrdersAmountType } from '../../DATASTORE/data-types/main.data.types/customer-data-types'
 import { IndicatorDetailed } from '../indicator-detailed/indicator-detailerd-component'
 import { OpenCloseButton } from '../tools/button/open-close/open-close-button-component'
-import { OtherActionContexts } from '../../utility/contexts/action.context'
+import { OtherActionContexts, ShowOrdersDetailsType } from '../../utility/contexts/action.context'
 import { Order } from '../../DATASTORE/data-types/main.data.types/order-data-types'
 import { OrderedProducts } from '../../DATASTORE/data-types/main.data.types/order-product-type'
 import { ContractType } from '../../DATASTORE/data-types/main.data.types/contract-data-types'
@@ -17,9 +17,25 @@ import { MainContext } from '../../utility/contexts/main.context'
 import { modifyContract } from './../../../src/DATASTORE/data-types/man.data.reducers/contracts-reducer/contracts.data.actions'
 import { ID_GENERATOR_ORDER } from '../../DATASTORE/side-functions/id-generator'
 import { ADD_ORDER_TO_CONTRACT } from '../../DATASTORE/manage-contract/order/add-order'
+import { ContractsOrders } from '../CONTRACTS_MGM/contracts-orders/contracts-orders-component'
 
-type MainInfoPanelType = { customerIndex: number; customerData: SummaryCustomerOrdersAmountType }
-export const MainInfoPannel = ({ customerIndex, customerData }: MainInfoPanelType) => {
+type MainInfoPanelType = {
+  customerIndex: number
+  customerData: SummaryCustomerOrdersAmountType
+  handleDelete: (id: string, order_id: string) => void
+  handleSetSelectedCustomer: (products_id: string, order_id: string, contract: ContractType) => void
+  handleModifyProduct: (products_id: string, order_id: string, contract: ContractType) => void
+}
+export const MainInfoPannel = ({
+  customerIndex,
+  customerData,
+
+  handleDelete,
+  handleSetSelectedCustomer,
+  handleModifyProduct,
+}: MainInfoPanelType) => {
+  const [showOrdersData, SetShorOrdersData] = useState<boolean>(false)
+
   const { contract, summaryOrdersamount } = customerData
   const { id, date, customer, orders } = contract
   const { companyName, access, social, status, address } = customer
@@ -33,28 +49,41 @@ export const MainInfoPannel = ({ customerIndex, customerData }: MainInfoPanelTyp
 
   return (
     <div className='info-panel-card' id={id}>
-      <div className='info-panel-card-left'>
-        <div>
-          <HeadInfoPanel lifecycleState={lifecycleState} leadState={leadState} period={date} id={id} />
-          <Separator />
-          <h1 className='info-title'>{companyName}</h1>
-        </div>
-
-        <div className='info-contacts'>
-          <h3>Contacts info</h3>
+      <div className='info-panel-card-header'>
+        <div className='info-panel-card-left'>
           <div>
-            <InfoPanel title={'addresses'} address={address} />
-            <InfoPanel title={'socials'} address={social} />
+            <HeadInfoPanel lifecycleState={lifecycleState} leadState={leadState} period={date} id={id} />
+            <Separator />
+            <h1 className='info-title'>{companyName}</h1>
+          </div>
+
+          <div className='info-contacts'>
+            <h3>Contacts info</h3>
+            <div>
+              <InfoPanel title={'addresses'} address={address} />
+              <InfoPanel title={'socials'} address={social} />
+            </div>
           </div>
         </div>
-      </div>
-      <div className='order-actions-container'>
-        <h2>Order actions</h2>
-        <div>
-          <OpenCloseButton color={`green`} pageTextValue={'add order'} handler={handle_ADD_ORDER} />
+        <div className='order-actions-container'>
+          <h2>Order actions</h2>
+          <div>
+            <OpenCloseButton color={`green`} pageTextValue={'add order'} handler={handle_ADD_ORDER} />
+          </div>
         </div>
+        <FinancialInfoPanel customerIndex={customerIndex} summary={summaryOrdersamount} ShowOrdersData={SetShorOrdersData} />
       </div>
-      <FinancialInfoPanel customerIndex={customerIndex} summary={summaryOrdersamount} />
+      <div className='info-panel-card-show_order_details'>
+        {showOrdersData && (
+          <ContractsOrders
+            customerIndex={customerIndex}
+            contract={contract}
+            handleDelete={handleDelete}
+            handleModifyProduct={handleModifyProduct}
+            handleSetSelectedCustomer={handleSetSelectedCustomer}
+          />
+        )}
+      </div>
     </div>
   )
 }

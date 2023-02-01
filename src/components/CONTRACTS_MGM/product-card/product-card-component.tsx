@@ -47,10 +47,11 @@ export const ProductCard = ({ order_id, contract, product, ordered_product, hand
           category: {category} - item no.: {id}
         </p>
       </div>
-      <p>{other_information}</p>
       <div>
-        <p>{`${ordered_qty} x ${unitPrice}`} = </p>
-        <p> {`${formatter.format(ordered_qty * unitPrice)}`}</p>
+        <p>
+          total product: {`${ordered_qty}(${unit_dimension.toLocaleLowerCase()}) x ${unitPrice}`} = {`${formatter.format(ordered_qty * unitPrice)}`}
+        </p>
+        <p>other information: {other_information}</p>
       </div>
       <div>
         <OpenCloseButton color={`yellow`} pageTextValue={'modify'} handler={handleModify} />

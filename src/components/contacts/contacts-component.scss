@@ -11,42 +11,47 @@
   margin: 10px;
   padding: 0 30px;
 
-  .header-details {
-    display: flex;
-    gap: 10px;
-    justify-content: space-between;
-    font-weight: 500;
-    .header-details-column {
-      display: flex;
-    }
-  }
   p {
     display: flex;
     align-items: flex-start;
     height: 40px;
     word-break: normal;
     text-align: left;
-    min-width: 180px;
+    min-width: 150px;
     box-sizing: border-box;
     padding-left: 10px;
   }
-  .contact-details {
-    .main-details {
-      display: flex;
-      gap: 10px;
-      justify-content: space-between;
-      background: linear-gradient(180deg, $palette-main-color 30%, transparent 90%);
-      border-radius: 5px;
-      color: $palette-primary-color;
-      text-shadow: 3px 3px 5px $palette-main-color;
-      .main-details-header {
-        display: flex;
-      }
-    }
 
-    @media screen and (max-width: 1370px) {
-      p {
-        min-width: fit-content;
+  @media (max-width: 1300px) {
+    p {
+      min-width: 90px;
+    }
+  }
+  .header-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+    font-weight: 500;
+    .header-details-column {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+}
+@media screen and (max-width: 900px) {
+  .contacts-container {
+    padding: 5px;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    .header-details {
+      .header-details-column {
+        display: none;
+        width: 0;
+        p {
+          display: none;
+        }
       }
     }
   }

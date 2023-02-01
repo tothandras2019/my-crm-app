@@ -30,6 +30,11 @@
 .info-panel-card {
   position: relative;
   display: flex;
+  flex-direction: column;
+}
+.info-panel-card .info-panel-card-header {
+  position: relative;
+  display: flex;
   justify-content: space-between;
   gap: 10px;
   margin: 0px;
@@ -41,30 +46,30 @@
   border: 2px solid rgb(1, 45, 81);
   transition: 0.5s;
 }
-.info-panel-card .info-panel-card-left {
+.info-panel-card .info-panel-card-header .info-panel-card-left {
   display: flex;
   justify-content: flex-start;
   gap: 40px;
 }
-.info-panel-card .info-panel-card-left .info-contacts {
+.info-panel-card .info-panel-card-header .info-panel-card-left .info-contacts {
   min-width: 300px;
 }
-.info-panel-card .order-actions-container {
+.info-panel-card .info-panel-card-header .order-actions-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.info-panel-card .order-actions-container h2 {
+.info-panel-card .info-panel-card-header .order-actions-container h2 {
   text-align: center;
 }
-.info-panel-card .order-actions-container div {
+.info-panel-card .info-panel-card-header .order-actions-container div {
   display: flex;
 }
 @media screen and (max-width: 1400px) {
-  .info-panel-card .order-actions-container {
+  .info-panel-card .info-panel-card-header .order-actions-container {
     justify-content: center;
   }
-  .info-panel-card .order-actions-container div {
+  .info-panel-card .info-panel-card-header .order-actions-container div {
     justify-content: center;
     flex-direction: column;
   }
@@ -77,12 +82,17 @@
     align-items: center;
     width: 100%;
   }
-  .info-panel-card .info-panel-card-left {
+  .info-panel-card .info-panel-card-header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .info-panel-card .info-panel-card-header .info-panel-card-left {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  .info-panel-card .order-actions-container div {
+  .info-panel-card .info-panel-card-header .order-actions-container div {
     justify-content: center;
     flex-direction: row;
   }

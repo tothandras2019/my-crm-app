@@ -7,14 +7,15 @@
 
   .full-details-title-row {
     display: flex;
+    flex-wrap: wrap;
     p {
       width: $table-data-element-size;
     }
 
     &.narrow {
-      p {
-        width: 130px;
-      }
+      // p {
+      //   width: 130px;
+      // }
     }
   }
 }

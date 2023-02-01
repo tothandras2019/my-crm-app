@@ -12,10 +12,16 @@
       p {
         width: $table-data-element-size;
       }
+
       &.narrow {
-        p {
-          width: 130px;
-        }
+        // p {
+        //   width: 130px;
+        // }
+      }
+    }
+    @media (max-width: 950px) {
+      .full-details-title-column {
+        display: none;
       }
     }
   }

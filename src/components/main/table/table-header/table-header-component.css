@@ -37,8 +37,10 @@
   display: flex;
 }
 .full-details-header .full-details-title .full-details-title-column p {
-  width: 200px;
+  width: 80px;
 }
-.full-details-header .full-details-title .full-details-title-column.narrow p {
-  width: 130px;
+@media (max-width: 950px) {
+  .full-details-header .full-details-title .full-details-title-column {
+    display: none;
+  }
 }/*# sourceMappingURL=table-header-component.css.map */

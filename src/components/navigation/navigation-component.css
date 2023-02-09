@@ -1,6 +1,6 @@
 #root {
-  background: linear-gradient(60deg, rgb(1, 45, 81) 15%, rgb(53, 198, 193) 70%);
-  color: rgb(1, 45, 81);
+  background: linear-gradient(60deg, #012d51 15%, #35c6c1 70%);
+  color: #012d51;
   min-height: 100vh;
 }
 
@@ -34,7 +34,7 @@ nav {
   height: 100vh;
   background-color: rgba(1, 45, 81, 0.5);
   backdrop-filter: blur(10px);
-  color: rgb(196, 240, 238);
+  color: #c4f0ee;
   z-index: 1000;
   transition: 0.5s;
 }

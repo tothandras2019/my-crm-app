@@ -1,6 +1,6 @@
 #root {
-  background: linear-gradient(60deg, rgb(1, 45, 81) 15%, rgb(53, 198, 193) 70%);
-  color: rgb(1, 45, 81);
+  background: linear-gradient(60deg, #012d51 15%, #35c6c1 70%);
+  color: #012d51;
   min-height: 100vh;
 }
 
@@ -29,7 +29,7 @@
 }
 .search-input-container {
   background-color: transparent;
-  border: 1px solid rgb(1, 45, 81);
+  border: 1px solid #012d51;
   border-radius: 50px;
   height: 30px;
   display: flex;
@@ -47,33 +47,33 @@
   width: 33px;
   height: 33px;
   background-color: transparent;
-  color: rgb(1, 45, 81);
-  border: 1px solid rgb(1, 45, 81);
+  color: #012d51;
+  border: 1px solid #012d51;
   border-radius: 50%;
   outline: none;
   transition: 0.3s;
 }
 .search-input-container input[type=button].reset-button:hover {
-  background-color: rgb(1, 45, 81);
-  color: rgb(196, 240, 238);
+  background-color: #012d51;
+  color: #c4f0ee;
 }
 .search-input-container input[type=button].reset-button:focus {
-  background-color: rgb(1, 45, 81);
-  color: rgb(196, 240, 238);
+  background-color: #012d51;
+  color: #c4f0ee;
 }
 .search-input-container input[type=button].reset-button:active {
-  background-color: rgb(196, 240, 238);
-  color: rgb(1, 45, 81);
+  background-color: #c4f0ee;
+  color: #012d51;
 }
 .search-input-container svg .search-icon {
-  fill: rgb(1, 45, 81);
+  fill: #012d51;
 }
 .search-input-container .search-input {
   outline: none;
-  color: rgb(1, 45, 81);
+  color: #012d51;
 }
 .search-input-container .search-input::placeholder {
   font-style: italic;
-  color: rgb(1, 45, 81);
+  color: #012d51;
   letter-spacing: 1.1px;
 }/*# sourceMappingURL=search-input-component.css.map */

@@ -1,6 +1,6 @@
 #root {
-  background: linear-gradient(60deg, rgb(1, 45, 81) 15%, rgb(53, 198, 193) 70%);
-  color: rgb(1, 45, 81);
+  background: linear-gradient(60deg, #012d51 15%, #35c6c1 70%);
+  color: #012d51;
   min-height: 100vh;
 }
 
@@ -34,7 +34,7 @@
 }
 .plus-button_circle svg {
   position: absolute;
-  fill: rgb(1, 45, 81);
+  fill: #012d51;
 }
 .plus-button_circle button {
   position: absolute;
@@ -46,7 +46,7 @@
   border-radius: 50%;
   padding: 20px;
   box-sizing: border-box;
-  background-color: rgb(196, 240, 238);
+  background-color: #c4f0ee;
   color: green;
   border: transparent;
 }
@@ -57,7 +57,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  border: 1px solid rgb(1, 45, 81);
+  border: 1px solid #012d51;
   border-radius: 50%;
   z-index: -1;
   background-color: #317d65;

@@ -1,6 +1,6 @@
 #root {
-  background: linear-gradient(60deg, rgb(1, 45, 81) 15%, rgb(53, 198, 193) 70%);
-  color: rgb(1, 45, 81);
+  background: linear-gradient(60deg, #012d51 15%, #35c6c1 70%);
+  color: #012d51;
   min-height: 100vh;
 }
 
@@ -45,7 +45,7 @@
   position: relative;
   width: 30px;
   height: 2px;
-  background-color: rgb(196, 240, 238);
+  background-color: #c4f0ee;
   transition: 0.5s;
   z-index: 50;
 }
@@ -57,7 +57,7 @@
   width: 30px;
   height: 2px;
   border-radius: 10px;
-  background-color: rgb(196, 240, 238);
+  background-color: #c4f0ee;
   transition: 0.5s;
 }
 .menu-button span::after {
@@ -68,7 +68,7 @@
   width: 30px;
   height: 2px;
   border-radius: 10px;
-  background-color: rgb(196, 240, 238);
+  background-color: #c4f0ee;
   transition: 0.5s;
 }
 .menu-button.close {

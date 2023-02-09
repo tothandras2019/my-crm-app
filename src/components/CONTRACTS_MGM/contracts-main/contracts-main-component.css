@@ -1,6 +1,6 @@
 #root {
-  background: linear-gradient(60deg, rgb(1, 45, 81) 15%, rgb(53, 198, 193) 70%);
-  color: rgb(1, 45, 81);
+  background: linear-gradient(60deg, #012d51 15%, #35c6c1 70%);
+  color: #012d51;
   min-height: 100vh;
 }
 
@@ -28,7 +28,7 @@
   }
 }
 .contracts-container {
-  color: rgb(196, 240, 238);
+  color: #c4f0ee;
   padding: 10px;
   box-sizing: border-box;
 }
@@ -41,7 +41,7 @@
   padding: 10px;
   box-sizing: border-box;
   width: 100%;
-  background-color: rgb(1, 45, 81);
+  background-color: #012d51;
   border-radius: 5px;
   opacity: 0;
   animation-name: showOrders;

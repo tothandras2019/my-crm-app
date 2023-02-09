@@ -75,6 +75,10 @@ export const PrepareChartData = ({ switchPeriod, contractDataState }: Partial<Pr
           periodType = new Date(order_date).getDay()
           break
         }
+        case 'month': {
+          periodType = new Date(order_date).getMonth()
+          break
+        }
         case 'minutes': {
           periodType = new Date(order_date).getMinutes()
           break
@@ -86,7 +90,7 @@ export const PrepareChartData = ({ switchPeriod, contractDataState }: Partial<Pr
         products.forEach((product) => {
           const { ordered_qty, unitPrice, category } = product
 
-          summary.push({ [periodType]: { [category]: ordered_qty * unitPrice } })
+          summary.push({ [periodType]: { [category.toLocaleLowerCase()]: ordered_qty * unitPrice } })
         })
       })
     })

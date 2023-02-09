@@ -1,6 +1,6 @@
 #root {
-  background: linear-gradient(60deg, rgb(1, 45, 81) 15%, rgb(53, 198, 193) 70%);
-  color: rgb(1, 45, 81);
+  background: linear-gradient(60deg, #012d51 15%, #35c6c1 70%);
+  color: #012d51;
   min-height: 100vh;
 }
 
@@ -38,7 +38,7 @@
   transform: translate(-50%, -50%);
   border-radius: 10px;
   opacity: 0;
-  color: rgb(196, 240, 238);
+  color: #c4f0ee;
   width: fit-content;
   height: fit-content;
   padding: 40px;
@@ -51,6 +51,6 @@
 @keyframes appear_data_frame {
   to {
     opacity: 1;
-    background-color: rgb(60, 135, 181);
+    background-color: #3c87b5;
   }
 }/*# sourceMappingURL=manage-customer-data.css.map */

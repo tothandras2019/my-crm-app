@@ -1,0 +1,17 @@
+@import './../../../App.scss';
+
+.calendar-container {
+  width: 90%;
+  height: fit-content;
+  background-color: $palette-primary-color;
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .change-years-container {
+    display: flex;
+  }
+  h2 {
+    width: fit-content;
+  }
+}

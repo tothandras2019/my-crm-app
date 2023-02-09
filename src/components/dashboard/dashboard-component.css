@@ -1,15 +1,49 @@
+#root {
+  background: linear-gradient(60deg, #012d51 15%, #35c6c1 70%);
+  color: #012d51;
+  min-height: 100vh;
+}
+
+.App {
+  position: relative;
+}
+
+.modal_window {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: transparent;
+  animation-name: appear_modal;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes appear_modal {
+  to {
+    background-color: rgba(196, 240, 238, 0.7);
+    backdrop-filter: blur(2px);
+  }
+}
 .dashboard-container {
-  height: 80%;
-  width: 95%;
+  height: 40%;
   margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 20px;
+  gap: 10px;
 }
-.dashboard-container .actual-content-container {
-  width: 100%;
+.dashboard-container .chart-container {
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  padding: 10px 30px;
+  margin: 10px;
+  border: 1px solid #012d51;
+  border-radius: 15px;
 }
 .dashboard-container .table-content-container {
   width: 100%;

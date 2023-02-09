@@ -1,6 +1,6 @@
 #root {
-  background: linear-gradient(60deg, rgb(1, 45, 81) 15%, rgb(53, 198, 193) 70%);
-  color: rgb(1, 45, 81);
+  background: linear-gradient(60deg, #012d51 15%, #35c6c1 70%);
+  color: #012d51;
   min-height: 100vh;
 }
 
@@ -33,7 +33,7 @@
   flex-direction: column;
   gap: 10px;
   background-color: rgba(196, 240, 238, 0.7);
-  color: rgb(1, 45, 81);
+  color: #012d51;
   margin: 10px;
   padding: 0 30px;
 }

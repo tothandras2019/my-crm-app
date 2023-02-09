@@ -1,6 +1,6 @@
 #root {
-  background: linear-gradient(60deg, rgb(1, 45, 81) 15%, rgb(53, 198, 193) 70%);
-  color: rgb(1, 45, 81);
+  background: linear-gradient(60deg, #012d51 15%, #35c6c1 70%);
+  color: #012d51;
   min-height: 100vh;
 }
 
@@ -29,12 +29,13 @@
 }
 input[type=submit],
 input[type=button] {
+  width: 140px;
   height: 28px;
   margin: 5px;
-  border: 2px solid rgb(1, 45, 81);
+  border: 2px solid #012d51;
   border-radius: 5px;
-  background-color: rgb(1, 45, 81);
-  color: rgb(196, 240, 238);
+  background-color: #012d51;
+  color: #c4f0ee;
   text-transform: capitalize;
   transition: 0.5s;
 }
@@ -69,6 +70,6 @@ input[type=button]:hover {
 }
 input[type=submit]:active,
 input[type=button]:active {
-  color: rgb(1, 45, 81);
-  background-color: rgb(196, 240, 238);
+  color: #012d51;
+  background-color: #c4f0ee;
 }/*# sourceMappingURL=custom-button-component.css.map */

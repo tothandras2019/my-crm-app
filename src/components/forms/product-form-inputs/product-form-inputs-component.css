@@ -24,10 +24,12 @@
 @keyframes appear_modal {
   to {
     background-color: rgba(196, 240, 238, 0.7);
-    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+            backdrop-filter: blur(2px);
   }
 }
 .fieldset-container {
+  height: -moz-fit-content;
   height: fit-content;
   width: 100%;
 }
@@ -56,5 +58,6 @@
   display: flex;
   justify-content: right;
   gap: 20px;
+  width: -moz-fit-content;
   width: fit-content;
 }/*# sourceMappingURL=product-form-inputs-component.css.map */

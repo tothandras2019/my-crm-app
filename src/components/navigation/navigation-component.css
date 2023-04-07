@@ -24,7 +24,8 @@
 @keyframes appear_modal {
   to {
     background-color: rgba(196, 240, 238, 0.7);
-    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+            backdrop-filter: blur(2px);
   }
 }
 nav {
@@ -33,7 +34,8 @@ nav {
   width: 140px;
   height: 100vh;
   background-color: rgba(1, 45, 81, 0.5);
-  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
   color: #c4f0ee;
   z-index: 1000;
   transition: 0.5s;

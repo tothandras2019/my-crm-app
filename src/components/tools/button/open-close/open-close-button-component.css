@@ -24,13 +24,15 @@
 @keyframes appear_modal {
   to {
     background-color: rgba(196, 240, 238, 0.7);
-    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+            backdrop-filter: blur(2px);
   }
 }
 input[type=button] {
   border-radius: 5px;
   font-size: smaller;
   width: 110px;
+  height: -moz-fit-content;
   height: fit-content;
   transition: 0.5s;
   box-shadow: 3px 3px 5px #317d65;

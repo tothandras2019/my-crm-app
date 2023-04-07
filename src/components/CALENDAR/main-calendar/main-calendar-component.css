@@ -24,11 +24,13 @@
 @keyframes appear_modal {
   to {
     background-color: rgba(196, 240, 238, 0.7);
-    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+            backdrop-filter: blur(2px);
   }
 }
 .calendar-container {
   width: 90%;
+  height: -moz-fit-content;
   height: fit-content;
   background-color: #c4f0ee;
   margin: 10px auto;
@@ -39,6 +41,15 @@
 .calendar-container .change-years-container {
   display: flex;
 }
+.calendar-container .calendar-month {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  padding: 15px;
+}
 .calendar-container h2 {
+  width: -moz-fit-content;
   width: fit-content;
 }/*# sourceMappingURL=main-calendar-component.css.map */

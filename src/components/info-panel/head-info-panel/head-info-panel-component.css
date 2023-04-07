@@ -6,6 +6,7 @@
   flex-wrap: wrap;
   font-size: medium;
   width: 100%;
+  height: -moz-fit-content;
   height: fit-content;
 }
 .info-panel-head .status {

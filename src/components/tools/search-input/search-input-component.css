@@ -24,7 +24,8 @@
 @keyframes appear_modal {
   to {
     background-color: rgba(196, 240, 238, 0.7);
-    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+            backdrop-filter: blur(2px);
   }
 }
 .search-input-container {
@@ -71,6 +72,11 @@
 .search-input-container .search-input {
   outline: none;
   color: #012d51;
+}
+.search-input-container .search-input::-moz-placeholder {
+  font-style: italic;
+  color: #012d51;
+  letter-spacing: 1.1px;
 }
 .search-input-container .search-input::placeholder {
   font-style: italic;

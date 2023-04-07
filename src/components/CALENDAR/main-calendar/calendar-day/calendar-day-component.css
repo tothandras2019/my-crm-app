@@ -24,7 +24,8 @@
 @keyframes appear_modal {
   to {
     background-color: rgba(196, 240, 238, 0.7);
-    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+            backdrop-filter: blur(2px);
   }
 }
 .day,
@@ -35,11 +36,14 @@
   align-items: center;
   background-color: #012d51;
   color: #c4f0ee;
-  width: 70px;
-  height: 70px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
-  padding: 10px;
   box-sizing: border-box;
+}
+.day p,
+.empty p {
+  font-size: 12px;
 }
 
 .empty {

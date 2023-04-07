@@ -24,13 +24,17 @@
 @keyframes appear_modal {
   to {
     background-color: rgba(196, 240, 238, 0.7);
-    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+            backdrop-filter: blur(2px);
   }
 }
 .product-items {
   color: #012d51;
-  tab-size: 2;
+  -moz-tab-size: 2;
+    -o-tab-size: 2;
+       tab-size: 2;
   text-align: center;
+  width: -moz-fit-content;
   width: fit-content;
 }
 .product-items strong {

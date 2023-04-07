@@ -24,7 +24,8 @@
 @keyframes appear_modal {
   to {
     background-color: rgba(196, 240, 238, 0.7);
-    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+            backdrop-filter: blur(2px);
   }
 }
 .modify-form {
@@ -39,7 +40,9 @@
   border-radius: 10px;
   opacity: 0;
   color: #c4f0ee;
+  width: -moz-fit-content;
   width: fit-content;
+  height: -moz-fit-content;
   height: fit-content;
   padding: 40px;
   animation-name: appear_data_frame;

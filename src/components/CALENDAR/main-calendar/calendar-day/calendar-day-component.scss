@@ -7,11 +7,14 @@
   align-items: center;
   background-color: $palette-main-color;
   color: $palette-primary-color;
-  width: 70px;
-  height: 70px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
-  padding: 10px;
   box-sizing: border-box;
+  p{
+    font-size: 12px;
+  }
+  
 }
 
 .empty {

@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["head-info-panel-component.scss"],"names":[],"mappings":"AAAA;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AACA;EACE;EACA;EACA;EACA;EACA","file":"head-info-panel-component.css"}
+{"version":3,"sources":["head-info-panel-component.scss","head-info-panel-component.css"],"names":[],"mappings":"AAAA;EACE,aAAA;EACA,mBAAA;EACA,uBAAA;EACA,SAAA;EACA,eAAA;EACA,iBAAA;EACA,WAAA;EACA,wBAAA;EAAA,mBAAA;ACCF;ADAE;EACE,aAAA;EACA,mBAAA;EACA,YAAA;EACA,SAAA;EACA,aAAA;ACEJ","file":"head-info-panel-component.css"}

@@ -8,9 +8,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
   .change-years-container {
     display: flex;
   }
+
+  .calendar-month{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    padding: 15px;
+
+  }
+
   h2 {
     width: fit-content;
   }

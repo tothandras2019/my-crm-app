@@ -12,8 +12,8 @@ export const Day = ({ value, year, monthNo, dayNo }: DayType) => {
   const { weekdays } = CALENDAR_DATA;
 
   useEffect(() => {
-    const dayNumber = new Date(`${year}.${monthNo}.${dayNo}`).getDay();
-    SetDayName(weekdays[dayNumber]);
+    const dayNumber = new Date(`${year}.${monthNo}.${dayNo}`).getDay(); //get back the day number
+    SetDayName(weekdays[dayNumber]); //from the day number it return the name of that day.
   });
 
   const handle_OpenScheduleForm = () => {

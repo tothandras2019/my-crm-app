@@ -1,46 +1,50 @@
-@import './../../../../App.scss';
+@import "./../../../../App.scss";
 
-input[type='submit'],
-input[type='button'] {
-  width: 140px;
-  height: 28px;
-  margin: 5px;
-  border: 2px solid $palette-main-color;
-  border-radius: 5px;
-  // box-shadow: 5px 5px 5px $palette-main-color;
+input[type="submit"],
+input[type="button"] {
+    width: 140px;
+    height: 28px;
+    margin: 5px;
+    border: 2px solid $palette-main-color;
+    border-radius: 5px;
+    // box-shadow: 5px 5px 5px $palette-main-color;
 
-  background-color: $palette-main-color;
-  color: $palette-primary-color;
-  text-transform: capitalize;
-  transition: 0.5s;
+    background-color: $palette-main-color;
+    color: $palette-primary-color;
+    text-transform: capitalize;
+    transition: 0.5s;
 
-  &.green {
-    background-color: rgb(74, 156, 74);
-    border: 2px solid rgb(74, 156, 74);
-  }
-  &.red {
-    background-color: rgb(176, 58, 58);
-    border: 2px solid rgb(176, 58, 58);
-  }
-  &.yellow {
-    background-color: rgb(172, 176, 58);
-    border: 2px solid rgb(172, 176, 58);
-  }
+    &.green {
+        background-color: rgb(74, 156, 74);
+        border: 2px solid rgb(74, 156, 74);
+    }
+    &.red {
+        background-color: rgb(176, 58, 58);
+        border: 2px solid rgb(176, 58, 58);
+    }
+    &.yellow {
+        background-color: rgb(172, 176, 58);
+        border: 2px solid rgb(172, 176, 58);
+    }
+    &.pink {
+        background-color: rgb(176, 58, 164);
+        border: 2px solid rgb(176, 58, 164);
+    }
 
-  &.blue {
-    background-color: rgb(97, 67, 196);
-    border: 2px solid rgb(97, 67, 196);
-  }
-  &.transparent {
-    background-color: transparent;
-    border: transparent;
-  }
+    &.blue {
+        background-color: rgb(97, 67, 196);
+        border: 2px solid rgb(97, 67, 196);
+    }
+    &.transparent {
+        background-color: transparent;
+        border: transparent;
+    }
 
-  &:hover {
-    letter-spacing: 1.1px;
-  }
-  &:active {
-    color: $palette-main-color;
-    background-color: $palette-primary-color;
-  }
+    &:hover {
+        letter-spacing: 1.1px;
+    }
+    &:active {
+        color: $palette-main-color;
+        background-color: $palette-primary-color;
+    }
 }

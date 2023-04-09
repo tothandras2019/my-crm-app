@@ -1,14 +1,18 @@
 .month {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  flex-direction: column;
-  gap: 5px;
-  padding: 15px;
+    display: none;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+    padding: 15px;
 
-  .days-container {
-    display: grid;
-    grid-template-columns: repeat(7, 75px);
-    gap: 10px;
-  }
+    &.visible {
+        display: flex;
+    }
+
+    .days-container {
+        display: grid;
+        grid-template-columns: repeat(7, 75px);
+        gap: 10px;
+    }
 }

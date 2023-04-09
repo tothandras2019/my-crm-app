@@ -55,6 +55,11 @@ input[type=button].yellow {
   background-color: rgb(172, 176, 58);
   border: 2px solid rgb(172, 176, 58);
 }
+input[type=submit].pink,
+input[type=button].pink {
+  background-color: rgb(176, 58, 164);
+  border: 2px solid rgb(176, 58, 164);
+}
 input[type=submit].blue,
 input[type=button].blue {
   background-color: rgb(97, 67, 196);

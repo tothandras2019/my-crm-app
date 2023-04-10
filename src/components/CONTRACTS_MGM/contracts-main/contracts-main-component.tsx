@@ -68,7 +68,6 @@ export const ContractsMain = ({ contracts_main }: ContractsMainType): JSX.Elemen
     if (current) current.value = ''
   }
 
-  //TODO:
   const handle_NewContract = () => setOpenModifyModal((state) => ({ ...state, isOpenRecordContract: true }))
 
   const handle_DELETE_order = (contractID: string, order_id: string) => {

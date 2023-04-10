@@ -13,6 +13,9 @@ export const MainCalendarComponent = (): JSX.Element => {
     // const [currentYear, SetCurrentYear] = useState<number>(2023);
 
     const [monthState] /*no setter!*/ = useState<string[]>(["Prew month", "Next month"]);
+
+    //TODO: the following to have to be merged someway!
+    const [visibleMonthes, SetVisibleMonthes] = useState<MonthType[] | null>(null);
     const [initialDate, SetInitialDate] = useState<{ current: { year: number; month: number }; next: { year: number; month: number } }>({
         current: { year: 0, month: 0 },
         next: { year: 0, month: 0 },
@@ -88,15 +91,17 @@ export const MainCalendarComponent = (): JSX.Element => {
                 let decrease_NextMonth = initialDate.next.month - 1;
                 let decYear = initialDate.current.year;
 
-                // if (decrease_CurrentMonth <= 0) {
-                //     decrease_CurrentMonth = 12;
-                //     decYear = initialDate.current.year - 1;
-                // }
-                // console.log(decrease_CurrentMonth);
+                if (decrease_CurrentMonth <= 0) {
+                    decrease_CurrentMonth = 12;
+                    decYear = initialDate.current.year - 1;
+                }
+                console.log(decrease_CurrentMonth);
+
+                //FIXME: the monthes in a wrong order!!!
 
                 SetInitialDate((state) => ({
                     ...state,
-                    current: { year: state.current.year, month: decrease_CurrentMonth },
+                    current: { year: decYear, month: decrease_CurrentMonth },
                     next: { year: state.next.year, month: decrease_NextMonth },
                 }));
                 break;
@@ -108,10 +113,9 @@ export const MainCalendarComponent = (): JSX.Element => {
                     let increase_CurrentMonth = initialDate.current.month + 1;
                     let increase_NextMonth = initialDate.next.month + 1;
 
-
                     // increase_CurrentMonth = increase_CurrentMonth >= 12 ? 1 : increase_CurrentMonth;
                     // console.log(increase_CurrentMonth);
-
+                
                     SetInitialDate((state) => ({
                         ...state,
                         current: { year: state.current.year, month: increase_CurrentMonth },

@@ -10,10 +10,10 @@ export const MainCalendarComponent = (): JSX.Element => {
     const [months, SetMonthes] = useState<MonthType[] | null>(null);
     const [searchedMonth, setSearchedMonth] = useState<MonthType | null>(null);
     const [weekdays, SetWeekdays] = useState<string[] | null>(null);
-    const [currentYear, SetCurrentYear] = useState<number>(2023);
+    // const [currentYear, SetCurrentYear] = useState<number>(2023);
 
     const [monthState] /*no setter!*/ = useState<string[]>(["Prew month", "Next month"]);
-    const [initialMonths, SetInitialMonths] = useState<{ current: { year: number; month: number }; next: { year: number; month: number } }>({
+    const [initialDate, SetInitialDate] = useState<{ current: { year: number; month: number }; next: { year: number; month: number } }>({
         current: { year: 0, month: 0 },
         next: { year: 0, month: 0 },
     });
@@ -21,47 +21,57 @@ export const MainCalendarComponent = (): JSX.Element => {
     const searchValue = useRef<HTMLInputElement | null>(null);
 
     const handle_IncreaseYear = () => {
-        SetCurrentYear((state) => state + 1);
+        SetInitialDate((state) => ({
+            ...state,
+            current: { ...state.current, year: state.current.year + 1 },
+            next: { ...state.next, year: state.next.year + 1 },
+        }));
     };
 
     const handle_DecreiseYear = () => {
-        SetCurrentYear((state) => state - 1);
+        SetInitialDate((state) => ({
+            ...state,
+            current: { ...state.current, year: state.current.year - 1 },
+            next: { ...state.next, year: state.next.year - 1 },
+        }));
     };
 
     const handle_ResetCurrentYear = () => {
-        SetCurrentYear(2023);
+        const { year, month } = getActualYearAndMonth();
+        SetInitialDate((state) => ({
+            ...state,
+            current: { ...state.current, year: year, month: month },
+            next: { ...state.next, year: year, month: month + 1 },
+        }));
     };
 
     useEffect(() => {
         const { months } = CALENDAR_DATA;
         SetMonthes(months);
 
-        // const actualDate = new Date(Date.now()).toLocaleDateString();
-        const acYear = new Date(Date.now()).getFullYear();
-        const acMonth = new Date(Date.now()).getMonth() + 1;
-        SetCurrentYear(acYear);
-        console.log(acMonth);
+        const { year, month } = getActualYearAndMonth();
+        const current = { year: year, month: month };
+        const next = { year: year, month: month + 1 };
 
-        // const actualYearAndMonth = actualDate.slice(0, -4);
-        // const formatedActialYearAndMont = actualYearAndMonth.replaceAll(".", "").replaceAll(" ", "");
-        const current = { year: acYear, month: acMonth };
-        const next = { year: acYear, month: acMonth + 1 };
-
-        SetInitialMonths((state) => ({ ...state, current: current, next: next }));
+        SetInitialDate((state) => ({ ...state, current: current, next: next }));
     }, []);
-
-    useEffect(() => {
-        console.log(initialMonths);
-    }, [initialMonths]);
 
     const calculateLeftDaysFromPrevoiusMonth = (month: MonthType, index: number, array: MonthType[]) => {
         const prevMonthDays = index <= 0 ? array[array.length - 1] : array[index - 1];
         const isBeforeDecember = month.nth - 1 === 0;
 
-        const actualYear = isBeforeDecember ? currentYear - 1 : currentYear;
+        const currYear = initialDate.current.year;
+
+        const actualYear = isBeforeDecember ? currYear - 1 : currYear;
         const prevMonth = isBeforeDecember ? 12 : month.nth - 1;
 
         return new Date(`${actualYear}.${prevMonth}.${prevMonthDays.days}`).getDay();
+    };
+
+    const getActualYearAndMonth = () => {
+        const acYear = new Date(Date.now()).getFullYear();
+        const acMonth = new Date(Date.now()).getMonth() + 1;
+        return { year: acYear, month: acMonth };
     };
 
     /**2 Visible month is fundamental. This FO set the actual visible monthes */
@@ -69,23 +79,50 @@ export const MainCalendarComponent = (): JSX.Element => {
         const target = event.target as HTMLButtonElement;
         const value = target.value;
 
-        if (value === monthState[0]) {
-            const decrease_CurrentMonth = initialMonths.current.month - 1;
-            const decrease_NextMonth = initialMonths.next.month - 1;
-            SetInitialMonths((state) => ({
-                ...state,
-                current: { year: state.current.year, month: decrease_CurrentMonth },
-                next: { year: state.next.year, month: decrease_NextMonth },
-            }));
-        }
-        if (value === monthState[1]) {
-            const increase_CurrentMonth = initialMonths.current.month + 1;
-            const increase_NextMonth = initialMonths.next.month + 1;
-            SetInitialMonths((state) => ({
-                ...state,
-                current: { year: state.current.year, month: increase_CurrentMonth },
-                next: { year: state.next.year, month: increase_NextMonth },
-            }));
+        const [prew, next] = monthState;
+
+        switch (value) {
+            //set prew monthes
+            case prew: {
+                let decrease_CurrentMonth = initialDate.current.month - 1;
+                let decrease_NextMonth = initialDate.next.month - 1;
+                let decYear = initialDate.current.year;
+
+                // if (decrease_CurrentMonth <= 0) {
+                //     decrease_CurrentMonth = 12;
+                //     decYear = initialDate.current.year - 1;
+                // }
+                // console.log(decrease_CurrentMonth);
+
+                SetInitialDate((state) => ({
+                    ...state,
+                    current: { year: state.current.year, month: decrease_CurrentMonth },
+                    next: { year: state.next.year, month: decrease_NextMonth },
+                }));
+                break;
+            }
+
+            //set next monthes
+            case next: {
+                if (value === monthState[1]) {
+                    let increase_CurrentMonth = initialDate.current.month + 1;
+                    let increase_NextMonth = initialDate.next.month + 1;
+
+
+                    // increase_CurrentMonth = increase_CurrentMonth >= 12 ? 1 : increase_CurrentMonth;
+                    // console.log(increase_CurrentMonth);
+
+                    SetInitialDate((state) => ({
+                        ...state,
+                        current: { year: state.current.year, month: increase_CurrentMonth },
+                        next: { year: state.next.year, month: increase_NextMonth },
+                    }));
+                }
+                break;
+            }
+
+            default:
+                break;
         }
     };
     const submit_Search = (event: FormEvent<HTMLFormElement>) => {
@@ -107,7 +144,7 @@ export const MainCalendarComponent = (): JSX.Element => {
 
     return (
         <div className="calendar-container">
-            <h2>{currentYear}</h2>
+            <h2>{initialDate.current.year}</h2>
             <div>
                 <CustomButton handler={handle_ResetCurrentYear} value={"Reset year"} color={"red"} />
             </div>
@@ -121,7 +158,7 @@ export const MainCalendarComponent = (): JSX.Element => {
             </div>
             <div>
                 <form onSubmit={submit_Search}>
-                    <SearchInput searchedValueRef={searchValue} reset={resetSearch} />
+                    <SearchInput searchedValueRef={searchValue} reset={resetSearch} placeholder="search meeting" />
                     <input type="submit" style={{ display: "none" }} />
                 </form>
             </div>
@@ -129,15 +166,15 @@ export const MainCalendarComponent = (): JSX.Element => {
             <div className="calendar-month">
                 {months &&
                     months.map((month, index, monthsArr) => {
-                        const leftDaysPrevMonth = calculateLeftDaysFromPrevoiusMonth(month, index, monthsArr);
+                        const leftDaysFromPrevMonth = calculateLeftDaysFromPrevoiusMonth(month, index, monthsArr);
 
                         return (
                             <Month
                                 key={`${month.month}_${index}`}
-                                year={currentYear}
+                                year={initialDate.current.year}
                                 monthData={month}
-                                currentVisibleMonth={initialMonths}
-                                daysPlaceholdersCount={leftDaysPrevMonth}
+                                currentVisibleMonth={initialDate}
+                                daysPlaceholdersCount={leftDaysFromPrevMonth}
                             />
                         );
                     })}

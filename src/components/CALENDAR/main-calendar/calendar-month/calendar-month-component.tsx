@@ -23,7 +23,6 @@ export const Month = ({
 
     const [countDaysArray, SetCountDaysArray] = useState<any[]>([]);
     const [placeholderDaysBegining, SetPlaceholderDaysBegining] = useState<any[]>([]);
-    // const [stringYearAndMonth, SetStringYearAndMonth] = useState<string>("");
     const [visible, SetVisible] = useState<boolean>(false);
 
     useEffect(() => {
@@ -35,9 +34,6 @@ export const Month = ({
         const newArray = new Array(modDay).fill("day", 1, modDay);
         SetCountDaysArray(newArray);
 
-        // const strYearAndMonth = `${year}${nth.toString().padStart(2, "0")}`;
-        // console.log(strYearAndMonth);
-        // SetStringYearAndMonth(strYearAndMonth);
     }, [monthData, daysPlaceholdersCount]);
 
     useEffect(() => {

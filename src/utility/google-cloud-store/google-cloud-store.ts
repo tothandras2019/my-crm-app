@@ -23,11 +23,10 @@ export const addCustomerToFirestore = async (newCustomer: CustomerDataType) => a
 
 export const updateCustomerFirestore = async (update_customer: CustomerDataType) =>
   await updateDoc(doc(db, 'Customers', update_customer.id), { ...update_customer })
+
 export const deleteCustomerFirestore = async (del_customer: string) => await deleteDoc(doc(db, 'Customers', del_customer))
 
 export const addContractToFirestore = async (newContract: ContractType) => {
-  console.log(newContract)
-
   await setDoc(doc(db, 'Contracts', newContract.id), newContract)
 }
 export const updateContract_Firestore = async (update_contract: ContractType) =>

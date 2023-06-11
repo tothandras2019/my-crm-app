@@ -1,7 +1,6 @@
 import "./main-calendar-component.css";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import CALENDAR_DATA from "./../../../DATASTORE/calendar/calendar_init.json";
-import { Day } from "./calendar-day/calendar-day-component";
 import { Month, MonthType } from "./calendar-month/calendar-month-component";
 import { CustomButton } from "../../tools/button/submit/custom-button-component";
 import { SearchInput } from "../../tools/search-input/search-input-component";
